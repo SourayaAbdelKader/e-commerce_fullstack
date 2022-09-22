@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile Page</title>
+    <link rel="stylesheet" href="./styles/index.css" />
   </head>
   <body>
     <!-- Start of navbar -->
@@ -12,41 +13,48 @@
     <!-- End of navbar -->
 
     <!-- Start of main Section -->
-    <main>
+    <main class="main-profile antiquewhite-bg">
       <!-- Start of left main section -->
-      <section class="main-left">
-        <div class="top-left">
-          <img src="./assets/dummy-profile.png" />
-          <p id="name" class="name">Souraya Abdel Sater</p>
+      <section class="left-profile">
+        <div class="top">
+          <div class="top-left">
+            <img src="./assets/dummy-profile.png" />
+            <h2 id="name" class="orange-text">Souraya Abdel Sater</h2>
+          </div>
+          <button class="edit-button btn btn-md orange-bg" id="edit-button">
+            Edit
+          </button>
         </div>
-        <button class="edit-button btn btn-md orange-bg" id="edit-button">Edit</button>
         <p class="user-bio">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum ipsam
           eos perferendis nostrum aspernatur debitis voluptates eveniet fuga
           iusto atque enim odit quia fugiat nulla, quos voluptatibus. Eveniet,
           ipsam. Culpa.
         </p>
-    </section>
-    <!-- End of left main section -->
+      </section>
+      <!-- End of left main section -->
 
-    <!-- Start of right main section -->
-    <div class="main-right">
+      <!-- Start of right main section -->
+      <div class="main-messages">
         <h2>Messages</h2>
         <div class="chat">
-            <p>
-            <img class='shop-profile' src="./assets/dummy-profile.png" alt="shop profile">
+          <p class="receiver-data">
+            <img
+              class="shop-profile"
+              src="./assets/dummy-profile.png"
+              alt="shop profile"
+            />
             <span class="shop-name" id="shop-name">TechEveryhWhere</span>
-            </p>
-            <span class="date" id="last-message-date">10m</span>
+          </p>
+          <span class="date" id="last-message-date">10m</span>
         </div>
-    </div>
-    <!-- End of right main section -->
+      </div>
+      <!-- End of right main section -->
     </main>
     <!-- End of main Section -->
 
     <!-- Start of footer section -->
-    <footer>
-    </footer>
+    <footer></footer>
     <!-- End of footer section -->
   </body>
 </html>

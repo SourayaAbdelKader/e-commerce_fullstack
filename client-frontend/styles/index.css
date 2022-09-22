@@ -262,3 +262,42 @@ p {
 }
 
 /* ------END OF REGISTER.HTML STYLING------ */
+
+/* ------START OF PROFILE.HTML STYLING-------- */
+.main-profile{
+  display: flex;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+}
+.main-profile img{
+  border-radius: 50%;
+}
+.main-profile .left-profile{
+  padding: 20px;
+  width:60%;
+  width:50%;
+}
+.main-profile .left-profile img{
+  width:200px;
+}
+.main-profile .left-profile .top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-profile .left-profile .top-left{
+  text-align: center;
+  margin-bottom: 10px;
+}
+.main-profile .left-profile .top-left h2{
+  margin-top: 10px;
+  color: #355c7b;
+  text-transform: uppercase;
+  font-size: 30px;
+}
+.main-profile .left-profile .user-bio{
+  font-size:20px;
+  line-height: 25px;
+}
+/* ------START OF PROFILE.HTML STYLING------ */
