@@ -7,7 +7,7 @@
     <title>Profile Page</title>
     <link rel="stylesheet" href="./styles/index.css" />
   </head>
-  <body>
+  <body class="profile-html antiquewhite-bg">
     <!-- Start of navbar -->
     <nav></nav>
     <!-- End of navbar -->
@@ -21,7 +21,7 @@
             <img src="./assets/dummy-profile.png" />
             <h2 id="name" class="orange-text">Souraya Abdel Sater</h2>
           </div>
-          <button class="edit-button btn btn-md orange-bg" id="edit-button">
+          <button id="edit-button" class="edit-button btn orange-bg" id="edit-button">
             Edit
           </button>
         </div>
@@ -38,47 +38,115 @@
       <div class="main-messages">
         <h2>Messages</h2>
         <div class="chat-boxes">
-          <div class="chat">
-            <img
-              class="shop-profile"
-              src="./assets/dummy-profile.png"
-              alt="shop profile"
-            />
-            <span class="shop-name" id="shop-name">Ali Rida</span>
-            <span class="date" id="last-message-date">10m</span>
+          <div class="single-chat">
+            <div class="chat">
+              <img
+                class="shop-profile"
+                src="./assets/dummy-profile.png"
+                alt="shop profile"
+              />
+              <span class="shop-name" id="shop-name">Ali Rida</span>
+              <span class="date" id="last-message-date">10m</span>
+            </div>
+            <p id="message-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, perspiciatis.</p>
+            <div class="reply-button">
+              <button class="btn btn-sm grey-bg">Reply</button>
+            </div>
           </div>
-          <div class="chat">
-            <img
-              class="shop-profile"
-              src="./assets/dummy-profile.png"
-              alt="shop profile"
-            />
-            <span class="shop-name" id="shop-name">Ali Rida</span>
-            <span class="date" id="last-message-date">10m</span>
+          <div class="single-chat">
+            <div class="chat">
+              <img
+                class="shop-profile"
+                src="./assets/dummy-profile.png"
+                alt="shop profile"
+              />
+              <span class="shop-name" id="shop-name">Ali Rida</span>
+              <span class="date" id="last-message-date">10m</span>
+            </div>
+            <p id="message-text">Lorem ipsum dolor sit amet.</p>
+            <div class="reply-button">
+              <button class="btn btn-sm grey-bg">Reply</button>
+            </div>
           </div>
-          <div class="chat">
-            <img
-              class="shop-profile"
-              src="./assets/dummy-profile.png"
-              alt="shop profile"
-            />
-            <span class="shop-name" id="shop-name">Taha Taha</span>
-            <span class="date" id="last-message-date">10m</span>
+          <div class="single-chat">
+            <div class="chat">
+              <img
+                class="shop-profile"
+                src="./assets/dummy-profile.png"
+                alt="shop profile"
+              />
+              <span class="shop-name" id="shop-name">Taha Taha</span>
+              <span class="date" id="last-message-date">10m</span>
+            </div>
+            <p id="message-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+              eligendi!
+            </p>
+            <div class="reply-button">
+              <button class="btn btn-sm grey-bg">Reply</button>
+            </div>
           </div>
-          <div class="chat">
-            <img
-              class="shop-profile"
-              src="./assets/dummy-profile.png"
-              alt="shop profile"
-            />
-            <span class="shop-name" id="shop-name">Taha Taha</span>
-            <span class="date" id="last-message-date">10m</span>
+          <div class="single-chat">
+            <div class="chat">
+              <img
+                class="shop-profile"
+                src="./assets/dummy-profile.png"
+                alt="shop profile"
+              />
+              <span class="shop-name" id="shop-name">Taha Taha</span>
+              <span class="date" id="last-message-date">10m</span>
+            </div>
+            <p id="message-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+              eligendi!
+            </p>
+            <div class="reply-button">
+              <button class="btn btn-sm grey-bg">Reply</button>
+            </div>
+          </div>
+          <div class="single-chat">
+            <div class="chat">
+              <img
+                class="shop-profile"
+                src="./assets/dummy-profile.png"
+                alt="shop profile"
+              />
+              <span class="shop-name" id="shop-name">Taha Taha</span>
+              <span class="date" id="last-message-date">10m</span>
+            </div>
+            <p id="message-text">Lorem ipsum</p>
+            <div class="reply-button">
+              <button class="btn btn-sm grey-bg">Reply</button>
+            </div>
+          </div>
+          <div class="single-chat">
+            <div class="chat">
+              <img
+                class="shop-profile"
+                src="./assets/dummy-profile.png"
+                alt="shop profile"
+              />
+              <span class="shop-name" id="shop-name">Taha Taha</span>
+              <span class="date" id="last-message-date">10m</span>
+            </div>
+            <p id="message-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+              minus tempora amet, facere quam magnam dolores minima debitis odio
+              eligendi!
+            </p>
+            <div class="reply-button">
+              <button class="btn btn-sm grey-bg">Reply</button>
+            </div>
           </div>
         </div>
       </div>
       <!-- End of right main section -->
     </main>
     <!-- End of main Section -->
+
+    <!-- Start Of Single message/main chat Section -->
+    <section class="current-chat"></section>
+    <!-- End Of Single message/main chat Section -->
 
     <!-- Start of footer section -->
     <footer></footer>
