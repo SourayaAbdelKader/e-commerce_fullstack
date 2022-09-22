@@ -85,7 +85,8 @@ const sendNewPasswordByEmail = () => {
   const email = reset_email.value;
   console.log(email);
   const check_email = async () => {
-    const url = "http://localhost/e-commerce/ecommerce-server/check_email.php";
+    const url =
+      "http://localhost/e-commerce_fullstack/ecommerce-server/check_email.php";
     await axios
       .get(`${url}?email=${email}`)
       .then((data) => {
@@ -124,7 +125,8 @@ const loginUser = (e = "") => {
     user_type = "client";
   }
   const user_login = async () => {
-    const url = "http://localhost/e-commerce_fullstack/ecommerce-server/login.php";
+    const url =
+      "http://localhost/e-commerce_fullstack/ecommerce-server/login.php";
     await axios
       .get(`${url}?email=${email}&password=${password}&user_type=${user_type}`)
       .then((data) => {
