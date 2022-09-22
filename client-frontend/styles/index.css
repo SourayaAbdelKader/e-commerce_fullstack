@@ -67,10 +67,10 @@ p {
 .btn-md {
   width: 230px;
 }
-.btn-sm{
-  width:100px;
-  font-size:16px;
-  height:25px;
+.btn-sm {
+  width: 100px;
+  font-size: 16px;
+  height: 25px;
   text-transform: uppercase;
 }
 .size-32 {
@@ -274,7 +274,7 @@ p {
 .main-profile {
   display: flex;
   justify-content: center;
-  gap:2em;
+  gap: 2em;
 }
 .main-profile img {
   border-radius: 50%;
@@ -282,15 +282,20 @@ p {
 .main-profile .left-profile {
   padding: 20px;
   width: 40%;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   border-radius: 20px;
   margin-top: 20px;
 }
-.main-profile .left-profile .edit-button{
-  width:140px;
-  height: 50px;
+.main-profile .left-profile .edit-button {
   text-transform: uppercase;
-  font-size: 20px;
+  box-shadow: 0px 6px 18px -5px rgba(237, 103, 85, 1);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 150px;
+  padding: 14px;
+  font-size: 18px;
 }
 .main-profile .left-profile img {
   width: 200px;
@@ -323,14 +328,16 @@ p {
 /* Start of right profile section styling (messages-section) */
 .main-profile .main-messages {
   margin-top: 20px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   padding: 20px;
   width: 40%;
   overflow: scroll;
+  border-radius: 20px;
 }
 .main-messages .chat-boxes {
   display: flex;
-  width:100%;
+  width: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
@@ -363,10 +370,10 @@ p {
   justify-content: flex-start;
   width: 100%;
 }
-.main-messages .single-chat .reply-button{
+.main-messages .single-chat .reply-button {
   display: flex;
   justify-content: flex-end;
-  width:100%;
+  width: 100%;
 }
 .main-messages .chat .shop-name {
   width: 60%;
@@ -377,5 +384,53 @@ p {
   text-align: end;
 }
 /* End of right profile section styling (messages-section) */
+
+/* Start of Message Reply Modal */
+.reply-content {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+  border-radius: 20px;
+  padding: 30px 30px 70px;
+  position: absolute;
+  top: 25%;
+  left: 40%;
+}
+.reply-content button.close {
+  width: 30px;
+  font-size: 20px;
+  color: #c0c5cb;
+  align-self: flex-end;
+  background-color: transparent;
+  border: none;
+  margin-bottom: 10px;
+}
+.reply-content .reply-message{
+  height:50px;
+  width:80%;
+  margin-bottom: 20px;
+}
+.reply-content img {
+  width: 82px;
+  margin-bottom: 15px;
+}
+p {
+  margin-bottom: 40px;
+  font-size: 18px;
+}
+button.send {
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+  padding: 14px;
+  font-size: 16px;
+  color: white;
+  box-shadow: 0px 6px 18px -5px rgba(237, 103, 85, 1);
+}
+/* End of Message Reply Modal */
 
 /* ------START OF PROFILE.HTML STYLING------ */
