@@ -33,8 +33,8 @@ var base64string_profile;
 
 // localStorage:
 const addCurrentUser = (user) => {
+  localStorage.clear();
   localStorage.setItem("user", JSON.stringify(user));
-  console.log(user);
 };
 const checkCurrentUser = () => {
   const user = localStorage.getItem("user");
@@ -105,11 +105,24 @@ const sendNewPasswordByEmail = () => {
 // ---End of Show and hide modals Section---
 
 // Start of login submit(get exisiting user) //
+// create empty cart for new registered user:
+const createEmptyCart = async (client_id) => {
+  console.log(client_id);
+  let params = new URLSearchParams();
+  params.append("client_id", client_id);
+  const url =
+    "http://localhost/e-commerce_fullstack/ecommerce-server/create_emptycart.php";
+  await axios
+    .post(url, params)
+    .then((data) => {
+    })
+    .catch((err) => console.log(err));
+};
+
 const loginUser = (e = "") => {
-  if (e) {
     e.stopImmediatePropagation();
     e.preventDefault();
-  }
+
   let email = login_client_email.value;
   let password = login_client_password.value;
   let user_type;
@@ -134,17 +147,17 @@ const loginUser = (e = "") => {
       })
       .catch((err) => console.log(err.response));
   };
-  user_login();
+ user_login();
 };
 // End of login submit(get exisiting user) //
 
 // Start of Signup submit to API (create new user) //
 const createNewUser = (e) => {
-  e.preventDefault();
   e.stopImmediatePropagation();
+  e.preventDefault();
   const profile = base64string_profile ? base64string_profile : "";
 
-  var params = new URLSearchParams();
+  let params = new URLSearchParams();
   params.append("name", signup_name.value);
   params.append("email", signup_email.value);
   params.append("password", signup_password.value);
@@ -160,7 +173,8 @@ const createNewUser = (e) => {
     await axios
       .post(url, params)
       .then((data) => {
-        loginUser();
+        loginUser(e);
+        createEmptyCart(JSON.parse(localStorage.getItem('user')).id);
       })
       .catch((err) => console.log(err));
   };
