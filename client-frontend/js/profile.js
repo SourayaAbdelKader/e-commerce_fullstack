@@ -1,5 +1,6 @@
 const close_reply_popup = document.getElementById("close-reply-popup");
 const reply_popup = document.getElementById("reply-popup");
+const new_receiver_id_input = document.getElementById('new-receiver-id')
 const reply_message = document.getElementById("reply-message");
 const reply_message_submit = document.getElementById("reply-submit");
 const main_body = document.getElementById("profile-html");
@@ -24,6 +25,7 @@ var base64profile;
 // chat-box to add all received message to it's html content:
 const messages_container = document.getElementById("chat-main-box");
 
+// -----START OF FUNCTIONS---------//
 // show image and save url (signup)
 function uploadImage() {
   if (this.files && this.files[0]) {
@@ -35,6 +37,42 @@ function uploadImage() {
     reader.readAsDataURL(this.files[0]);
   }
 }
+//get today's date:
+const getTodayDate = () => {
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1;
+  var yyyy = today.getFullYear();
+  if (dd < 10) dd = "0" + dd;
+  if (mm < 10) mm = "0" + mm;
+  return dd + "/" + mm + "/" + yyyy;
+};
+
+// START OF REPLY POPUP
+// handle all data needed to send the reply:
+const sendReplyMessage = ()=>{
+  const date = getTodayDate();
+  const receiver_id= new_receiver_id_input.value;
+  const text = reply_message.value;
+}
+// show reply modal whenever any reply button is clicked, and add the new-receiver-id to the reply popup
+const showReplyModal = (e) => {
+  reply_popup.classList.remove("display-none");
+  main_body.classList.add("disable-pointer");
+  const new_receiver_id = e.currentTarget.nextSibling.value;
+  new_receiver_id_input.value = new_receiver_id;
+};
+// close reply modal:
+const closeReplyModal = () => {
+  reply_popup.classList.add("display-none");
+  main_body.classList.remove("disable-pointer");
+};
+// submit reply (popup):
+const submitReply = () => {
+  sendReplyMessage();
+  closeReplyModal();
+};
+// END OF REPLY POPUP
 
 //START OF ON WINDOW.LOAD
 const checkCurrentUser = () => {
@@ -56,13 +94,13 @@ const showReceivedMessage = (message) => {
   <div class="chat">
   `;
   if (message.profile) {
-    `<img
+    chatHTML += `<img
       class="shop-profile"
       src="${message.profile}"
       alt="shop profile"
     />`;
   } else {
-    `<img
+    chatHTML += `<img
       class="shop-profile"
       src="./assets/dummy-profile.png"
       alt="shop profile"
@@ -78,8 +116,7 @@ const showReceivedMessage = (message) => {
   <p id="message-text">${message.text}</p>
   <div class="reply-button">
     <button class="btn btn-sm grey-bg">Reply</button>
-  </div>
-    <input type='hidden' value=${message.sender_id}>
+  </div><input type='hidden' value=${message.sender_id}>
 </div> 
     `;
   messages_container.innerHTML += chatHTML;
@@ -109,25 +146,6 @@ const getAllReceivedMessages = () => {
   get_messages();
 };
 //END OF ON WINDOW.LOAD
-
-// START OF REPLY POPUP
-// show reply modal whenever any reply button is clicked:
-const showReplyModal = () => {
-  reply_popup.classList.remove("display-none");
-  main_body.classList.add("disable-pointer");
-};
-// close reply modal:
-const closeReplyModal = () => {
-  reply_popup.classList.add("display-none");
-  main_body.classList.remove("disable-pointer");
-};
-// submit reply (popup):
-const submitReply = () => {
-  console.log("SUBMITTTT");
-  console.log(`REPLY MSG: ${reply_message.value}`);
-  closeReplyModal();
-};
-// END OF REPLY POPUP
 
 // START OF PROFILE POPUP
 // update user in db:
@@ -193,9 +211,10 @@ const closeProfileModal = () => {
   main_body.classList.remove("disable-pointer");
 };
 // END OF PROFILE POPUP
+// -----END OF FUNCTIONS---------//
+
 
 // ----------START OF EVENT LISTENERS-----------
-
 // add event listener to close modal:
 close_reply_popup.addEventListener("click", closeReplyModal);
 reply_message_submit.addEventListener("click", submitReply);
