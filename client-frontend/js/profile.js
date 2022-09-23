@@ -1,6 +1,6 @@
 const close_reply_popup = document.getElementById("close-reply-popup");
 const reply_popup = document.getElementById("reply-popup");
-const new_receiver_id_input = document.getElementById('new-receiver-id')
+const new_receiver_id_input = document.getElementById("new-receiver-id");
 const reply_message = document.getElementById("reply-message");
 const reply_message_submit = document.getElementById("reply-submit");
 const main_body = document.getElementById("profile-html");
@@ -50,11 +50,28 @@ const getTodayDate = () => {
 
 // START OF REPLY POPUP
 // handle all data needed to send the reply:
-const sendReplyMessage = ()=>{
+const sendReplyMessage = () => {
+  const user = checkCurrentUser();
   const date = getTodayDate();
-  const receiver_id= new_receiver_id_input.value;
+  const receiver_id = new_receiver_id_input.value;
   const text = reply_message.value;
-}
+  const send_reply = async () => {
+    const url =
+      "http://localhost/e-commerce_fullstack/ecommerce-server/send_message.php";
+    let params = new URLSearchParams();
+    params.append("sender_id", user.id);
+    params.append("receiver_id", receiver_id);
+    params.append("text", text);
+    params.append("date", date);
+    await axios
+      .post(url, params)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  };
+  send_reply();
+};
 // show reply modal whenever any reply button is clicked, and add the new-receiver-id to the reply popup
 const showReplyModal = (e) => {
   reply_popup.classList.remove("display-none");
@@ -212,7 +229,6 @@ const closeProfileModal = () => {
 };
 // END OF PROFILE POPUP
 // -----END OF FUNCTIONS---------//
-
 
 // ----------START OF EVENT LISTENERS-----------
 // add event listener to close modal:

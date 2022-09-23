@@ -395,7 +395,7 @@ p {
   text-align: center;
   border-radius: 20px;
   padding: 30px 30px 70px;
-  position: absolute;
+  position: fixed;
   top: 25%;
   left: 40%;
 }
@@ -435,16 +435,24 @@ button.send {
 .disable-pointer {
   pointer-events: none;
 }
+/* START OF MEDIA QUERIES FOR REPLY MESSAGE */
+
+/* END MEDIA QUERIES FOR REPLY MESSAGE */
+@media only screen and (max-width: 900px) {
+  .reply-content {
+    left: 30%;
+  }
+}
 /* End of Message Reply Modal */
 
 /* Edit Profile modal */
 .edit-profile-popup img {
   cursor: pointer;
 }
-.edit-profile-popup .reply-message{
+.edit-profile-popup .reply-message {
   font-size: 20px;
 }
-.edit-profile-popup .profile-new-name{
+.edit-profile-popup .profile-new-name {
   text-transform: uppercase;
 }
 ::-webkit-scrollbar {
