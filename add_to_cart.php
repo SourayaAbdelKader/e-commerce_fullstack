@@ -1,6 +1,6 @@
 <?php
-include "connection.php";
-$done = false;
+include "connection.php"; //get connection and add header to allow access
+$done = false;//will return it depending on result of the query  
 if (isset($_POST["client_id"]) && isset($_POST["product_id"]) && isset($_POST["quantity"])) {
   $client_id = $_POST["client_id"];
   $product_id = $_POST["product_id"];

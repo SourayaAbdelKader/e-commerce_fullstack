@@ -1,6 +1,7 @@
 <?php
-include "connection.php";
+include "connection.php"; //get connection and add header to allow access
 $data = [];
+//get all products we have 
 $sql = "select * from products";
 $query = $mysqli->prepare($sql);
 if ($query->execute()) {

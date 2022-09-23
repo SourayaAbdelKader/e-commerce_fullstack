@@ -1,9 +1,11 @@
 <?php
-include "connection.php";
+include "connection.php";  //get connection and add header to allow access
+
 $data = [];
 if (isset($_POST["client_id"])) {
   $id = $_POST["client_id"];
-  $sql = "select product_id from wishlists where client_id=? ";
+  //get all products in wishlists for a client
+  $sql = "select * from wishlists w  join products p on p.id=w.product_id where w.client_id=? ";
   $query = $mysqli->prepare($sql);
   $query->bind_param("i", $id);
   if ($query->execute()) {

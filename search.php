@@ -1,9 +1,11 @@
 <?php
-include "connection.php";
+include "connection.php"; //get connection and add header to allow access
 $data = [];
 if (isset($_POST["key"])) {
   $key = $_POST["key"];
   $like = "%$key%";
+  // search for a key in description title or categories name of a product 
+  //get all info of match  products
   $sql = "select * from products where 
         description like ? OR  
         title like ? OR
