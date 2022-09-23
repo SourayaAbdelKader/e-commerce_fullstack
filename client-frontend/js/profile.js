@@ -8,7 +8,7 @@ const main_body = document.getElementById("profile-html");
 const edit_profile_button_show = document.getElementById("edit-profile-button");
 const edit_profile_modal = document.getElementById("edit-profile-popup");
 const close_profile_popup = document.getElementById("close-profile-popup");
-const edit_profile_img_input = document.getElementById("edit-profile-img-url");
+const edit_profile_img_input = document.getElementById("edit-profile-imgurl");
 const edit_profile_new_name = document.getElementById("edit-profile-new-name");
 const edit_profile_new_bio = document.getElementById("edit-profile-new-bio");
 const edit_profile_submit = document.getElementById("edit-profile-submit");
@@ -20,6 +20,20 @@ const profile_user_bio = document.getElementById("profile-bio");
 const profile_new_image_show = document.getElementById("edit-profile-new-img");
 const profile_new_name = document.getElementById("profile-new-name");
 const profile_new_bio = document.getElementById("profile-new-bio");
+// base64profile
+var base64profile;
+
+// show image and save url (signup)
+function uploadImage() {
+  if (this.files && this.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      base64profile = reader.result.replace("data:", "").replace(/^.+,/, "");
+      profile_new_image_show.src = e.target.result;
+    };
+    reader.readAsDataURL(this.files[0]);
+  }
+}
 
 //on window load
 const checkCurrentUser = () => {
@@ -56,10 +70,54 @@ const submitReply = () => {
 // END OF REPLY POPUP
 
 // START OF PROFILE POPUP
+// update user in db:
+const updateUserInDB = () => {
+  const profile = base64profile ? base64profile : "";
+
+  const user = checkCurrentUser();
+  console.log(user.name);
+  console.log(user.bio);
+  let params = new URLSearchParams();
+  params.append("client_id", user.id);
+  params.append("new_name", user.name);
+  params.append("email", user.email);
+  params.append("new_bio", user.bio);
+  params.append("profile", profile);
+  // validation before sending to API
+  const update_user = async () => {
+    const url =
+      "http://localhost/e-commerce_fullstack/ecommerce-server/update_profile.php";
+    await axios
+      .post(url, params)
+      .then((data) => {
+        console.log(JSON.stringify(data));
+      })
+      .catch((err) => console.log(err));
+  };
+  update_user();
+};
+// update user profile - data in local host and db:
+const updateLocalUser = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  // update the user name and bio locally directly, but if there is a new image don't affect found one but return the new base64
+  if (profile_new_name.value) user.name = profile_new_name.value;
+  if (profile_new_bio.value) user.bio = profile_new_bio.value;
+  localStorage.setItem("user", JSON.stringify(user));
+};
+const updateUserData = () => {
+  updateLocalUser();
+  updateUserInDB();
+  const user = JSON.parse(localStorage.getItem("user"));
+  // update shown data directly
+  if (user.profile) profile_user_image.src = user.profile;
+  profile_user_name.textContent = user.name;
+  profile_user_bio.textContent = user.bio;
+  closeProfileModal();
+};
 const loadUserData = () => {
   //load user data to edit-profile inputs
   const user = checkCurrentUser();
-  profile_new_image_show.src = user.profile;
+  if (user.profile) profile_new_image_show.src = user.profile;
   profile_new_name.value = user.name;
   if (user.bio) profile_new_bio.value = user.bio;
 };
@@ -89,6 +147,10 @@ reply_message_submit.addEventListener("click", submitReply);
 // START OF EDIT PROFILE MODAL EVENT LISTENERS
 edit_profile_button_show.addEventListener("click", showEditProfileModal);
 close_profile_popup.addEventListener("click", closeProfileModal);
-// START OF EDIT PROFILE MODAL EVENT LISTENERS
+edit_profile_submit.addEventListener("click", updateUserData);
+// END OF EDIT PROFILE MODAL EVENT LISTENERS
+
 // Adding currentUser Data to profile:
 window.addEventListener("load", showUserData);
+// whenever image link is change - refind it's base64
+edit_profile_img_input.addEventListener("change", uploadImage);

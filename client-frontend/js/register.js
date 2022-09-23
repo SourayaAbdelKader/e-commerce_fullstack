@@ -35,7 +35,7 @@ var base64string_profile;
 const addCurrentUser = (user) => {
   localStorage.setItem("user", JSON.stringify(user));
 };
-const checkCurrentUser = () => {
+const checkUser = () => {
   const user = localStorage.getItem("user");
   if (user) window.location.href = "./profile.html";
 };
@@ -141,7 +141,7 @@ const loginUser = (e = "") => {
       .get(`${url}?email=${email}&password=${password}&user_type=${user_type}`)
       .then((data) => {
         addCurrentUser(data.data[0]);
-        checkCurrentUser();
+        checkUser();
       })
       .catch((err) => console.log(err.response));
   };
@@ -194,4 +194,4 @@ login_seller_submit_btn.addEventListener("click", loginUser);
 // show new image whenever image in signup modal changes by user
 signup_profile.addEventListener("change", uploadImage);
 // on window load if there is a user redirect:
-window.addEventListener("load", checkCurrentUser);
+window.addEventListener("load", checkUser);
