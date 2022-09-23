@@ -105,7 +105,6 @@ const sendNewPasswordByEmail = () => {
 // Start of login submit(get exisiting user) //
 // create empty cart for new registered user:
 const createEmptyCart = async (client_id) => {
-  console.log(client_id);
   let params = new URLSearchParams();
   params.append("client_id", client_id);
   const url =

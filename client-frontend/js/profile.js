@@ -35,7 +35,7 @@ function uploadImage() {
   }
 }
 
-//on window load
+//START OF ON WINDOW.LOAD
 const checkCurrentUser = () => {
   const user = localStorage.getItem("user");
   if (!user) window.location.href = "./register.html";
@@ -49,6 +49,25 @@ const showUserData = () => {
   if (user.bio) profile_user_bio.textContent = user.bio;
   else profile_user_bio.innerHTML = `<i class="grey-text">NO BIO YET</i>`;
 };
+const getAllReceivedMessages = () => {
+  const user = checkCurrentUser();
+
+  const get_messages = async () => {
+    const url =
+      "http://localhost/e-commerce_fullstack/ecommerce-server/get_messages.php";
+    let params = new URLSearchParams();
+    params.append("receiver_id", user.id);
+    await axios
+      .post(url, params)
+      .then((data) => {
+        const messages = JSON.stringify(data.data);
+        addMessageToHTML(messages);
+      })
+      .catch((err) => console.log(err));
+  };
+  get_messages();
+};
+//END OF ON WINDOW.LOAD
 
 // START OF REPLY POPUP
 // show reply modal whenever any reply button is clicked:
@@ -134,7 +153,7 @@ const closeProfileModal = () => {
 };
 // END OF PROFILE POPUP
 
-// START OF REPLY MODAL EVENT LISTENERS
+// ----------START OF EVENT LISTENERS-----------
 // add event listener for each 'REPLY-button' of messages
 for (let btn of reply_buttons) {
   btn.addEventListener("click", showReplyModal);
@@ -154,3 +173,28 @@ edit_profile_submit.addEventListener("click", updateUserData);
 window.addEventListener("load", showUserData);
 // whenever image link is change - refind it's base64
 edit_profile_img_input.addEventListener("change", uploadImage);
+// load all messages received to this user_id when window loads:
+window.addEventListener("load", getAllReceivedMessages);
+// --------END OF EVENT LISTENERS-------------
+
+{
+  /* <div class="single-chat">
+  <div class="chat">
+    <img
+      class="shop-profile"
+      src="./assets/dummy-profile.png"
+      alt="shop profile"
+    />
+    <span class="shop-name" id="shop-name">
+      Ali Rida
+    </span>
+    <span class="date" id="last-message-date">
+      10m
+    </span>
+  </div>
+  <p id="message-text">Lorem ipsum dolor sit amet.</p>
+  <div class="reply-button">
+    <button class="btn btn-sm grey-bg">Reply</button>
+  </div>
+</div>; */
+}
