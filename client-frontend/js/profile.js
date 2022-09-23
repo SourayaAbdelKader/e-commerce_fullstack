@@ -16,6 +16,10 @@ const edit_profile_submit = document.getElementById("edit-profile-submit");
 const profile_user_image = document.getElementById("profile-img");
 const profile_user_name = document.getElementById("profile-name");
 const profile_user_bio = document.getElementById("profile-bio");
+// edit profile inputs:
+const profile_new_image_show = document.getElementById("edit-profile-new-img");
+const profile_new_name = document.getElementById("profile-new-name");
+const profile_new_bio = document.getElementById("profile-new-bio");
 
 //on window load
 const checkCurrentUser = () => {
@@ -51,9 +55,17 @@ const submitReply = () => {
 // END OF REPLY POPUP
 
 // START OF PROFILE POPUP
+const loadUserData = () => {
+  //load user data to edit-profile inputs
+  const user = checkCurrentUser();
+  profile_new_image_show.src = user.profile;
+  profile_new_name.value = user.name;
+  if (user.bio) profile_new_bio.value = user.bio;
+};
 const showEditProfileModal = () => {
   //make sure reply modal is closed
   closeReplyModal();
+  loadUserData();
   edit_profile_modal.classList.remove("display-none");
   main_body.classList.add("disable-pointer");
 };
