@@ -63,6 +63,26 @@ const reset_all_inputs = () => {
   signup_img_show.src = "./assets/icons8-customer-96.png";
 };
 
+// Check email if found in database/users:
+const is_repeated_email = (email) => {
+  const repeated = false;
+
+  const check_email = async () => {
+    const url =
+      "http://localhost/e-commerce_fullstack/ecommerce-server/check_email.php";
+    await axios
+      .get(`${url}?email=${email}`)
+      .then((data) => {
+        const found = JSON.stringify(data.data[0]);
+        if (found > 0) repeated = true;
+      })
+      .catch((err) => console.log(err.response));
+  };
+
+  check_email();
+  return repeated;
+};
+
 // ---Start of show and hide modals Section---
 const showLoginModal = () => {
   reset_all_inputs();
@@ -95,25 +115,13 @@ const showResetPasswordModal = () => {
 };
 const sendNewPasswordByEmail = () => {
   reset_all_inputs();
-  const email = reset_email.value;
-  console.log(email);
-  const check_email = async () => {
-    const url =
-      "http://localhost/e-commerce_fullstack/ecommerce-server/check_email.php";
-    await axios
-      .get(`${url}?email=${email}`)
-      .then((data) => {
-        if (JSON.stringify(data.data[0].found) === "1") {
-          //email found
-          console.log("found");
-          reset_password_modal.classList.add("display-none");
-          new_password_modal.classList.remove("display-none");
-          // reset password php - send email
-        }
-      })
-      .catch((err) => console.log(err.response));
-  };
-  check_email();
+  // const email = reset_email.value;
+  // console.log(email);
+
+  // reset password php - send email
+  // is_repeated_email(email);
+  // reset_password_modal.classList.add("display-none");
+  // new_password_modal.classList.remove("display-none");
 };
 // ---End of Show and hide modals Section---
 
