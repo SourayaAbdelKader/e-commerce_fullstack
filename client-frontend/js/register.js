@@ -194,6 +194,70 @@ const loginUser = (e) => {
 };
 // End of login submit(get exisiting user) //
 
+// validate Signup:
+const validateSignUp = (name, email, password, phone_nb) => {
+  // reset inputs first:
+  signup_name.classList.remove("danger");
+  signup_email.classList.remove("danger");
+  signup_password.classList.remove("danger");
+  signup_phone.classList.remove("danger");
+  let valid = true;
+
+  const validEmail = () => {
+    const regEx = /[a-z0-9_\.-]{3,}@[a-z0-9_\.-]{5,}/;
+    return regEx.test(email);
+  };
+  const validPhonenb = () => {
+    if (phone_nb.length < 11) return false;
+    const keyNbs = phone_nb.slice(4, 6);
+    const countrycode = phone_nb.slice(0, 4);
+    let valid = false;
+    if (countrycode == "+961") {
+      if (phone_nb.slice(4, 5) == "3" && phone_nb.slice(5).length == "6")
+        valid = true;
+      else if (
+        (keyNbs == "71" || keyNbs == "70" || keyNbs == "76") &&
+        phone_nb.slice(6).length == "6"
+      )
+        valid = true;
+    }
+    return valid;
+  };
+  const validName = () => {
+    // names can only use letters. not less than 6 letters
+    const nameRegex = /[a-zA-z]{6,}/;
+    return nameRegex.test(name);
+  };
+  const validPassword = () => {
+    const regEx =
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,20}$/;
+    return regEx.test(password);
+  };
+
+  if (!validEmail()) {
+    signup_email.classList.add("danger");
+    valid = false;
+    console.log("email");
+  }
+  if (!validPhonenb()) {
+    signup_phone.classList.add("danger");
+    valid = false;
+    console.log("phone");
+  }
+  if (!validName()) {
+    signup_name.classList.add("danger");
+    valid = false;
+    console.log("name");
+  }
+  if (!validPassword()) {
+    signup_password.classList.add("danger");
+    valid = false;
+    console.log("pass");
+  }
+
+  return valid;
+};
+
 // Start of Signup submit to API (create new user) //
 const createNewUser = (e) => {
   e.stopImmediatePropagation();
