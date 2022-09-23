@@ -33,13 +33,11 @@ var base64string_profile;
 
 // localStorage:
 const addCurrentUser = (user) => {
-  localStorage.clear();
   localStorage.setItem("user", JSON.stringify(user));
 };
 const checkCurrentUser = () => {
   const user = localStorage.getItem("user");
-  if (user) return JSON.parse(user);
-  return "";
+  if (user) window.location.href = "./profile.html";
 };
 // show image and save url (signup)
 function uploadImage() {
@@ -153,8 +151,8 @@ const loginUser = (e = "") => {
 
 // Start of Signup submit to API (create new user) //
 const createNewUser = (e) => {
-  e.stopImmediatePropagation();
   e.preventDefault();
+  e.stopImmediatePropagation();
   const profile = base64string_profile ? base64string_profile : "";
 
   let params = new URLSearchParams();
@@ -174,8 +172,8 @@ const createNewUser = (e) => {
       .post(url, params)
       .then((data) => {
         loginUser(e);
-        console.log(JSON.parse(localStorage.getItem("user")));
-        // createEmptyCart(JSON.parse(localStorage.getItem('user')));
+        const user = JSON.parse(localStorage.getItem("user"));
+        createEmptyCart(user.id);
       })
       .catch((err) => console.log(err));
   };
@@ -195,4 +193,5 @@ login_client_submit_btn.addEventListener("click", loginUser);
 login_seller_submit_btn.addEventListener("click", loginUser);
 // show new image whenever image in signup modal changes by user
 signup_profile.addEventListener("change", uploadImage);
-// reset password main activity:
+// on window load if there is a user redirect:
+window.addEventListener("load", checkCurrentUser);
