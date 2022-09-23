@@ -31,11 +31,6 @@ const login_seller_password = document.getElementById("login-seller-password");
 // global base64String
 var base64string_profile;
 
-// localStorage:
-const addCurrentUser = (user) => {
-  localStorage.clear();
-  localStorage.setItem("user", JSON.stringify(user));
-};
 const checkCurrentUser = () => {
   const user = localStorage.getItem("user");
   if (user) return JSON.parse(user);
@@ -55,8 +50,22 @@ function uploadImage() {
   }
 }
 
+// reset inputs:
+const reset_all_inputs = () => {
+  login_client_email.value = "";
+  login_client_password.value = "";
+  login_seller_email.value = "";
+  login_seller_password.value = "";
+  signup_name.value = "";
+  signup_email.value = "";
+  signup_password.value = "";
+  signup_phone.value = "";
+  signup_img_show.src = "./assets/icons8-customer-96.png";
+};
+
 // ---Start of show and hide modals Section---
 const showLoginModal = () => {
+  reset_all_inputs();
   reset_password_modal.classList.add("display-none");
   new_password_modal.classList.add("display-none");
   login_seller_modal.classList.add("display-none");
@@ -64,6 +73,7 @@ const showLoginModal = () => {
   login_modal.classList.remove("display-none");
 };
 const showSignUpModal = () => {
+  reset_all_inputs();
   reset_password_modal.classList.add("display-none");
   new_password_modal.classList.add("display-none");
   login_seller_modal.classList.add("display-none");
@@ -71,6 +81,7 @@ const showSignUpModal = () => {
   signup_modal.classList.remove("display-none");
 };
 const showSellerLoginModal = () => {
+  reset_all_inputs();
   reset_password_modal.classList.add("display-none");
   new_password_modal.classList.add("display-none");
   login_modal.classList.add("display-none");
@@ -78,10 +89,12 @@ const showSellerLoginModal = () => {
   login_seller_modal.classList.remove("display-none");
 };
 const showResetPasswordModal = () => {
+  reset_all_inputs();
   login_modal.classList.add("display-none");
   reset_password_modal.classList.remove("display-none");
 };
 const sendNewPasswordByEmail = () => {
+  reset_all_inputs();
   const email = reset_email.value;
   console.log(email);
   const check_email = async () => {
@@ -115,20 +128,22 @@ const createEmptyCart = async (client_id) => {
   await axios
     .post(url, params)
     .then((data) => {
+      console.log(data);
     })
     .catch((err) => console.log(err));
 };
 
-const loginUser = (e = "") => {
-    e.stopImmediatePropagation();
-    e.preventDefault();
+const loginUser = (e) => {
+  e.stopImmediatePropagation();
+  e.preventDefault();
 
   let email = login_client_email.value;
   let password = login_client_password.value;
   let user_type;
   // email and password inputs are filled for client => search for client user_type
-  if (email && password) user_type = "client";
-  else if (login_seller_email.value && login_seller_password.value) {
+  if (email && password) {
+    user_type = "client";
+  } else if (login_seller_email.value && login_seller_password.value) {
     email = login_seller_email.value;
     password = login_seller_password.value;
     user_type = "seller";
@@ -137,17 +152,20 @@ const loginUser = (e = "") => {
     password = signup_password.value;
     user_type = "client";
   }
+
   const user_login = async () => {
     const url =
       "http://localhost/e-commerce_fullstack/ecommerce-server/login.php";
     await axios
       .get(`${url}?email=${email}&password=${password}&user_type=${user_type}`)
       .then((data) => {
-        addCurrentUser(data.data[0]);
+        const user = data.data[0];
+        localStorage.setItem("user", JSON.stringify(user));
+        reset_all_inputs();
       })
       .catch((err) => console.log(err.response));
   };
- user_login();
+  user_login();
 };
 // End of login submit(get exisiting user) //
 
@@ -164,7 +182,7 @@ const createNewUser = (e) => {
   params.append("phone_number", signup_phone.value);
   params.append("user_type", "client");
   params.append("shop_location", "");
-  params.append("shop_description", "");
+  params.append("bio", "");
   params.append("profile", profile);
   // validation before sending to API
   const add_user = async () => {
@@ -174,11 +192,12 @@ const createNewUser = (e) => {
       .post(url, params)
       .then((data) => {
         loginUser(e);
-        createEmptyCart(JSON.parse(localStorage.getItem('user')).id);
       })
       .catch((err) => console.log(err));
   };
   add_user();
+  const new_user = JSON.parse(localStorage.getItem("user"));
+  createEmptyCart(new_user);
 };
 // End of Signup submit to API (create new user) //
 
