@@ -29,7 +29,8 @@ const checkCurrentUser = () => {
 };
 const showUserData = () => {
   const user = checkCurrentUser();
-  profile_user_image.src = user.profile;
+  if (user.profile) profile_user_image.src = user.profile;
+  else profile_user_image.src = "./assets/dummy-profile.png";
   profile_user_name.textContent = user.name;
   if (user.bio) profile_user_bio.textContent = user.bio;
   else profile_user_bio.innerHTML = `<i class="grey-text">NO BIO YET</i>`;
