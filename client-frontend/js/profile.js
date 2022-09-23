@@ -12,6 +12,24 @@ const edit_profile_img_input = document.getElementById("edit-profile-img-url");
 const edit_profile_new_name = document.getElementById("edit-profile-new-name");
 const edit_profile_new_bio = document.getElementById("edit-profile-new-bio");
 const edit_profile_submit = document.getElementById("edit-profile-submit");
+//profile user content:
+const profile_user_image = document.getElementById("profile-img");
+const profile_user_name = document.getElementById("profile-name");
+const profile_user_bio = document.getElementById("profile-bio");
+
+//on window load
+const checkCurrentUser = () => {
+  const user = localStorage.getItem("user");
+  if (!user) window.location.href("../register.html");
+  return JSON.parse(user);
+};
+const showUserData = () => {
+  const user = checkCurrentUser();
+  profile_user_image.src = user.profile;
+  profile_user_name.textContent = user.name;
+  if (user.bio) profile_user_bio.textContent = user.bio;
+  else profile_user_bio.innerHTML = `<i class="grey-text">NO BIO YET</i>`;
+};
 
 // START OF REPLY POPUP
 // show reply modal whenever any reply button is clicked:
@@ -59,3 +77,5 @@ reply_message_submit.addEventListener("click", submitReply);
 edit_profile_button_show.addEventListener("click", showEditProfileModal);
 close_profile_popup.addEventListener("click", closeProfileModal);
 // START OF EDIT PROFILE MODAL EVENT LISTENERS
+// Adding currentUser Data to profile:
+window.addEventListener("load", showUserData);
