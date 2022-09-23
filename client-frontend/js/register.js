@@ -168,6 +168,7 @@ const postSignUp_loginUser = () => {
 const loginUser = (e) => {
   e.stopImmediatePropagation();
   e.preventDefault();
+  login_client_password.classList.remove("danger");
   let email = login_client_email.value;
   let password = login_client_password.value;
   let user_type = "client";
@@ -179,13 +180,17 @@ const loginUser = (e) => {
     user_type = "seller";
   }
 
+  if (!password || password.length < 6) {
+    login_client_password.classList.add("danger");
+  }
+
   const user_login = async () => {
     const url =
       "http://localhost/e-commerce_fullstack/ecommerce-server/login.php";
     await axios
       .get(`${url}?email=${email}&password=${password}&user_type=${user_type}`)
       .then((data) => {
-        localStorage.setItem('user',JSON.stringify(data.data[0]));
+        localStorage.setItem("user", JSON.stringify(data.data[0]));
         reset_all_inputs();
       })
       .catch((err) => console.log(err.response));
@@ -262,9 +267,15 @@ const validateSignUp = (name, email, password, phone_nb) => {
 const createNewUser = (e) => {
   e.stopImmediatePropagation();
   e.preventDefault();
-  
-    // if signup info not valid return
-  if (!validateSignUp(signup_name.value, signup_email.value,signup_password.value,signup_phone.value)
+
+  // if signup info not valid return
+  if (
+    !validateSignUp(
+      signup_name.value,
+      signup_email.value,
+      signup_password.value,
+      signup_phone.value
+    )
   ) {
     return;
   }
@@ -273,7 +284,7 @@ const createNewUser = (e) => {
     signup_email.classList.add("danger");
     return;
   }
-  
+
   const profile = base64string_profile ? base64string_profile : "";
 
   let params = new URLSearchParams();

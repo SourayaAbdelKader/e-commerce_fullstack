@@ -82,6 +82,9 @@ p {
 .display-flex {
   display: flex;
 }
+.danger{
+  border: 1px solid red;
+}
 
 /* ------START OF REGISTER.HTML STYLING------ */
 .main {
