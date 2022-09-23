@@ -262,6 +262,18 @@ const validateSignUp = (name, email, password, phone_nb) => {
 const createNewUser = (e) => {
   e.stopImmediatePropagation();
   e.preventDefault();
+  
+    // if signup info not valid return
+  if (!validateSignUp(signup_name.value, signup_email.value,signup_password.value,signup_phone.value)
+  ) {
+    return;
+  }
+  // if email is repeated
+  if (is_repeated_email(signup_email.value)) {
+    signup_email.classList.add("danger");
+    return;
+  }
+  
   const profile = base64string_profile ? base64string_profile : "";
 
   let params = new URLSearchParams();
