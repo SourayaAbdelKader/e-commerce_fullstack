@@ -6,15 +6,15 @@ const item_description = document.getElementById("item-description");
 
 const showItemDescription = () => {
   seller_info.classList.add("display-none");
-  seller_info_button.classList.remove("grey-bg");
-  item_description_button.classList.add("grey-bg");
+  seller_info_button.style.backgroundColor = "transparent";
+  item_description_button.style.backgroundColor = "#94a9b4";
   item_description.classList.remove("display-none");
 };
 const showSellerInfo = () => {
-  item_description_button.classList.remove("grey-bg");
+  item_description_button.style.backgroundColor = 'transparent';
   item_description.classList.add("display-none");
   seller_info.classList.remove("display-none");
-  seller_info_button.classList.add("grey-bg");
+  seller_info_button.style.backgroundColor = "#94a9b4";
 };
 
 seller_info_button.addEventListener("click", showSellerInfo);
