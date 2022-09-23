@@ -119,23 +119,25 @@ const sendNewPasswordByEmail = () => {
 
 // Start of login submit(get exisiting user) //
 // create empty cart for new registered user:
-const createEmptyCart = async (client_id) => {
-  console.log(client_id);
-  let params = new URLSearchParams();
-  params.append("client_id", client_id);
-  const url =
-    "http://localhost/e-commerce_fullstack/ecommerce-server/create_emptycart.php";
-  await axios
-    .post(url, params)
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((err) => console.log(err));
+const createEmptyCart = async () => {
+  const new_user = JSON.parse(localStorage.getItem("user"));
+  console.log(new_user);
+  // let params = new URLSearchParams();
+  // params.append("client_id", client_id);
+  // const url =
+  //   "http://localhost/e-commerce_fullstack/ecommerce-server/create_emptycart.php";
+  // await axios
+  //   .post(url, params)
+  //   .then((data) => {
+  //     console.log(data);
+  //   })
+  //   .catch((err) => console.log(err));
 };
 
 const loginUser = (e) => {
   e.stopImmediatePropagation();
   e.preventDefault();
+  let user;
 
   let email = login_client_email.value;
   let password = login_client_password.value;
@@ -159,13 +161,13 @@ const loginUser = (e) => {
     await axios
       .get(`${url}?email=${email}&password=${password}&user_type=${user_type}`)
       .then((data) => {
-        const user = data.data[0];
-        localStorage.setItem("user", JSON.stringify(user));
+        user = data.data[0];
         reset_all_inputs();
       })
       .catch((err) => console.log(err.response));
   };
   user_login();
+  localStorage.setItem("user", JSON.stringify(user));
 };
 // End of login submit(get exisiting user) //
 
@@ -173,6 +175,7 @@ const loginUser = (e) => {
 const createNewUser = (e) => {
   e.stopImmediatePropagation();
   e.preventDefault();
+  let done = false;
   const profile = base64string_profile ? base64string_profile : "";
 
   let params = new URLSearchParams();
@@ -191,13 +194,13 @@ const createNewUser = (e) => {
     await axios
       .post(url, params)
       .then((data) => {
-        loginUser(e);
+        done = true;
       })
       .catch((err) => console.log(err));
   };
   add_user();
-  const new_user = JSON.parse(localStorage.getItem("user"));
-  createEmptyCart(new_user);
+  if (done) loginUser(e);
+  // createEmptyCart();
 };
 // End of Signup submit to API (create new user) //
 
