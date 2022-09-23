@@ -133,27 +133,11 @@ const createEmptyCart = async () => {
   //   })
   //   .catch((err) => console.log(err));
 };
-
-const loginUser = (e) => {
-  e.stopImmediatePropagation();
-  e.preventDefault();
-  let user;
-
-  let email = login_client_email.value;
-  let password = login_client_password.value;
-  let user_type;
-  // email and password inputs are filled for client => search for client user_type
-  if (email && password) {
-    user_type = "client";
-  } else if (login_seller_email.value && login_seller_password.value) {
-    email = login_seller_email.value;
-    password = login_seller_password.value;
-    user_type = "seller";
-  } else if (signup_email.value && signup_password.value) {
-    email = signup_email.value;
-    password = signup_password.value;
-    user_type = "client";
-  }
+//login after signup
+const postSignUp_loginUser = () => {
+  const email = signup_email.value;
+  const password = signup_password.value;
+  const user_type = "client";
 
   const user_login = async () => {
     const url =
@@ -162,12 +146,42 @@ const loginUser = (e) => {
       .get(`${url}?email=${email}&password=${password}&user_type=${user_type}`)
       .then((data) => {
         user = data.data[0];
+        console.log(user);
+        localStorage.setItem("user", JSON.stringify(user));
+        reset_all_inputs();
+        createEmptyCart();
+      })
+      .catch((err) => console.log(err.response));
+  };
+  user_login();
+};
+
+const loginUser = (e) => {
+  e.stopImmediatePropagation();
+  e.preventDefault();
+  let email = login_client_email.value;
+  let password = login_client_password.value;
+  let user_type = "client";
+
+  // if seller login
+  if (login_seller_email.value && login_seller_password.value) {
+    email = login_seller_email.value;
+    password = login_seller_password.value;
+    user_type = "seller";
+  }
+
+  const user_login = async () => {
+    const url =
+      "http://localhost/e-commerce_fullstack/ecommerce-server/login.php";
+    await axios
+      .get(`${url}?email=${email}&password=${password}&user_type=${user_type}`)
+      .then((data) => {
+        localStorage.setItem('user',JSON.stringify(data.data[0]));
         reset_all_inputs();
       })
       .catch((err) => console.log(err.response));
   };
   user_login();
-  localStorage.setItem("user", JSON.stringify(user));
 };
 // End of login submit(get exisiting user) //
 
@@ -175,7 +189,6 @@ const loginUser = (e) => {
 const createNewUser = (e) => {
   e.stopImmediatePropagation();
   e.preventDefault();
-  let done = false;
   const profile = base64string_profile ? base64string_profile : "";
 
   let params = new URLSearchParams();
@@ -194,12 +207,11 @@ const createNewUser = (e) => {
     await axios
       .post(url, params)
       .then((data) => {
-        done = true;
+        postSignUp_loginUser();
       })
       .catch((err) => console.log(err));
   };
   add_user();
-  if (done) loginUser(e);
   // createEmptyCart();
 };
 // End of Signup submit to API (create new user) //
