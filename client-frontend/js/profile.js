@@ -1,4 +1,3 @@
-const reply_buttons = document.getElementsByClassName("reply-button");
 const close_reply_popup = document.getElementById("close-reply-popup");
 const reply_popup = document.getElementById("reply-popup");
 const reply_message = document.getElementById("reply-message");
@@ -22,6 +21,8 @@ const profile_new_name = document.getElementById("profile-new-name");
 const profile_new_bio = document.getElementById("profile-new-bio");
 // base64profile
 var base64profile;
+// chat-box to add all received message to it's html content:
+const messages_container = document.getElementById("chat-main-box");
 
 // show image and save url (signup)
 function uploadImage() {
@@ -49,6 +50,40 @@ const showUserData = () => {
   if (user.bio) profile_user_bio.textContent = user.bio;
   else profile_user_bio.innerHTML = `<i class="grey-text">NO BIO YET</i>`;
 };
+const showReceivedMessage = (message) => {
+  let chatHTML = `
+    <div class="single-chat">
+  <div class="chat">
+  `;
+  if (message.profile) {
+    `<img
+      class="shop-profile"
+      src="${message.profile}"
+      alt="shop profile"
+    />`;
+  } else {
+    `<img
+      class="shop-profile"
+      src="./assets/dummy-profile.png"
+      alt="shop profile"
+    />`;
+  }
+  chatHTML += `<span class="shop-name" id="shop-name">
+    ${message.name}
+    </span>
+    <span class="date" id="last-message-date">
+      ${message.date}
+    </span>
+  </div>
+  <p id="message-text">${message.text}</p>
+  <div class="reply-button">
+    <button class="btn btn-sm grey-bg">Reply</button>
+  </div>
+    <input type='hidden' value=${message.sender_id}>
+</div> 
+    `;
+  messages_container.innerHTML += chatHTML;
+};
 const getAllReceivedMessages = () => {
   const user = checkCurrentUser();
 
@@ -60,8 +95,14 @@ const getAllReceivedMessages = () => {
     await axios
       .post(url, params)
       .then((data) => {
-        const messages = JSON.stringify(data.data);
-        addMessageToHTML(messages);
+        const messages = data.data;
+        console.log(messages);
+        for (let message of messages) showReceivedMessage(message);
+        // add event listener to all messages after they are added to html content
+        const reply_buttons = document.getElementsByClassName("reply-button");
+        for (let btn of reply_buttons) {
+          btn.addEventListener("click", showReplyModal);
+        }
       })
       .catch((err) => console.log(err));
   };
@@ -154,10 +195,7 @@ const closeProfileModal = () => {
 // END OF PROFILE POPUP
 
 // ----------START OF EVENT LISTENERS-----------
-// add event listener for each 'REPLY-button' of messages
-for (let btn of reply_buttons) {
-  btn.addEventListener("click", showReplyModal);
-}
+
 // add event listener to close modal:
 close_reply_popup.addEventListener("click", closeReplyModal);
 reply_message_submit.addEventListener("click", submitReply);
