@@ -24,7 +24,7 @@ const profile_new_bio = document.getElementById("profile-new-bio");
 //on window load
 const checkCurrentUser = () => {
   const user = localStorage.getItem("user");
-  if (!user) window.location.href("../register.html");
+  if (!user) window.location.href = "./register.html";
   return JSON.parse(user);
 };
 const showUserData = () => {

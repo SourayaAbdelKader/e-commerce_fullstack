@@ -24,7 +24,7 @@ $password = $_POST['password'];
 $phone_number= $_POST['phone_number'];
 $user_type = $_POST['user_type'];
 $shop_location = $_POST['shop_location'];
-$shop_description = $_POST['shop_description'];
+$bio = $_POST['bio'];
 $access = 1;
 
 // taking profile picture if added (received as base64 and save it as a picture)
@@ -39,8 +39,8 @@ if ($profile_base64) {
 }
 
 $password = hash('sha256', $password . 'sayhiecommerce');
-$query = $mysqli-> prepare("INSERT INTO users(name, email, password, phone_number, profile, access, user_type, shop_location, shop_description) VALUE (?,?,?,?,?,?,?,?,?)");
-$query->bind_param('sssssssss', $name, $email, $password, $phone_number, $profile, $access, $user_type, $shop_location, $shop_description); //change to ?,? to strings vars
+$query = $mysqli-> prepare("INSERT INTO users(name, email, password, phone_number, profile, access, user_type, shop_location, bio) VALUE (?,?,?,?,?,?,?,?,?)");
+$query->bind_param('sssssssss', $name, $email, $password, $phone_number, $profile, $access, $user_type, $shop_location, $bio); //change to ?,? to strings vars
 $query-> execute();
 
 $response = [];

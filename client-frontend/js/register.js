@@ -114,14 +114,13 @@ const createEmptyCart = async (client_id) => {
     "http://localhost/e-commerce_fullstack/ecommerce-server/create_emptycart.php";
   await axios
     .post(url, params)
-    .then((data) => {
-    })
+    .then((data) => {})
     .catch((err) => console.log(err));
 };
 
 const loginUser = (e = "") => {
-    e.stopImmediatePropagation();
-    e.preventDefault();
+  e.stopImmediatePropagation();
+  e.preventDefault();
 
   let email = login_client_email.value;
   let password = login_client_password.value;
@@ -144,10 +143,11 @@ const loginUser = (e = "") => {
       .get(`${url}?email=${email}&password=${password}&user_type=${user_type}`)
       .then((data) => {
         addCurrentUser(data.data[0]);
+        checkCurrentUser();
       })
       .catch((err) => console.log(err.response));
   };
- user_login();
+  user_login();
 };
 // End of login submit(get exisiting user) //
 
@@ -164,7 +164,7 @@ const createNewUser = (e) => {
   params.append("phone_number", signup_phone.value);
   params.append("user_type", "client");
   params.append("shop_location", "");
-  params.append("shop_description", "");
+  params.append("bio", "");
   params.append("profile", profile);
   // validation before sending to API
   const add_user = async () => {
@@ -174,7 +174,8 @@ const createNewUser = (e) => {
       .post(url, params)
       .then((data) => {
         loginUser(e);
-        createEmptyCart(JSON.parse(localStorage.getItem('user')).id);
+        console.log(JSON.parse(localStorage.getItem("user")));
+        // createEmptyCart(JSON.parse(localStorage.getItem('user')));
       })
       .catch((err) => console.log(err));
   };
