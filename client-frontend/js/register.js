@@ -118,21 +118,22 @@ const sendNewPasswordByEmail = () => {
 // ---End of Show and hide modals Section---
 
 // Start of login submit(get exisiting user) //
-// create empty cart for new registered user:
+// create empty cart for new registered user so we can add to it directly:
 const createEmptyCart = async () => {
   const new_user = JSON.parse(localStorage.getItem("user"));
-  console.log(new_user);
-  // let params = new URLSearchParams();
-  // params.append("client_id", client_id);
-  // const url =
-  //   "http://localhost/e-commerce_fullstack/ecommerce-server/create_emptycart.php";
-  // await axios
-  //   .post(url, params)
-  //   .then((data) => {
-  //     console.log(data);
-  //   })
-  //   .catch((err) => console.log(err));
+  const client_id = new_user.id;
+  let params = new URLSearchParams();
+  params.append("client_id", client_id);
+  const url =
+    "http://localhost/e-commerce_fullstack/ecommerce-server/create_emptycart.php";
+  await axios
+    .post(url, params)
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => console.log(err));
 };
+
 //login after signup
 const postSignUp_loginUser = () => {
   const email = signup_email.value;

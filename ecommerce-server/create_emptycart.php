@@ -6,8 +6,8 @@ $total = 0;
 $isCheckout = 0;
 $checkout_date = '';
 
-$query = $mysqli->prepare("INSERT INTO orders(client_id, total, isCheckout, checkout_Date) VALUE (?,?,?,?)");
-$query->bind_param('ssss', $client_id, $total, $isCheckout, $checkout_Date); //change to ?,? to strings vars
+$query = $mysqli->prepare("INSERT INTO orders(client_id, total, isCheckout, checkout_date) VALUE (?,?,?,?)");
+$query->bind_param('ssss', $client_id, $total, $isCheckout, $checkout_date); //change to ?,? to strings vars
 $query->execute();
 $last_id = $mysqli->insert_id;
 
