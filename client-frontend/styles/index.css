@@ -265,3 +265,18 @@ p {
 }
 
 /* ------END OF REGISTER.HTML STYLING------ */
+
+/* -------START OF CART HTML STYLING------ */
+.cart-page{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 3px solid red;
+}
+.cart-page .cart-container{
+  border: 1px solid blue;
+  width:80%;
+}
+/* -------END OF CART HTML STYLING------ */
