@@ -286,7 +286,7 @@ p {
 .cart-item {
   display: flex;
   justify-content: flex-start;
-  height:150px;
+  height: 150px;
 }
 .cart-item .item-remove {
   display: flex;
@@ -332,7 +332,71 @@ p {
 /* End of Cart container */
 
 /* Start of Cart checkout */
+.cart-btn {
+  border: none;
+  height: 40px;
+  width: 130px;
+  background-color: #355c7b;
+  color: white;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 7px;
+}
+.cart-checkout {
+  width: 50%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.checkout-top .cart-total{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 130px;
+  height: 40px;
+    width:150px;
+  font-weight: bold;
+  border-radius: 7px;
+}
+.checkout-top .cart-total label{
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+.checkout-top .cart-total{
 
+}
+.checkout-top .cart-total .items-total{
+
+}
+.cart-checkout .checkout-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cart-checkout .vouchers-total {
+  width: 65%;
+}
+.cart-checkout .vouchers-total .voucher-submit {
+  border-left: 0;
+  border-radius: 0;
+}
+
+.cart-checkout .vouchers-total input {
+  border: none;
+  background-color: #eaeada;
+  width: 60%;
+  height: 40px;
+  border-right: 0;
+}
+.cart-checkout .checkout-bottom {
+  width: 100%;
+  text-align: end;
+}
+.cart-checkout .checkout-bottom .checkout-submit{
+  width:150px;
+}
 /* End of Cart checkout */
 
 /* -------END OF CART HTML STYLING------ */

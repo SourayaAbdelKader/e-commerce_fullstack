@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Cart</title>
-    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/index.css" />
   </head>
   <body>
     <!-- START OF CART HTML -->
@@ -90,14 +90,20 @@
       <!-- START OF CHECKOUT SECTION -->
       <section class="cart-checkout">
         <p>If you have a voucher code, please enter it here:</p>
-        <div>
-          <input id="voucher-input" class="voucher-code" type="text" />
-          <button id="voucher-submit" class="voucher-submit">
+        <div class="checkout-top">
+        <div class="vouchers-total">
+          <input id="voucher-input" class="voucher-code" placeholder="Enter your Voucher Code" type="text" /><button id="voucher-submit" class="voucher-submit cart-btn">
             Apply Voucher
           </button>
-          <span id="cart-total" class="cart-total">645$</span>
+          </div>
+          <div class="cart-total antiquewhite-bg blue-text">
+            <label for="cart-total">Total:</label>
+            <div id="cart-total" class="items-total">645$</div>
+          </div>
         </div>
-        <button id="checkout-submit" class="checkout-submit">Checkout</button>
+        <div class="checkout-bottom">
+          <button id="checkout-submit" class="checkout-submit cart-btn">Checkout</button>
+        </div>
       </section>
       <!-- START OF CHECKOUT SECTION -->
     </main>
