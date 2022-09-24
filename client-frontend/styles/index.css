@@ -1,0 +1,267 @@
+/* ------CSS RESET------ */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+a {
+  color: #355c7b;
+  text-decoration: none;
+}
+li {
+  list-style-type: none;
+}
+h1 {
+  font-size: 70px;
+}
+h2 {
+  font-size: 40px;
+}
+input {
+  border: none;
+}
+::placeholder {
+  color: #355c7b;
+  opacity: 0.4;
+  font-size: 20px;
+  padding-left: 10px;
+}
+p {
+  margin: 10px 0;
+}
+
+/* ------UTILITIES------ */
+.blue-bg {
+  background-color: #355c7b;
+}
+.orange-bg {
+  background-color: #f79106;
+}
+.grey-bg {
+  background-color: #94a9b4;
+}
+.antiquewhite-bg {
+  background-color: #eaeada;
+}
+.blue-text {
+  color: #355c7b;
+}
+.antiquewhite-text {
+  color: #eaeada;
+}
+.grey-text {
+  color: #94a9b4;
+}
+.btn {
+  height: 57px;
+  border-radius: 50px;
+  text-transform: capitalize;
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.btn-lg {
+  width: 350px;
+}
+.btn-md {
+  width: 230px;
+}
+.size-32 {
+  font-size: 32px;
+}
+.input {
+  border-radius: 10px;
+  color: #355c7b;
+  background-color: #eaeada;
+  border: none;
+  width: 100%;
+  margin-bottom: 5px;
+  height: 70px;
+}
+.display-flex {
+  display: flex;
+}
+.danger{
+  border: 1px solid red;
+}
+
+/* ------START OF REGISTER.HTML STYLING------ */
+.main {
+  display: flex;
+  text-align: center;
+  font-weight: bold;
+  height: 100vh;
+}
+.main .logo {
+  width: 350px;
+  height: 290px;
+  margin-bottom: 0;
+}
+
+/* Left Section */
+.left-section {
+  width: 50%;
+}
+.left-section .top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.left-section .register {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  border-bottom: 1px solid #355c7b;
+}
+.left-section .bottom {
+  height: 50%;
+}
+.left-section .bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.left-section .bottom .top {
+  gap: 2em;
+}
+.left-section .bottom .text {
+  text-align: center;
+  font-size: 22px;
+  opacity: 0.8;
+  padding: 0 20px;
+}
+
+/* Right section */
+.right-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  min-height: 100vh;
+}
+.right-section .logo {
+  position: absolute;
+  top: 0;
+}
+.right-section .main-border {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90%;
+  width: 100%;
+  border-top: 1px solid #355c7b;
+  border-bottom: 1px solid #355c7b;
+}
+/* Modal */
+.register-modal {
+  height: 90%;
+  width: 60%;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* login modal */
+.login-content {
+  display: flex;
+  justify-content: center;
+}
+.login-content .middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+  height: 50%;
+  width: 80%;
+}
+
+/* Signup Modal */
+.signup-modal {
+  justify-content: space-evenly;
+  height: 90%;
+  gap: 1em;
+  padding-top: 10px;
+}
+.signup-modal .input {
+  height: 55px;
+  margin-bottom: 10px;
+  width: 80%;
+}
+.signup-modal .input::placeholder {
+  font-size: 18px;
+}
+
+.signup-modal .signup-img {
+  border-radius: 50%;
+  width: 100px;
+  cursor: pointer;
+}
+
+/* Seller login modal */
+.seller-login {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-around;
+  width: 85%;
+}
+.seller-login .input {
+  height: 60px;
+  margin-bottom: 10px;
+}
+.seller-login .input::placeholder {
+  font-size: 18px;
+}
+.seller-login .title {
+  font-size: 35px;
+}
+.right-section .icon {
+  width: 110px;
+  height: 110px;
+}
+/* right section - reset password modal */
+.reset-modal{
+  height:50%;
+  justify-content: space-around;
+}
+.reset-modal .middle{
+  width:70%;
+}
+.reset-modal .bottom{
+  display: flex;
+  justify-content: center;
+  max-width:80%;
+}
+/* Utility - placed at end to overwrite all previous display */
+.display-none {
+  display: none;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 900px) {
+  .mobile-columns {
+    flex-direction: column;
+  }
+  .mobile-width {
+    width: 100%;
+  }
+  .right-section {
+    height: 100%;
+  }
+  .modal-mobile {
+    width: 70%;
+  }
+  .left-section .register{
+    width:90%;
+  }
+  .register .btn{
+    width:90%;
+  }
+}
+
+/* ------END OF REGISTER.HTML STYLING------ */
