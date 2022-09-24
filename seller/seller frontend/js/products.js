@@ -168,7 +168,7 @@ const pop_up_discount = document.getElementById("pop_up_discount");
 console.log(add_discount.length)
 add_discount.forEach(button => {
     button.addEventListener("click", () => {
-        console.log("hi")
+        console.log("discount")
         pop_up_discount.classList.toggle("hide");
         const add_discount_button = document.getElementById("submit_discount_button");
 
@@ -186,3 +186,15 @@ add_discount.forEach(button => {
         })
 }
 )})
+
+// delete a product 
+const delete_button = document.querySelectorAll(".delete-product");
+console.log(delete_button.length)
+delete_button.forEach(button => {
+    button.addEventListener("click", () => {
+        console.log("delete");
+        const product_selected = document.getElementById("product");
+        product_selected.classList.add("hide");
+        product_selected.classList.add("displaynone");
+    })
+})
