@@ -316,6 +316,7 @@ p {
   align-items: center;
   font-size: 30px;
   font-weight: bolder;
+  cursor: pointer;
 }
 .cart-item .item-info {
   width: 15%;
