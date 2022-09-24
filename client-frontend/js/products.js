@@ -4,9 +4,6 @@ const productsWrapper = document.getElementById("productsWrapper");
 const getProductApi = "http://localhost/e-commerce_fullstack/backend/get_products.php";
 const addFavouriteApi = "http://localhost/e-commerce_fullstack/backend/add_favorite.php";
 
-
-
-
 // function that adds to all like icons an event listner for fetching in a later function
 const favorite_products = () => {
   const likes = document.querySelectorAll(".like");
@@ -31,7 +28,6 @@ const add_favourite = async (product_id) => {
     })
     .catch((err) => console.log(err));
 };
-
 
 // function fetching all products from database
 const get_product = async () => {
