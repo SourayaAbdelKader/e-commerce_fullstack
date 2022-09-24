@@ -13,12 +13,21 @@ if (isset($_POST["client_id"]) and $_POST['product_id'] and $_POST['new_quantity
     $array = $query->get_result();
     $order_id = $array->fetch_assoc()['id'];
 
+    //if quantity sent == 0/remove item from the whole order: (used negative number to avoid conflict with 0 or null in PHP)
+    if ($new_quantity < 0) {
+        $query = $mysqli->prepare("DELETE FROM order_products WHERE product_id=? AND order_id=?");
+        $query->bind_param('ii', $product_id, $order_id);
+        $query->execute();
+        $response = [];
+        $response['success'] = true;
+    }
     // update the info of new quantity product in (order_products):
-    $query = $mysqli->prepare('UPDATE order_products SET quantity=? WHERE product_id=? AND order_id=?');
-    $query->bind_param('iii', $new_quantity, $product_id, $order_id);
-    $query->execute();
-    $response = [];
-    $response['success'] = true;
+    elseif ($new_quantity <= 0) {
+        $query = $mysqli->prepare('UPDATE order_products SET quantity=? WHERE product_id=? AND order_id=?');
+        $query->bind_param('iii', $new_quantity, $product_id, $order_id);
+        $query->execute();
+        $response = [];
+        $response['success'] = true;
+    }
 }
-
 echo json_encode($response);
