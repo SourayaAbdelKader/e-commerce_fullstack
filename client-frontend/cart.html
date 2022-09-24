@@ -26,25 +26,7 @@
         <!-- END OF ITEMS TITLES -->
 
         <!-- START OF ITEMS CART PRODUCTS -->
-        <!-- START OF SINGLE ITEM -->
-        <div class="cart-items">
-          <div class="cart-item">
-            <span class="item-remove">&times;</span>
-            <div class="item-info">
-              <img src="" alt="" />
-              <h2>Item Name</h2>
-              <h3>Item Category</h3>
-            </div>
-            <div class="item-quantity">
-              <span class="decrement">-</span>
-              <span class="quantity">6</span>
-              <span class="increment">+</span>
-            </div>
-            <span class="price-item">30$</span>
-            <span class="discount-code">DSC34T</span>
-            <span class="item-total">180$</span>
-          </div>
-          <!-- END OF SINGLE ITEM -->
+        <div id="cart-items" class="cart-items">
           <!-- START OF SINGLE ITEM -->
           <div class="cart-item">
             <span class="item-remove">&times;</span>
@@ -108,11 +90,13 @@
       <section class="cart-checkout">
         <p>If you have a voucher code, please enter it here:</p>
         <div>
-        <input class="voucher-code" type="text">
-        <button class="voucher-submit">Apply Voucher</button>
-        <span class="cart-total">645$</span>
+          <input id="voucher-input" class="voucher-code" type="text" />
+          <button id="voucher-submit" class="voucher-submit">
+            Apply Voucher
+          </button>
+          <span id="cart-total" class="cart-total">645$</span>
         </div>
-        <button class="checkout-submit">Checkout</button>
+        <button id="checkout-submit" class="checkout-submit">Checkout</button>
       </section>
       <!-- START OF CHECKOUT SECTION -->
     </main>
