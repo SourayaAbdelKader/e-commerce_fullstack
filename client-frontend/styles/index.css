@@ -82,7 +82,7 @@ p {
 .display-flex {
   display: flex;
 }
-.danger{
+.danger {
   border: 1px solid red;
 }
 
@@ -225,17 +225,17 @@ p {
   height: 110px;
 }
 /* right section - reset password modal */
-.reset-modal{
-  height:50%;
+.reset-modal {
+  height: 50%;
   justify-content: space-around;
 }
-.reset-modal .middle{
-  width:70%;
+.reset-modal .middle {
+  width: 70%;
 }
-.reset-modal .bottom{
+.reset-modal .bottom {
   display: flex;
   justify-content: center;
-  max-width:80%;
+  max-width: 80%;
 }
 /* Utility - placed at end to overwrite all previous display */
 .display-none {
@@ -256,11 +256,11 @@ p {
   .modal-mobile {
     width: 70%;
   }
-  .left-section .register{
-    width:90%;
+  .left-section .register {
+    width: 90%;
   }
-  .register .btn{
-    width:90%;
+  .register .btn {
+    width: 90%;
   }
 }
 
