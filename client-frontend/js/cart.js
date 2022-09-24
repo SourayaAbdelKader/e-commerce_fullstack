@@ -56,15 +56,40 @@ const decrementItemQuantity = (e) => {
 };
 // increment quantity of single item
 const incrementItemQuantity = (e) => {
+  //load client_id from localStorage:
+  const client_id = 1;
   const item_id = e.target.parentNode.parentNode.parentNode.children[0].value;
-  const quantity = e.target.previousSibling;
-  const price_per_item = e.target.parentNode.parentNode.nextSibling.textContent;
-  const total_price =
-    e.target.parentNode.parentNode.parentNode.children[6].textContent;
+  const quantity = e.target.nextSibling;
+  const price_per_item_value =
+    e.target.parentNode.parentNode.nextSibling.textContent;
+  const total_price = e.target.parentNode.parentNode.parentNode.children[6];
 
   let quantity_value = parseInt(quantity.textContent);
+  let total_price_value = parseInt(total_price.textContent);
+  // update cart value as int
   quantity_value += 1;
-  console.log(quantity_value);
+  // update quantity shown to user, product total shown to user, and whole cart total
+  quantity.textContent = quantity_value;
+  total_price.textContent = total_price_value + parseInt(price_per_item_value);
+  cart_total_show.textContent =
+    parseInt(cart_total_show.textContent) + parseInt(price_per_item_value);
+
+  // update cart in db both cases ( 0 or positive product quantity)
+  const update_cart = async () => {
+    let params = new URLSearchParams();
+    params.append("client_id", client_id);
+    params.append("product_id", item_id);
+    params.append("new_quantity", quantity_value);
+    const url =
+      "http://localhost/e-commerce_fullstack/ecommerce-server/update_cart.php";
+    await axios
+      .post(url, params)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  };
+  update_cart();
 };
 //add event listener to each html added item:
 const addItemEventListeners = () => {
