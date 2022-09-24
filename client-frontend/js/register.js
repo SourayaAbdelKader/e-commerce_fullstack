@@ -93,11 +93,35 @@ const showResetPasswordModal = () => {
   login_modal.classList.add("display-none");
   reset_password_modal.classList.remove("display-none");
 };
-const sendNewPasswordByEmail = () => {
+const sendNewPasswordByEmail = async () => {
   reset_all_inputs();
-  // const email = reset_email.value;
+  const email = reset_email.value;
   // console.log(email);
 
+  // check if email is found
+  let repeated = false;
+  const check_email = async () => {
+    const url =
+      "http://localhost/e-commerce_fullstack/ecommerce-server/check_email.php";
+    await axios
+      .get(`${url}?email=${email}`)
+      .then((data) => {
+        const found = JSON.stringify(data.data[0]);
+        if (found.length > 0) {
+          repeated = true;
+        }
+      })
+      .catch((err) => console.log(err.response));
+  };
+
+  await check_email();
+
+  if(!repeated){
+
+  }else{ //where the work begins:
+    
+
+  }
   // reset password php - send email
   // is_repeated_email(email);
   // reset_password_modal.classList.add("display-none");
@@ -249,7 +273,7 @@ const createNewUser = async (e) => {
   e.stopImmediatePropagation();
   e.preventDefault();
 
-  // check if email is alresdy found
+  // check if email is already found
   let repeated = false;
   const check_email = async () => {
     const url =
