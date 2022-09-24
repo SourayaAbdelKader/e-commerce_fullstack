@@ -15,9 +15,7 @@ if ($user_type == 'client') {
     $array = $query->get_result();
 
     $response = [];
-    while ($a = $array->fetch_assoc()) {
-        $response[]  = $a;
-    }
+    $response = $array->fetch_assoc();
 }
 // for seller login
 else {
@@ -27,9 +25,7 @@ else {
     $array = $query->get_result();
 
     $response = [];
-    while ($a = $array->fetch_assoc()) {
-        $response[]  = $a;
-    }
+    $response = $array->fetch_assoc();
 }
 
 echo json_encode($response);

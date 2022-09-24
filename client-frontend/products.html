@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="styles/products.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Start of Header Section -->
+        <div class="header orange-bg flex">
+            <div class="logo">
+                <img src="assets/logo_withname-no-margin.png" alt="Logo">
+            </div>
+            <div class="header-top-right flex">
+                <button class="btn LoginBtn grey-bg antiquewhite-bg">Sign out</button>
+                <button class="btn eclipse "><img src="assets/cart-icon.png"></button>
+            </div>
+        </div>
+        <!-- Ender of Header Section -->
+
+        <!-- Start of Navbar Section -->
+        <div class="navbar grey-bg">
+            <ul class="navElements">
+                <li><button>Products</button></li>
+                <li><button>Favorites</button></li>
+                <li><button>Wishlist</button></li>
+                <li><button>Profile</button></li>
+            </ul>
+        </div>
+        <!-- End of Navbar Section -->
+        
+        <!-- Start of Hero Section -->
+        <div class="section">
+            <div class="heroSection">
+                <div class="fade">
+                    <div class="heroContent">
+                        <p>Choose to see the good stuff</p>
+                        <input type="text" placeholder="Search">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Hero Section -->
+
+        
+        <!-- Start of Products Section -->
+        <div class="productSection">
+            <p>Products</p>
+            <div id="productsWrapper" class="wrapper">
+                <!-- <div class="productCard grey-bg">
+                    <img src="assets/Hero-image.png" alt="">
+                        
+                    <div class="productInfo">
+                        <p>Seller Name</p>
+                        <p>Product Name</p>
+                        <div class="bottom">
+                            <p>$$</p>
+                            <div class="like"></div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <!-- Start of Products Section -->
+
+        <!-- Start of Ads Section -->
+        <div class="adSection">
+            <div class="productAdImage">
+                <div class="fade">
+                    <img src="assets/Hero-image.png" alt="Ad Image">
+                </div>
+            </div>
+            <div class="adInfo flex column antiquewhite-text">
+                <div class="adSeller">
+                    <h1>Product</h1>
+                    <p>By: <span>Seller</span></p>
+                </div>
+                <div class="AdView">
+                    <p>Price: <span>$$</span></p>
+                    <button class="btn antiquewhite-text grey-bg">View</button>
+                </div>
+            </div>
+        </div>
+        <!-- End of Ads Section -->
+
+        <!-- Start of Footer Section -->
+        <div class="footer orange-bg flex">
+            <div class="footerLogo flex column">
+                <img src="assets/logo_withname-no-margin.png" alt="Logo">
+                <p class="antiquewhite-text">Choose to see the good stuff</p>
+            </div>
+            <div class="footerElements flex">
+                <ul>
+                    <li>Products</li>
+                    <li>Favorites</li>
+                    <li>Whishlist</li>
+                    <li>Profile</li>
+                </ul>
+            </div>
+            <div class="footerMessage">
+                <p>Send us a message</p>
+                <input type="text">
+                <button class="btn blue-text">Send</button>
+            </div>
+        </div>
+        <div class="break grey-bg"></div>
+        <!-- End of Footer Section -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="js/products.js"></script>
+    </div>
+</body>
+</html>
