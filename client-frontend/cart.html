@@ -7,7 +7,7 @@
     <title>My Cart</title>
     <link rel="stylesheet" href="./styles/index.css" />
   </head>
-  <body class=" antiquewhite-bg">
+  <body class="antiquewhite-bg">
     <!-- START OF CART HTML -->
     <main class="cart-page">
       <h1>My Shopping Cart</h1>
@@ -19,9 +19,9 @@
             <li>Remove</li>
             <li>Description</li>
             <li>Quantity</li>
-            <li>Price/item</li>
+            <li>Price Per Item($)</li>
             <li>Discount Code</li>
-            <li>Total</li>
+            <li>Total($)</li>
           </ul>
         </div>
         <!-- END OF ITEMS TITLES -->
@@ -30,6 +30,7 @@
         <div id="cart-items" class="cart-items">
           <!-- START OF SINGLE ITEM -->
           <div class="cart-item">
+            <input type="hidden" value="itemid" />
             <div class="item-remove">&times;</div>
             <div class="item-info">
               <img class="item-image" src="" alt="" />
@@ -38,57 +39,13 @@
             </div>
             <div class="item-quantity">
               <div class="quantity-box blue-bg">
-              <span class="decrement">-</span>
-              <span class="quantity antiquewhite-bg">6</span>
-              <span class="increment">+</span>
+                <span class="decrement">-</span
+                ><span class="quantity antiquewhite-bg">6</span
+                ><span class="increment">+</span>
               </div>
-            </div>
-            <div class="price-item">30$</div>
-            <div class="discount-code">DSC34T</div>
-            <div class="item-total">180$</div>
+            </div><div class="price-item">30</div><div class="discount-code">DSC34T</div><div class="item-total">180</div>
           </div>
           <!-- END OF SINGLE ITEM -->
-          <!-- START OF SINGLE ITEM -->
-          <div class="cart-item">
-            <div class="item-remove">&times;</div>
-            <div class="item-info">
-              <img class="item-image" src="" alt="" />
-              <h2 class="item-name">Item Name</h2>
-              <h3 class="item-category">Item Category</h3>
-            </div>
-            <div class="item-quantity">
-              <div class="quantity-box blue-bg">
-              <span class="decrement">-</span>
-              <span class="quantity antiquewhite-bg">6</span>
-              <span class="increment">+</span>
-              </div>
-            </div>
-            <div class="price-item">30$</div>
-            <div class="discount-code">DSC34T</div>
-            <div class="item-total">180$</div>
-          </div>
-          <!-- END OF SINGLE ITEM -->
-          <!-- START OF SINGLE ITEM -->
-          <div class="cart-item">
-            <div class="item-remove">&times;</div>
-            <div class="item-info">
-              <img class="item-image" src="" alt="" />
-              <h2 class="item-name">Item Name</h2>
-              <h3 class="item-category">Item Category</h3>
-            </div>
-            <div class="item-quantity">
-              <div class="quantity-box blue-bg">
-              <span class="decrement">-</span>
-              <span class="quantity antiquewhite-bg">6</span>
-              <span class="increment">+</span>
-              </div>
-            </div>
-            <div class="price-item">30$</div>
-            <div class="discount-code">DSC34T</div>
-            <div class="item-total">180$</div>
-          </div>
-          <!-- END OF SINGLE ITEM -->
-          
         </div>
         <!-- END OF ALL CARTS ITEMS -->
       </section>
@@ -98,18 +55,25 @@
       <section class="cart-checkout">
         <p>If you have a voucher code, please enter it here:</p>
         <div class="checkout-top">
-        <div class="vouchers-total">
-          <input id="voucher-input" class="voucher-code" placeholder="Enter your Voucher Code" type="text" /><button id="voucher-submit" class="voucher-submit cart-btn">
-            Apply Voucher
-          </button>
+          <div class="vouchers-total">
+            <input
+              id="voucher-input"
+              class="voucher-code"
+              placeholder="Enter your Voucher Code"
+              type="text"
+            /><button id="voucher-submit" class="voucher-submit cart-btn">
+              Apply Voucher
+            </button>
           </div>
           <div class="cart-total antiquewhite-bg blue-text">
             <label for="cart-total">Total:</label>
-            <div id="cart-total" class="items-total">645$</div>
+            <div id="cart-total" class="items-total">645</div>$
           </div>
         </div>
         <div class="checkout-bottom">
-          <button id="checkout-submit" class="checkout-submit cart-btn">Checkout</button>
+          <button id="checkout-submit" class="checkout-submit cart-btn">
+            Checkout
+          </button>
         </div>
       </section>
       <!-- START OF CHECKOUT SECTION -->
