@@ -12,7 +12,7 @@ if (isset($_POST["client_id"])) {
     $order_id = $array->fetch_assoc()["id"];
 
     //get all info of products are in this cart
-    $query = $mysqli->prepare("select * from order_products o join products p on p.id=o.product_id where o.order_id=?");
+    $query = $mysqli->prepare("select id,title,price,quantity,main_image,description from order_products o join products p on p.id=o.product_id where o.order_id=?");
     $query->bind_param("i", $order_id);
     if ($query->execute()) {
         $result = $query->get_result();
