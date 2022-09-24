@@ -4,9 +4,28 @@ const increment_buttons = document.getElementsByClassName("increment");
 const checkout_submit = document.getElementById("checkout-submit");
 const apply_voucher = document.getElementById("voucher-submit");
 const voucher_code = document.getElementById("voucher-input");
-const cart_total_price = document.getElementById('cart-total'); 
+const cart_total_price = document.getElementById("cart-total");
 
 // START OF EVENT LISTENERS FUNCTIONS
+// when loading the page get all the items in user cart:
+const getCartItems = () => {
+  // get client_id from localStorage first
+  const client_id = 1; //for testing
+  const get_items = async () => {
+    let params = new URLSearchParams();
+    params.append("client_id", client_id);
+    const url =
+      "http://localhost/e-commerce_fullstack/ecommerce-server/get_cart.php";
+    await axios
+      .post(url, params)
+      .then((data) => {
+        console.log(data.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  get_items();
+};
 // apply the voucher code added to the total and recalculate the new total
 const applyVoucher = () => {
   console.log(voucher_code.value);
@@ -39,6 +58,8 @@ const incrementItemQuantity = (e) => {
 // END OF EVENT LISTENERS FUNCTIONS
 
 // START OF EVENT LISTENERS
+// on window load, get all cart items:
+window.addEventListener("load", getCartItems);
 // event listeners for clicked (remove, increment, decrement, checkout, apply voucher)
 apply_voucher.addEventListener("click", applyVoucher);
 checkout_submit.addEventListener("click", checkoutOrder);
