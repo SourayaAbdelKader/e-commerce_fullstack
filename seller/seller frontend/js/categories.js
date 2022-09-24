@@ -42,6 +42,7 @@ const displayCategories = async () => {
             console.log(data.data.length)
             
             data.data.forEach(element =>{
+                console.log(element.id);
             const category_id = document.getElementById("category_id");
             const container = document.getElementById("categories");
             const div = document.getElementById("category");
@@ -51,12 +52,12 @@ const displayCategories = async () => {
             clone.classList.remove("displaynone")
             clone.id = i;
             // to save the category id
-            category_id = element.id;
+            category_id.innerHTML = element.id;
             clone.innerHTML= '<a href="products.html">' + element.name + '</a>';
             container.appendChild(clone);
             i ++;
         })
-          .catch((err) => console.log(err));
+
 })};
 
 // adding categories on the site and into the db
@@ -99,3 +100,15 @@ add_category_button.addEventListener("click", () => {
             add_categories(new_category)   
         } else { console.log("empty input"); alert("empty input");}
 })});
+
+// know the selected category, this function catches the category if from the selected div to save it to the local sorage 
+const selected_category = document.querySelectorAll(".category")
+console.log(selected_category.length + "hhhh")
+selected_category.forEach(category => {
+    category.addEventListener("click", () =>  {
+        console.log("hello");
+        const selected = document.getElementById("category_id").innerHTML;
+        console.log(selected);
+        localStorage.setItem("selecte_category", selected);
+    })
+});
