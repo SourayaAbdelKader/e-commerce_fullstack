@@ -67,6 +67,12 @@ p {
 .btn-md {
   width: 230px;
 }
+.btn-sm {
+  width: 100px;
+  font-size: 16px;
+  height: 25px;
+  text-transform: uppercase;
+}
 .size-32 {
   font-size: 32px;
 }
@@ -225,17 +231,17 @@ p {
   height: 110px;
 }
 /* right section - reset password modal */
-.reset-modal{
-  height:50%;
+.reset-modal {
+  height: 50%;
   justify-content: space-around;
 }
-.reset-modal .middle{
-  width:70%;
+.reset-modal .middle {
+  width: 70%;
 }
-.reset-modal .bottom{
+.reset-modal .bottom {
   display: flex;
   justify-content: center;
-  max-width:80%;
+  max-width: 80%;
 }
 /* Utility - placed at end to overwrite all previous display */
 .display-none {
@@ -256,12 +262,227 @@ p {
   .modal-mobile {
     width: 70%;
   }
-  .left-section .register{
-    width:90%;
+  .left-section .register {
+    width: 90%;
   }
-  .register .btn{
-    width:90%;
+  .register .btn {
+    width: 90%;
   }
 }
 
 /* ------END OF REGISTER.HTML STYLING------ */
+
+/* ------START OF PROFILE.HTML STYLING-------- */
+/* Start of left profile Section styling */
+.main-profile {
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+}
+.main-profile img {
+  border-radius: 50%;
+}
+.main-profile .left-profile {
+  padding: 20px;
+  width: 40%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+.main-profile .left-profile .edit-button {
+  text-transform: uppercase;
+  box-shadow: 0px 6px 18px -5px rgba(237, 103, 85, 1);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 150px;
+  padding: 14px;
+  font-size: 18px;
+}
+.main-profile .left-profile img {
+  width: 200px;
+}
+.main-profile .left-profile .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+.main-profile .left-profile .top-left {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.main-profile .left-profile .top-left h2 {
+  margin-top: 10px;
+  color: #355c7b;
+  text-transform: uppercase;
+  font-size: 30px;
+  margin-top: 20px;
+}
+.main-profile .left-profile .user-bio {
+  font-size: 20px;
+  line-height: 40px;
+  width: 80%;
+  margin-top: 20px;
+}
+/* End of left profile Section styling */
+
+/* Start of right profile section styling (messages-section) */
+.main-profile .main-messages {
+  margin-top: 20px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  padding: 20px;
+  width: 40%;
+  overflow: scroll;
+  border-radius: 20px;
+}
+.main-messages .chat-boxes {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 500px;
+}
+.main-profile .main-messages h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.main-messages .chat img {
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+}
+.main-messages .single-chat {
+  width: 80%;
+  height: 200px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #355c7b;
+  border-radius: 10px;
+  margin: 8px 0;
+  font-weight: 550;
+  background-color: #94a9b451;
+}
+.main-messages .chat {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+.main-messages .single-chat .reply-button {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.main-messages .chat .shop-name {
+  width: 60%;
+  font-size: 18px;
+}
+.main-messages .chat .date {
+  width: 75%;
+  text-align: end;
+}
+/* End of right profile section styling (messages-section) */
+
+/* Start of Message Reply Modal */
+.reply-content {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+  border-radius: 20px;
+  padding: 30px 30px 70px;
+  position: fixed;
+  top: 25%;
+  left: 40%;
+}
+.reply-content button.close {
+  width: 30px;
+  font-size: 20px;
+  color: #c0c5cb;
+  align-self: flex-end;
+  background-color: transparent;
+  border: none;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.reply-content .reply-message {
+  height: 50px;
+  width: 80%;
+  margin-bottom: 20px;
+}
+.reply-content img {
+  width: 82px;
+  margin-bottom: 15px;
+}
+p {
+  margin-bottom: 40px;
+  font-size: 18px;
+}
+button.send {
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+  padding: 14px;
+  font-size: 16px;
+  color: white;
+  box-shadow: 0px 6px 18px -5px rgba(237, 103, 85, 1);
+  cursor: pointer;
+}
+.disable-pointer {
+  pointer-events: none;
+}
+/* START OF MEDIA QUERIES FOR REPLY MESSAGE */
+
+/* END MEDIA QUERIES FOR REPLY MESSAGE */
+@media only screen and (max-width: 900px) {
+  .reply-content {
+    left: 30%;
+  }
+}
+/* End of Message Reply Modal */
+
+/* Edit Profile modal */
+.edit-profile-popup img {
+  cursor: pointer;
+}
+.edit-profile-popup .reply-message {
+  font-size: 20px;
+}
+.edit-profile-popup .profile-new-name {
+  text-transform: uppercase;
+}
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+}
+
+/* Profile HTML MEDIA QUERIES */
+@media only screen and (max-width: 900px) {
+  .main-profile {
+    flex-direction: column;
+    align-items: center;
+  }
+  .main-profile .left-profile {
+    width: 80%;
+  }
+  .main-profile .main-messages {
+    width: 80%;
+  }
+}
+/* End of Profile HTML MEDIA QUERIES */
+
+/* ------START OF PROFILE.HTML STYLING------ */
