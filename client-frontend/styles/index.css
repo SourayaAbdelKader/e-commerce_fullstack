@@ -277,6 +277,15 @@ p {
 }
 .cart-page .cart-container{
   border: 1px solid blue;
-  width:80%;
+  width:90%;
 }
+.cart-container .cart-titles ul{
+  display: flex;
+  justify-content: space-around;
+}
+.cart-item{
+  border: 1px solid blue;
+
+}
+
 /* -------END OF CART HTML STYLING------ */
