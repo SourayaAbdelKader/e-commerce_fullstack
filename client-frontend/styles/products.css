@@ -1,0 +1,102 @@
+/* ------CSS RESET------ */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  a {
+    color: #355c7b;
+    text-decoration: none;
+  }
+  
+  li {
+    list-style-type: none;
+  }
+  
+  h1 {
+    font-size: 70px;
+  }
+  
+  h2 {
+    font-size: 40px;
+  }
+  
+  input {
+    border: none;
+  }
+  
+  ::placeholder {
+    color: #355c7b;
+    opacity: 0.4;
+    font-size: 20px;
+    padding-left: 10px;
+  }
+  
+
+  
+  /* ------UTILITIES------ */
+  
+  .blue-bg {
+    background-color: #355c7b;
+  }
+  
+  .orange-bg {
+    background-color: #f79106;
+  }
+  
+  .grey-bg {
+    background-color: #94a9b4;
+  }
+  
+  .antiquewhite-bg {
+    background-color: #eaeada;
+  }
+  
+  .blue-text {
+    color: #355c7b;
+  }
+  
+  .antiquewhite-text {
+    color: #eaeada;
+  }
+  
+  .grey-text {
+    color: #94a9b4;
+  }
+  
+  .btn {
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 20px;
+    text-transform: capitalize;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+  }
+  
+  .input {
+    border-radius: 10px;
+    color: #355c7b;
+    background-color: #eaeada;
+    border: none;
+    width: 100%;
+    margin: 5px;
+    height: 70px;
+  }
+  
+  .flex {
+    display: flex;
+  }
+
+  .column{
+    flex-direction: column;
+  }
+
+  .section{
+    display: flex;
+    flex-direction: column;
+  }
+  
