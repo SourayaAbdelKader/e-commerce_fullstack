@@ -53,15 +53,15 @@ const showItem = (item) => {
       }" /><div class="item-remove">&times;</div><div class="item-info">
         <img class="item-image" src="${
           item.main_image
-        }" alt="product-main-image" /><h2 class="item-name">${
+        }" alt="product-main-image" /><h3 class="item-name">${
     item.title
-  }</h2><h3 class="item-category">${item.description.substring(0, 50)}...</h3>
+  }</h3>
       </div><div class="item-quantity"><div class="quantity-box blue-bg">
           <span class="decrement">-</span><span class="quantity antiquewhite-bg">${
             item.quantity
           }</span><span class="increment">+</span></div></div><div class="price-item">${
     item.price
-  }</div><input class="discount-code"></input><div class="item-total">${total_price}</div></div>`;
+  }</div><input class="discount-code" maxlength="10" placeholder='Discount Code'></input><div class="item-total">${total_price}</div></div>`;
   cart_container.innerHTML += itemHTML;
 };
 // when loading the page get all the items in user cart:
@@ -96,6 +96,8 @@ const applyVoucher = () => {
 const checkoutOrder = () => {
   console.log(cart_total_price.textContent);
 };
+// END OF EVENT LISTENER FUNCTIONS
+
 
 // START OF MAIN EVENT LISTENERS ADDITION
 // on window load, get all cart items:

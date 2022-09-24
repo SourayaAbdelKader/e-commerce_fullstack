@@ -287,7 +287,8 @@ p {
 }
 .cart-container .cart-titles ul {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 8.5em;
   align-items: center;
   height: 100%;
   font-size: 18px;
@@ -310,7 +311,7 @@ p {
   border-bottom: 2px solid #355c7b;
 }
 .cart-item .item-remove {
-  width: 15%;
+  width: 13%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -322,11 +323,18 @@ p {
   width: 15%;
   display: flex;
   flex-direction: column;
+  text-transform: uppercase;
   justify-content: center;
   align-items: flex-start;
+  height: 100%;
+}
+.cart-item .item-info img {
+  width: 100px;
+  width: 50px;
+  border: 8px;
 }
 .cart-item .item-quantity {
-  width: 15%;
+  width: 13%;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -365,7 +373,7 @@ p {
   border-left: 2px solid #eaeada;
 }
 .cart-item .price-item {
-  width: 15%;
+  width: 20%;
   text-align: center;
   display: flex;
   font-size: 18px;
@@ -373,15 +381,24 @@ p {
   align-items: center;
 }
 .cart-item .discount-code {
-  width: 15%;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 18px;
+  border: 2px solid #355c7b;
+  background-color: transparent;
+  height: 40px;
+  width: 200px;
+  border-radius: 7px;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+.cart-item .discount-code::placeholder {
+  font-size: 16px;
 }
 .cart-item .item-total {
-  width: 15%;
+  width: 13%;
   font-size: 18px;
   text-align: center;
   display: flex;
@@ -455,13 +472,15 @@ p {
 /* End of Cart checkout */
 
 /* CART MEDIA QUERIES */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   .cart-page {
     gap: 3em;
     justify-content: flex-start;
   }
+
   .cart-container .cart-titles ul {
     font-size: 15px;
+    gap: 0.8em;
   }
   .cart-item {
     font-size: 16px;
@@ -469,6 +488,12 @@ p {
   .cart-container .cart-item .quantity-box {
     flex-direction: column;
     margin-left: 40px;
+  }
+  .cart-container .cart-item .discount-code {
+    width: 20%;
+  }
+  .cart-container .cart-item .discount-code::placeholder {
+    font-size: 10px;
   }
   .cart-item .quantity-box .quantity {
     width: 100%;
