@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title> Profile </title>
+        <link rel="stylesheet" href="./styles/styles.css" />
+        <link rel="icon" type="image/x-icon" href="./assets/logo.png" />
+    </head>
+    <body>
+        <!-- start of the header-->
+        <section>
+            <div class="header">
+                <div class="logo"> <img class="logo-image" src="./assets/logo.png"> </div>
+                <div class="logout"> 
+                    <a href="./"></a>
+                    <button class="button light-gray" type="submit"> Log out </button>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- end of the header-->
+
+        <!-- start of the body-->
+        <section class="container flex">
+            <div class="panel">
+                <div class="choices selected"> 
+                    <a class="flex" href="./seller.html">
+                    <img class="icon" src="./assets/shop-profile.png"> 
+                    <p class="bold"> Profile </p> 
+                    </a>
+                </div>
+                <div class="choices"> 
+                    <a class="flex" href="./categories.html">
+                    <img class="icon" src="./assets/shop-categories.png"> 
+                    <p> Categories </p> 
+                    </a>
+                </div>
+                <div class="choices"> 
+                    <a class="flex" href="./revenue.html">
+                    <img class="icon" src="./assets/shop-revenue.png"> 
+                    <p> Revenue </p> 
+                    </a>
+                </div>
+                <div class="choices"> 
+                    <a class="flex"href="./messages.html">
+                    <img class="icon" src="./assets/shop-messages.png"> 
+                    <p> Messages </p> 
+                    </a>
+                </div>
+            </div>
+            <div class="screen flex"> 
+                <div class="left-screen">
+                    <div class="title flex"> 
+                        <div class="header-pic"> <img id="shop-picture" class="pic" src="./assets/shopping.png"> </div>
+                        <div> 
+                            <div class="shop-name"> <h2 id="shop-name"> </h2> </div>
+                            <div class="shop-location"> <h id="shop-location"></h3> </div>
+                        </div>
+                    </div>
+                    <div class="contacts"> 
+                        <p class="subtitle"> Contact information <p>
+                        <div class="phone_number flex center-flex"> 
+                            <div> <p class="underline-text"> Phone number: </p> </div>
+                            <div> <p id="seller_phone_number"></p> </div>
+                        </div>
+                        <div class="email flex center-flex"> 
+                            <div> <p class="underline-text"> Email: </p> </div>
+                            <div> <p id="seller_email"> </p> </div>
+                        </div>
+                    </div>
+                    <div class="shop-description"> 
+                        <p class="subtitle"> Description </p>
+                        <p id="description"> </p>
+                    </div>
+                </div>
+                <div class="right-screen">
+                    <div class="top5products"> 
+                        <div class="page-name"> <h2 class="top5"> Top 5 viewed products </h2> </div>
+                    </div>
+                    <div class="top5-products">
+                        <div class="top1 flex">
+                            <div> <img class="medal" src="./assets/top1.png"> </div>
+                            <div class="product-top-name"> <p id="top1"> P1 </p></div>
+                        </div>
+                        <div class="top2 flex">
+                            <div> <img class="medal" src="./assets/top2.png"> </div>
+                            <div class="product-top-name"> <p id="top2"> P2 </p></div>
+                        </div>
+                        <div class="top3 flex">
+                            <div> <img class="medal" src="./assets/top3.png"> </div>
+                            <div class="product-top-name"> <p id="top3"> P3 </p></div>
+                        </div>
+                        <div class="top4 flex">
+                            <div> <img class="medal" src="./assets/top4.png"> </div>
+                            <div class="product-top-name"> <p id="top4"> P4 </p></div>
+                        </div>
+                        <div class="top5 flex">
+                            <div> <img class="medal" src="./assets/top5.png"> </div>
+                            <div class="product-top-name"> <p id="top5"> P5 </p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end of the body-->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="./js/seller.js"> </script>
+    </body>
+</html>

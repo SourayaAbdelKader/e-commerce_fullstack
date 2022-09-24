@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title> Products </title>
+        <link rel="stylesheet" href="./styles/styles.css" />
+        <link rel="icon" type="image/x-icon" href="./assets/logo.png" />
+    </head>
+    <body>
+        <!-- start of the header-->
+        <section>
+            <div class="header">
+                <div class="logo"> <img class="logo-image" src="./assets/logo.png"> </div>
+                <div class="logout"> 
+                    <a href="./">
+                    <button class="button light-gray" type="submit"> Log out </button>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- end of the header-->
+
+        <!-- start of the body-->
+        <section class="container flex">
+            <div class="panel">
+                <div class="choices "> 
+                    <a class="flex" href="./seller.html">
+                    <img class="icon" src="./assets/shop-profile.png"> 
+                    <p > Profile </p> 
+                    </a>
+                </div>
+                <div class="choices selected"> 
+                    <a class="flex" href="./categories.html">
+                    <img class="icon" src="./assets/shop-categories.png"> 
+                    <p class="bold"> Categories </p> 
+                    </a>
+                </div>
+                <div class="choices"> 
+                    <a class="flex" href="./revenue.html">
+                    <img class="icon" src="./assets/shop-revenue.png"> 
+                    <p> Revenue </p> 
+                    </a>
+                </div>
+                <div class="choices"> 
+                    <a class="flex"href="./messages.html">
+                    <img class="icon" src="./assets/shop-messages.png"> 
+                    <p> Messages </p> 
+                    </a>
+                </div>
+            </div>
+            <div class="screen"> 
+                <div class="add-category"> 
+                    <div class="page-name"> <h2 id="category"> C </h2> </div>
+                    <button id="add_button"  class="button dark-blue text-white"> Add Product </button>
+                </div>
+                <div id="products" class="products-details wrap">
+                    <div id="product" class="product"> 
+                        <div class="title section-seperator"> 
+                            <p id="product-title"> General Form </p> 
+                            <p id="product_id" class="hide displaynone"> </p>
+                        </div>
+                        <div class="details"> 
+                            <div class="description section-seperator"> 
+                                <p class="product-subtitle"> Description </p>
+                                <div> <p id="product-description"> </p></div>
+                            </div>
+                            <div class="price section-seperator">  
+                                <p class="product-subtitle"> Price </p>
+                                <div> <p id="product-price">  </p></div>
+                            </div>
+                            <div class="condition section-seperator">  
+                                <p class="product-subtitle"> Condition </p>
+                                <div> <p id="product-condition">  </p></div>
+                            </div>
+                            <div class="image section-seperator"> 
+                                <p class="product-subtitle"> Images </p>
+                                <div class="main_image"> <img id="product-main-image" src=""> </div>
+                                <div class="image1"> <img id="product-image1" src=""> </div>
+                                <div class="image2"> <img id="product-image2" src=""> </div>
+                            </div>
+                            <div class="discount section-seperator">
+                                <p class="product-subtitle"> Discount </p>
+                                <div class="discount-code flex"> 
+                                    <p class="underline"> Discount code: </p>
+                                    <p id="discount-code"> </p>
+                                </div>
+                                <div class="discount-percentage flex"> 
+                                    <p class="underline"> Discount percentage: </p>
+                                    <p id="discount-percentage">  </p>
+                                </div>
+                                <div class="edit-delete flex">
+                                    <div> <button id="add-discount"> Add </button></div>
+                                    <div> <button id="delete-discount"> Delete </button></div>
+                                </div>
+                            </div>
+                            <div class="ads section-seperator">
+                                <p class="product-subtitle"> Ad </p>
+                                <div>  
+                                    <p class="underline"> Description </p>
+                                    <p id="ad-description"> best </p>
+                                </div>
+                                <div class="edit-delete flex">
+                                    <div> <button id="add-ad"> Add </button></div>
+                                    <div> <button id="delete-ad"> Delete </button></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="edit-delete flex">
+                            <div> <a href="./edit.html"> <button id="edit-product" class="selected text-white" type="submit"> Edit </button> </a> </div>
+                            <div> <button id="delete-product" class="selected text-white" type="submit"> Delete </button> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+        </section>
+        <!-- end of the body-->
+
+        <!-- start of the discount pop-up-->
+        <div class="discount-popup selected">
+            <p class="product-subtitle"> Discount </p>
+            <div class="discount-code flex-baseline"> 
+                <p class="underline"> Discount code: </p>
+                <input type="text" placeholder="code...">
+            </div>
+            <div class="discount-percentage flex-baseline"> 
+                <p class="underline"> Discount percentage: </p>
+                <input type="text" placeholder="percentage...">
+            </div>
+            <div class="edit-delete flex">
+                <div> <button id="" type="submit"> Submit </button> </div>
+                <div> <a href="./products.html"> <button id="" type="submit"> Cancel </button> </a> </div>
+            </div>
+        </div>
+        <!-- end of the discount pop-up-->
+
+        <!-- start of the ad pop-up-->
+        <div class="ad-popup selected">
+            <p class="product-subtitle"> Ad </p>
+            <div class="discount-percentage flex-baseline"> 
+                <p class="underline"> Description </p>
+                <input type="text" placeholder="description...">
+            </div>
+            <div class="edit-delete flex">
+                <div> <button id="" type="submit"> Submit </button> </div>
+                <div> <a href="./products.html"> <button id="" type="submit"> Cancel </button> </a> </div>
+            </div>
+        </div>
+        <!-- end of the add pop-up-->
+
+        <!-- start of the add product pop-up -->
+        <div id="add_product" class="product selected product-pop-up hide"> 
+            <div class="title section-seperator"> 
+                <p id="product-title"> Product name </p> 
+                <input id="new_name" type="text" placeholder="name...">
+            </div>
+            <div class="details"> 
+                <div class="description section-seperator"> 
+                    <p class="product-subtitle"> Description </p>
+                    <div> <input id="new_description" type="text" placeholder="description..."> </div>
+                </div>
+                <div class="price section-seperator">  
+                    <p class="product-subtitle"> Price </p>
+                    <div> <input id="new_price" type="text" placeholder="price..."> </div>
+                </div>
+                <div class="condition section-seperator">  
+                    <p class="product-subtitle"> Condition </p>
+                    <div> <input id="new_condition" type="text" placeholder="condition..."> </div>
+                </div>
+                <div class="image section-seperator"> 
+                    <p class="product-subtitle"> Images </p>
+                    <div class="main_image"> 
+                        <p class="main-image"> Main image </p>
+                        <button id="media" class="btn-wrapper"> 
+                            <i class="img-upload"> <img src="./assets/image.png"> </i>
+                            <input  id="main_image" class="btn-warning" accept="image/jpeg,image/png,image/webp" type="file" >
+                        </button>
+                    </div>
+                    <div class="main_image"> 
+                        <p class="main-image"> Image 1 </p>
+                        <button id="media" class="btn-wrapper"> 
+                            <i class="img-upload"> <img src="./assets/image.png"> </i>
+                            <input id="image1" class="btn-warning" accept="image/jpeg,image/png,image/webp" type="file" >
+                        </button>
+                    </div>
+                    <div class="main_image"> 
+                        <p class="main-image"> Image 2 </p>
+                        <button id="media" class="btn-wrapper"> 
+                            <i class="img-upload"> <img src="./assets/image.png"> </i>
+                            <input id="image2" class="btn-warning" accept="image/jpeg,image/png,image/webp" type="file" >
+                        </button>
+                    </div>
+                    <div class="image1"> <img id="product-image1" src=""> </div>
+                    <div class="image2"> <img id="product-image2" src=""> </div>
+                </div>
+            </div>
+            <div class="edit-delete flex">
+                <div> <button id="submit_add" class="selected text-white" type="submit"> Submit </button> </div>
+                <div> <a href="./products.html"> <button id="" class="selected text-white" type="submit"> Cancel </button> </a> </div>
+            </div>
+        </div>
+        <!-- end of the edit-add product pop-up-->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+        <script src="./js/products.js"> </script>
+    </body>
+</html>
