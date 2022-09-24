@@ -194,4 +194,52 @@ body{
       cursor: pointer;
   }
   
-  
+
+/* Hero Section */
+
+.heroSection{
+    margin: 5vh 0;
+    width: 90vw;
+    height: 70vh;
+    background-image: url("/client-frontend/assets/Hero-image.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50px;
+}
+
+.fade{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(247, 145, 6,50%);
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.heroContent{
+  width: 70%;
+  text-align: center;
+}
+
+.heroContent > p{
+  font-size: 8vh;
+  color: white;
+}
+
+.heroContent > input{
+  height: 8vh;
+  width: 60%;
+  margin-top: 3vh;
+  padding-left: 10px;
+  border-radius: 4vh;
+  font-size: 3vh;
+  text-align: start;
+}
+
+
+.heroContent > input::placeholder{
+  color: #94a9b4;
+}
+
