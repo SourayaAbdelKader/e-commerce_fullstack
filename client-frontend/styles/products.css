@@ -367,3 +367,73 @@ body{
     width: 80%;
     font-size: 3vh;
 }
+
+/* Footer */
+
+.footer{
+    width: 100%;
+    height: 40vh;
+    margin-top: 20vh;
+}
+
+.footerLogo{
+    margin: 8vh 0;
+    width: 30%;
+    height: 60%;
+    align-items: center;
+}
+
+.footerLogo > img{
+    width: 70%;
+}
+
+.footerLogo > p{
+    margin-top: 4vh;
+    font-size: 3vh;
+}
+
+.break{
+    width: 100%;
+    height:4vh;
+}
+
+.footerElements{
+    width: 30%;
+    align-items: center;
+    justify-content: center;
+}
+
+.footerElements > ul > li{
+    margin: 5vh 0;
+    font-size: 3.5vh;
+    color: antiquewhite;
+}
+
+.footerMessage{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    align-items: start;
+    justify-content: center;
+}
+
+.footerMessage > p{
+    font-size: 3.5vh;
+    color: antiquewhite;
+}
+
+.footerMessage > input{
+    width: 70%;
+    font-size: 3vh;
+    height: 15vh;
+    border-radius: 20px;
+    margin: 2vh 0;
+    background-color: antiquewhite;
+}
+
+.footerMessage > button{
+    height: 8vh;
+    width: 20vh;
+    font-size: 4vh;
+}
+  
