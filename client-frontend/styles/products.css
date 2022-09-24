@@ -267,7 +267,7 @@ body{
 
 .productCard{
     width: 40vh;
-    height: fit-content;
+    height: 50vh;
     margin: 2vh;
     padding: 2vh 1.5vh;
     border-radius: 20px;
@@ -277,7 +277,12 @@ body{
     align-self: center;
 }
 
-.productCard > img{
+.productMainImage{
+    height: 80% ;
+    width: 100%;
+}
+
+.productCard img{
     height: 100%;
     width: 100%;
     object-fit: cover;
