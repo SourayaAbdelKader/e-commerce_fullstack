@@ -91,7 +91,7 @@
                                     <p id="discount-percentage">  </p>
                                 </div>
                                 <div class="edit-delete flex">
-                                    <div> <button id="add-discount"> Add </button></div>
+                                    <div> <button id="add-discount" class="add-discount"> Add </button></div>
                                     <div> <button id="delete-discount"> Delete </button></div>
                                 </div>
                             </div>
@@ -99,7 +99,7 @@
                                 <p class="product-subtitle"> Ad </p>
                                 <div>  
                                     <p class="underline"> Description </p>
-                                    <p id="ad-description"> best </p>
+                                    <p id="ad-description"> </p>
                                 </div>
                                 <div class="edit-delete flex">
                                     <div> <button  class="add-ad" id="add-ad"> Add </button></div>
@@ -120,18 +120,18 @@
         <!-- end of the body-->
 
         <!-- start of the discount pop-up-->
-        <div class="discount-popup selected hide">
+        <div  id="pop_up_discount" class="discount-popup selected hide">
             <p class="product-subtitle"> Discount </p>
             <div class="discount-code flex-baseline"> 
                 <p class="underline"> Discount code: </p>
-                <input type="text" placeholder="code...">
+                <input id="input_code" type="text" placeholder="code...">
             </div>
             <div class="discount-percentage flex-baseline"> 
                 <p class="underline"> Discount percentage: </p>
-                <input type="text" placeholder="percentage...">
+                <input id="input_percentage" type="text" placeholder="percentage...">
             </div>
             <div class="edit-delete flex">
-                <div> <button id="" type="submit"> Submit </button> </div>
+                <div> <button id="submit_discount_button" type="submit"> Submit </button> </div>
                 <div> <a href="./products.html"> <button id="" type="submit"> Cancel </button> </a> </div>
             </div>
         </div>
@@ -142,10 +142,10 @@
             <p class="product-subtitle"> Ad </p>
             <div class="discount-percentage flex-baseline"> 
                 <p class="underline"> Description </p>
-                <input type="text" placeholder="description...">
+                <input id="new_ad" type="text" placeholder="description...">
             </div>
             <div class="edit-delete flex">
-                <div> <button id="" type="submit"> Submit </button> </div>
+                <div> <button id="submit-ad" type="submit"> Submit </button> </div>
                 <div> <a href="./products.html"> <button id="" type="submit"> Cancel </button> </a> </div>
             </div>
         </div>

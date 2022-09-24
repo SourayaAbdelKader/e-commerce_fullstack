@@ -42,14 +42,16 @@ const displayCategories = async () => {
             console.log(data.data.length)
             
             data.data.forEach(element =>{
-            
-            const container = document.getElementById("categories")
-            const div = document.getElementById("category")
+            const category_id = document.getElementById("category_id");
+            const container = document.getElementById("categories");
+            const div = document.getElementById("category");
             const clone = div.cloneNode(true);
             clone.classList.add("category");
             clone.classList.add("show");
             clone.classList.remove("displaynone")
             clone.id = i;
+            // to save the category id
+            category_id = element.id;
             clone.innerHTML= '<a href="products.html">' + element.name + '</a>';
             container.appendChild(clone);
             i ++;

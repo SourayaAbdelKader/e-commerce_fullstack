@@ -91,7 +91,6 @@ add_button.addEventListener("click", () => {
         const image1 = document.getElementById("image1").value;
         const image2 = document.getElementById("image2").vallue;
         console.log(new_name)
-        console.log("hi")
 
         // for the cloning
         const product_title = document.getElementById("product-title");
@@ -145,13 +144,45 @@ add_button.addEventListener("click", () => {
     })
 })
 
+// to the ad pop up to show and catch description
 const add_ad = document.querySelectorAll(".add-ad");
 const pop_up_ad = document.getElementById("pop-up-ad");
-console.log(add_ad.length + "jjjj")
 
 add_ad.forEach(button => {
     button.addEventListener("click", () => {
         pop_up_ad.classList.toggle("hide");
+        const add_ad_description = document.getElementById("submit-ad");
+        add_ad_description.addEventListener("click", () => {
+            const ad_description = document.getElementById("new_ad").value;
+            const ad_main_descriptin = document.getElementById("ad-description");
+            ad_main_descriptin.innerHTML = ad_description;
+            pop_up_ad.classList.toggle("hide");
+        })
 
+}
+)})
+
+// to add the discount pop up 
+const add_discount = document.querySelectorAll(".add-discount");
+const pop_up_discount = document.getElementById("pop_up_discount");
+console.log(add_discount.length)
+add_discount.forEach(button => {
+    button.addEventListener("click", () => {
+        console.log("hi")
+        pop_up_discount.classList.toggle("hide");
+        const add_discount_button = document.getElementById("submit_discount_button");
+
+        add_discount_button.addEventListener("click", () => {
+            const input_code = document.getElementById("input_code").value;
+            const input_percentage = document.getElementById("input_percentage").value;
+
+            const code_place = document.getElementById("discount-code");
+            const percentage_place = document.getElementById("discount-percentage");
+
+            code_place.innerHTML = input_code;
+            percentage_place.innerHTML = input_percentage;
+            pop_up_discount.classList.toggle("hide");
+
+        })
 }
 )})
