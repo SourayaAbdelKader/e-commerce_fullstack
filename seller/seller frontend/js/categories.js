@@ -31,7 +31,7 @@ window.addEventListener("load", () => {
 
 let i = 0;
 const displayCategories = async () => {
-        const url = "http://localhost/seller-backend/receive_categories.php";
+        const url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/receive_categories.php";
         let params = new URLSearchParams();
         params.append("id", 1);
         await axios
@@ -64,7 +64,7 @@ const add_submit = document.getElementById("add_sumbit");
 const category = document.getElementById("category")
 
 const add_categories = async (name) => {
-    const url = "http://localhost/seller-backend/add_categories.php";
+    const url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/add-categories.php";
     let params = new URLSearchParams();
     params.append("name", name)
     params.append("seller_id", 1);

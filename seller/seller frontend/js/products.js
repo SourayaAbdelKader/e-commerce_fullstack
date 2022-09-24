@@ -28,7 +28,7 @@ hoover_elements.forEach(element => {
 // retrieving products from db
 let j = 0;
 const displayProducts = async () => {
-        const url = "http://localhost/seller-backend/receive_products.php";
+        const url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/receive_products.php";
         let params = new URLSearchParams();
         params.append("categorie_id", 1);
 
@@ -88,37 +88,70 @@ add_button.addEventListener("click", () => {
         const new_price = document.getElementById("new_price").value;
         const new_conditon = document.getElementById("new_condition").value;
         const main_image = document.getElementById("main_image").value;
-        const image1 = document.getElementById("image1");
-        const image2 = document.getElementById("image2");
+        const image1 = document.getElementById("image1").value;
+        const image2 = document.getElementById("image2").vallue;
         console.log(new_name)
         console.log("hi")
 
-        
-            const product_title = document.getElementById("product-title");
-            const product_description = document.getElementById("product-description");
-            const product_price = document.getElementById("product-price");
-            const product_condition = document.getElementById("product-condition");
-            const product_mainimage = document.getElementById("product-main-image");
-            const product_image1 = document.getElementById("product-image1");
-            const product_image2 = document.getElementById("product-image2");
+        // for the cloning
+        const product_title = document.getElementById("product-title");
+        const product_description = document.getElementById("product-description");
+        const product_price = document.getElementById("product-price");
+        const product_condition = document.getElementById("product-condition");
+        const product_mainimage = document.getElementById("product-main-image");
+        const product_image1 = document.getElementById("product-image1");
+        const product_image2 = document.getElementById("product-image2");
             
-            const container = document.getElementById("products");
-            const div = document.getElementById("product");
-            const number = document.getElementById("product_id")
-            const clone = div.cloneNode(true);
-            clone.classList.add("product");
-            clone.classList.add("show");
-            clone.classList.remove("displaynone")
-            clone.id = j;
+        const container = document.getElementById("products");
+        const div = document.getElementById("product");
+        const number = document.getElementById("product_id")
+        const clone = div.clone(true);
+        clone.classList.add("product");
+        clone.classList.add("show");
+        clone.classList.remove("displaynone")
+        clone.id = j;
                 
-            product_title.innerHTML = new_name;
-            product_description.innerHTML = new_description;
-            product_price.innerHTML = new_price;
-            product_condition.innerHTML = new_conditon;
+        product_title.innerHTML = new_name;
+        product_description.innerHTML = new_description;
+        product_price.innerHTML = new_price;
+        product_condition.innerHTML = new_conditon;
 
-            container.appendChild(clone);
-            j ++;  
+        container.appendChild(clone);
+        j ++;  
 
-        
+        document.getElementById("new_name").value = "";
+        document.getElementById("new_description").value = "";
+        document.getElementById("new_price").value = "";
+        document.getElementById("new_condition").value = "";
+
+
+        const addProducts = async () => {
+            const url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/add_product.php";
+            let params = new URLSearchParams();
+            params.append("title", new_name);
+            params.append("description", new_description);
+            params.append("price", new_price);
+            params.append("condition", new_conditon);
+            params.append("categorie_id", 1);
+    
+            await axios
+              .post(url, params)
+              .then((data) => {
+                console.log(data)})
+        }
+
+        addProducts();
+        alert("Product added");
     })
 })
+
+const add_ad = document.querySelectorAll(".add-ad");
+const pop_up_ad = document.getElementById("pop-up-ad");
+console.log(add_ad.length + "jjjj")
+
+add_ad.forEach(button => {
+    button.addEventListener("click", () => {
+        pop_up_ad.classList.toggle("hide");
+
+}
+)})

@@ -1,22 +1,15 @@
 <?php
 
-include("connection.php");
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
 header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X-Request-With');
 
+include("connection.php");
 
-$id = $_POST["id"];
+$categorie_id = $_POST["categorie_id"];
 
-$name = $_POST["title"];
-$description = $_POST["desciption"];
-$price = $_POST["price"];
-$condition =$_POST["condition"];
-
-$query = $mysqli -> prepare("INSERT INTO products (title, description, price, categorie_id, condition) VALUE (?, ?, ?, ?, ?)") ;
-
-$query->bind_param('ssss', $name,  $description, $price, 1, $condition );
-
+$query = $mysqli -> prepare("SELECT * FROM products WHERE categorie_id = ? ");
+$query->bind_param('s', $categorie_id);
 $query -> execute();
 $array = $query -> get_result();
 
@@ -28,5 +21,4 @@ while($a = $array->fetch_assoc()){
 
 $json = json_encode($response);
 echo $json;
-
 ?>

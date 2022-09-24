@@ -27,7 +27,7 @@ hoover_elements.forEach(element => {
 //adding the information on load to the seller page
 const getShopInfo = async () => {
     const url =
-      "http://localhost/seller-backend/receive-seller-info.php";
+      "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/receive-seller-info.php";
       let params = new URLSearchParams();
         params.append("id", 1);
     await axios

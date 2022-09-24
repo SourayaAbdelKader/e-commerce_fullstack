@@ -369,8 +369,7 @@ button {
     width: 35vw;
     border-radius: 25px;
     margin-bottom: 1vw;
-    visibility: hidden;
-    display: none;
+
 }
 
 .submit-edit-popup {
