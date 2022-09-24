@@ -59,7 +59,7 @@ const incrementItemQuantity = (e) => {
   //load client_id from localStorage:
   const client_id = 1;
   const item_id = e.target.parentNode.parentNode.parentNode.children[0].value;
-  const quantity = e.target.nextSibling;
+  const quantity = e.target.previousSibling;
   const price_per_item_value =
     e.target.parentNode.parentNode.nextSibling.textContent;
   const total_price = e.target.parentNode.parentNode.parentNode.children[6];
@@ -110,11 +110,7 @@ const addItemEventListeners = () => {
 const showItem = (item) => {
   const total_price = parseInt(item.price) * parseInt(item.quantity);
   cart_total += total_price; //calculate the whole cart total while adding each item
-  const itemHTML = `<div class="cart-item">
-      <input type="hidden" value="${item.id}" /><div class="item-remove">&times;</div><div class="item-info">
-        <img class="item-image" src="${item.main_image}" alt="product-main-image" /><h3 class="item-name">${item.title}</h3>
-      </div><div class="item-quantity"><div class="quantity-box blue-bg">
-          <span class="decrement">-</span><span class="quantity antiquewhite-bg">${item.quantity}</span><span class="increment">+</span></div></div><div class="price-item">${item.price}</div><input class="discount-code" maxlength="10" placeholder='Discount Code'></input><div class="item-total">${total_price}</div></div>`;
+  const itemHTML = `<div class="cart-item"><input type="hidden" value="${item.id}" /><div class="item-remove">&times;</div><div class="item-info"><img class="item-image" src="${item.main_image}" alt="product-main-image" /><h3 class="item-name">${item.title}</h3></div><div class="item-quantity"><div class="quantity-box blue-bg"><span class="decrement">-</span><span class="quantity antiquewhite-bg">${item.quantity}</span><span class="increment">+</span></div></div><div class="price-item">${item.price}</div><input class="discount-code" maxlength="10" placeholder='Discount Code'></input><div class="item-total">${total_price}</div></div>`;
   cart_container.innerHTML += itemHTML;
 };
 // when loading the page get all the items in user cart:
