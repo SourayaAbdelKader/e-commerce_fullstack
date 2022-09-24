@@ -13,21 +13,40 @@ const removeItem = (e) => {
 };
 // decrement quantity of single item and update DB
 const decrementItemQuantity = (e) => {
+  const cart_item = e.target.parentNode.parentNode.parentNode;
   const item_id = e.target.parentNode.parentNode.parentNode.children[0].value;
-  const quantity = e.target.nextSibling.textContent;
-  const price_per_item = e.target.parentNode.parentNode.nextSibling.textContent;
-  const total_price =
-    e.target.parentNode.parentNode.parentNode.children[6].textContent;
-  console.log(item_id, quantity, price_per_item, total_price);
+  const quantity = e.target.nextSibling;
+  const price_per_item_value =
+    e.target.parentNode.parentNode.nextSibling.textContent;
+  const total_price = e.target.parentNode.parentNode.parentNode.children[6];
+
+  let quantity_value = parseInt(quantity.textContent);
+  let total_price_value = parseInt(total_price.textContent);
+  // update cart value as int
+  quantity_value -= 1;
+  // update quantity shown to user, product total shown to user, and whole cart total
+  quantity.textContent = quantity_value;
+  total_price.textContent = total_price_value - parseInt(price_per_item_value);
+  cart_total_price.textContent =
+    parseInt(cart_total_price.textContent) - parseInt(price_per_item_value);
+  if (quantity_value <= 0) {
+    cart_item.remove(); //remove the div totally(product removed when quantity becomes <= 0)
+    quantity_value = -1; //set it to -1 (since in API update_cart if (== -1) to remove product totally from cart)
+  }
+
+  // update cart in db both cases ( 0 or positive product quantity)
 };
 // increment quantity of single item
 const incrementItemQuantity = (e) => {
   const item_id = e.target.parentNode.parentNode.parentNode.children[0].value;
-  const quantity = e.target.previousSibling.textContent;
+  const quantity = e.target.previousSibling;
   const price_per_item = e.target.parentNode.parentNode.nextSibling.textContent;
   const total_price =
     e.target.parentNode.parentNode.parentNode.children[6].textContent;
-  console.log(item_id, quantity, price_per_item, total_price);
+
+  let quantity_value = parseInt(quantity.textContent);
+  quantity_value += 1;
+  console.log(quantity_value);
 };
 //add event listener to each html added item:
 const addItemEventListeners = () => {
@@ -48,20 +67,10 @@ const addItemEventListeners = () => {
 const showItem = (item) => {
   const total_price = parseInt(item.price) * parseInt(item.quantity);
   const itemHTML = `<div class="cart-item">
-      <input type="hidden" value="${
-        item.id
-      }" /><div class="item-remove">&times;</div><div class="item-info">
-        <img class="item-image" src="${
-          item.main_image
-        }" alt="product-main-image" /><h3 class="item-name">${
-    item.title
-  }</h3>
+      <input type="hidden" value="${item.id}" /><div class="item-remove">&times;</div><div class="item-info">
+        <img class="item-image" src="${item.main_image}" alt="product-main-image" /><h3 class="item-name">${item.title}</h3>
       </div><div class="item-quantity"><div class="quantity-box blue-bg">
-          <span class="decrement">-</span><span class="quantity antiquewhite-bg">${
-            item.quantity
-          }</span><span class="increment">+</span></div></div><div class="price-item">${
-    item.price
-  }</div><input class="discount-code" maxlength="10" placeholder='Discount Code'></input><div class="item-total">${total_price}</div></div>`;
+          <span class="decrement">-</span><span class="quantity antiquewhite-bg">${item.quantity}</span><span class="increment">+</span></div></div><div class="price-item">${item.price}</div><input class="discount-code" maxlength="10" placeholder='Discount Code'></input><div class="item-total">${total_price}</div></div>`;
   cart_container.innerHTML += itemHTML;
 };
 // when loading the page get all the items in user cart:
@@ -97,7 +106,6 @@ const checkoutOrder = () => {
   console.log(cart_total_price.textContent);
 };
 // END OF EVENT LISTENER FUNCTIONS
-
 
 // START OF MAIN EVENT LISTENERS ADDITION
 // on window load, get all cart items:
