@@ -1,4 +1,4 @@
-const client_id = 1;
+const client_id = 6;
 
 const productsWrapper = document.getElementById("productsWrapper");
 const getProductApi = "http://localhost/e-commerce_fullstack/backend/get_products.php";
