@@ -9,7 +9,7 @@ if (isset($_POST["key"])) {
   $sql = "select * from products where 
         description like ? OR  
         title like ? OR
-        categorie_id=(select  id from categories where name like ?)";
+        categorie_id in (select  id from categories where name like ?)";
   $query = $mysqli->prepare($sql);
   $query->bind_param("sss", $like, $like, $like);
   if ($query->execute()) {
