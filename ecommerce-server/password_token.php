@@ -12,5 +12,15 @@ $query->execute();
 $response = [];
 $response['success'] = true;
 
+// after token created and added to the database  
+if ($response) {
+    $to = $email;
+    $subject = "RESETTT";
+    $txt = "Hello world!";
+    $headers = "From: webmaster@example.com" . "\r\n" .
+        "CC: somebodyelse@example.com";
+
+    mail($to, $subject, $txt, $headers);
+}
 
 echo json_encode($response);

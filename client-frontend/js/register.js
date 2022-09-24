@@ -115,13 +115,9 @@ const sendNewPasswordByEmail = async () => {
   };
 
   await check_email();
-
-  if(!repeated){
-
-  }else{ //where the work begins:
-    
-
-  }
+  // if(!repeated){
+  // }else{ //where the work begins:
+  // }
   // reset password php - send email
   // is_repeated_email(email);
   // reset_password_modal.classList.add("display-none");
