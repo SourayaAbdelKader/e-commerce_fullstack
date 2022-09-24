@@ -63,26 +63,6 @@ const reset_all_inputs = () => {
   signup_img_show.src = "./assets/icons8-customer-96.png";
 };
 
-// Check email if found in database/users:
-const is_repeated_email = (email) => {
-  const repeated = false;
-
-  const check_email = async () => {
-    const url =
-      "http://localhost/e-commerce_fullstack/ecommerce-server/check_email.php";
-    await axios
-      .get(`${url}?email=${email}`)
-      .then((data) => {
-        const found = JSON.stringify(data.data[0]);
-        if (found > 0) repeated = true;
-      })
-      .catch((err) => console.log(err.response));
-  };
-
-  check_email();
-  return repeated;
-};
-
 // ---Start of show and hide modals Section---
 const showLoginModal = () => {
   reset_all_inputs();
@@ -264,9 +244,35 @@ const validateSignUp = (name, email, password, phone_nb) => {
 };
 
 // Start of Signup submit to API (create new user) //
-const createNewUser = (e) => {
+const createNewUser = async (e) => {
+  signup_email.classList.remove("danger");
   e.stopImmediatePropagation();
   e.preventDefault();
+
+  // check if email is alresdy found
+  let repeated = false;
+  const check_email = async () => {
+    const url =
+      "http://localhost/e-commerce_fullstack/ecommerce-server/check_email.php";
+    await axios
+      .get(`${url}?email=${signup_email.value}`)
+      .then((data) => {
+        const found = JSON.stringify(data.data[0]);
+        if (found.length > 0) {
+          console.log('ehh');
+          repeated = true;
+        }
+      })
+      .catch((err) => console.log(err.response));
+  };
+
+  await check_email();
+
+  // if email is repeated
+  if(repeated){
+  signup_email.classList.add("danger");
+  return;
+  }
 
   // if signup info not valid return
   if (
@@ -277,11 +283,6 @@ const createNewUser = (e) => {
       signup_phone.value
     )
   ) {
-    return;
-  }
-  // if email is repeated
-  if (is_repeated_email(signup_email.value)) {
-    signup_email.classList.add("danger");
     return;
   }
 
