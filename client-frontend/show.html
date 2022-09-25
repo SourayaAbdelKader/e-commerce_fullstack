@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Show Page</title>
+    <link rel="stylesheet" href="./styles/index.css" />
+  </head>
+  <body class="antiquewhite-bg">
+    <!-- START OF WHOLE NAVBAR -->
+    <!-- Start of navbar -->
+    <div class="products-container flex column">
+      <!-- Start of Header Section -->
+      <div class="header orange-bg flex">
+        <div class="logo">
+          <img src="assets/logo_withname-no-margin.png" alt="Logo" />
+        </div>
+        <div class="header-top-right flex">
+          <button
+            id="signout-button"
+            class="btn signout-btn grey-bg antiquewhite-bg"
+          >
+            Sign out
+          </button>
+          <button id="go-to-cart-button" class="btn eclipse">
+            <img src="assets/cart-icon.png" />
+          </button>
+        </div>
+      </div>
+      <!-- Ender of Header Section -->
+
+      <!-- Start of Navbar Section -->
+      <div class="navbar grey-bg">
+        <ul class="navElements">
+          <li><button id="back-to-products">Back to Products</button></li>
+        </ul>
+      </div>
+    </div>
+    <!-- End of navbar -->
+    <!-- END OF WHOLE NAVBAR -->
+
+    <!-- START OF HERO -->
+    <main class="main-show">
+      <!-- Start of LEFT Images section -->
+      <section class="show-item-images">
+        <img id="item-main-img" class="main-img" src="./assets/mac-main.jfif" />
+        <div class="secondary-images">
+          <img id="item-img1" src="./assets/mac-2.jfif" alt="sec-img" />
+          <img id="item-img2" src="./assets/mac-main.jfif" alt="sec-img" />
+          <img id="item-img3" src="./assets/mac-3.jfif" alt="sec-img" />
+        </div>
+      </section>
+      <!-- End of LEFT Images Section -->
+
+      <!-- Start of RIGHT Product Info Section -->
+      <section class="show-item-info">
+        <p class="category">Category: <span id="item-category"></span></p>
+        <h2 id="item-name" class="name upper"></h2>
+        <p class="condition light-text">
+          Condition: <span id="item-condition"></span>
+        </p>
+        <h1 class="price"><span id="price"></span>$</h1>
+        <div class="buttons">
+          <button id="cart-button" class="cart-button orange-bg upper">
+            <img class="cart-icon" src="./assets/icons8-addtocart-50.png" />Add
+            to Cart
+          </button>
+          <div class="buttons-second">
+            <button id="fav-button" class="fav-button upper grey-bg">
+              <img src="./assets/heart-fav.png" />favorite
+            </button>
+            <button id="wish-button" class="fav-button upper grey-bg">
+              <img src="./assets/free-favourite-icon-2765-thumb.png" />Wishlist
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- End of RIGHT Product Info Section -->
+    </main>
+    <!-- END OF HERO -->
+
+    <!-- START OF DESCRIPTION SECTION -->
+    <section class="description-section">
+      <div class="buttons">
+        <button id="description-button" class="upper bold">description</button>
+        <button id="seller-info-button" class="upper bold">seller info</button>
+      </div>
+      <p id="item-description" class="description"></p>
+      <div id="seller-info" class="description display-none seller-info">
+        <h2><u>Shop:</u> <span id="shop-name" class="shop-name"></span></h2>
+        <p class="shop-location">
+          <u>Location:</u> <span id="shop-location"></span>
+        </p>
+        <p id="shop-info" class="shop-info">
+          Tech Shop · Computers & Tablets · All Computers & Tablets · Apple ·
+          Headphones & Audio · All Headphones & Audio · Earbuds · Software · All
+          Software · Mac · Displays.
+        </p>
+      </div>
+    </section>
+    <!-- END OF DESCRIPTION SECTION -->
+
+    <!-- Start of Footer Section -->
+    <div class="footer orange-bg flex">
+      <div class="footerLogo flex column">
+        <img src="assets/logo_withname-no-margin.png" alt="Logo" />
+        <p class="antiquewhite-text">Choose to see the good stuff</p>
+      </div>
+    </div>
+    <div class="break grey-bg"></div>
+    <!-- End of Footer Section -->
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/show.js"></script>
+  </body>
+</html>

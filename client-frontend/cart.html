@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Cart</title>
+    <link rel="stylesheet" href="./styles/index.css" />
+  </head>
+  <body class="antiquewhite-bg">
+    <!-- START OF WHOLE NAVBAR -->
+    <!-- Start of navbar -->
+    <div class="products-container flex column">
+      <!-- Start of Header Section -->
+      <div class="header orange-bg flex">
+        <div class="logo">
+          <img src="assets/logo_withname-no-margin.png" alt="Logo" />
+        </div>
+        <div class="header-top-right flex">
+          <button
+            id="signout-button"
+            class="btn signout-btn grey-bg antiquewhite-bg"
+          >
+            Sign out
+          </button>
+          <button class="btn eclipse">
+            <img src="assets/cart-icon.png" />
+          </button>
+        </div>
+      </div>
+      <!-- Ender of Header Section -->
+
+      <!-- Start of Navbar Section -->
+      <div class="navbar grey-bg">
+        <ul class="navElements">
+          <li><button id="back-to-products">Back to Products</button></li>
+        </ul>
+      </div>
+    </div>
+    <!-- End of navbar -->
+    <!-- END OF WHOLE NAVBAR -->
+
+    <!-- START OF CART HTML -->
+    <main class="cart-page">
+      <h1>My Shopping Cart</h1>
+      <!-- START OF CART ITEMS CONTAINER -->
+      <section class="cart-container">
+        <!-- START OF ITEMS TITLES -->
+        <div class="cart-titles blue-bg">
+          <ul class="antiquewhite-text">
+            <li>Remove</li>
+            <li>Description</li>
+            <li>Quantity</li>
+            <li>Price Per Item($)</li>
+            <li>Discount Code</li>
+            <li>Total($)</li>
+          </ul>
+        </div>
+        <!-- END OF ITEMS TITLES -->
+
+        <!-- START OF ITEMS CART PRODUCTS (PUSHED FROM JS - GET CART ITEMS) -->
+        <div id="cart-items" class="cart-items"></div>
+        <!-- END OF ALL CARTS ITEMS -->
+      </section>
+      <!-- END OF CART CONTAINER -->
+
+      <!-- START OF CHECKOUT SECTION -->
+      <section class="cart-checkout">
+          <div class="cart-total antiquewhite-bg blue-text">
+            <label for="cart-total"><u>Total:</u></label>&nbsp;<div id="cart-total" class="items-total">0</div>
+            $
+          </div>
+        <div class="checkout-bottom">
+          <button id="checkout-submit" class="checkout-submit cart-btn">
+            Checkout
+          </button>
+        </div>
+      </section>
+      <!-- START OF CHECKOUT SECTION -->
+    </main>
+
+    <!-- Start of Footer Section -->
+    <div class="footer orange-bg flex">
+      <div class="footerLogo flex column">
+        <img src="assets/logo_withname-no-margin.png" alt="Logo" />
+        <p class="antiquewhite-text">Choose to see the good stuff</p>
+      </div>
+    </div>
+    <div class="break grey-bg"></div>
+    <!-- End of Footer Section -->
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/cart.js"></script>
+  </body>
+</html>
