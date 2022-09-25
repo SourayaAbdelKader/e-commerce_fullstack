@@ -1,4 +1,3 @@
-const client_id = 1;
 const showProductsBtn = document.getElementById("showProducts");
 const showFavoritesBtn = document.getElementById("showFavorites");
 const showWishlistBtn = document.getElementById("showWishlist");
@@ -86,6 +85,8 @@ const favorite_products = () => {
 
 // function adding a favorite item to the database
 const add_favourite = async (product_id) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const client_id = user.id;
   let params = new URLSearchParams();
   params.append("client_id", client_id);
   params.append("product_id", product_id);
@@ -115,6 +116,8 @@ const get_product = async () => {
 
 // function that fetch favorite products of the client
 const laod_favorites = async () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const client_id = user.id;
   let params = new URLSearchParams();
   params.append("client_id", client_id);
   await axios.post(getFavoritesApi, params).then((data) => {
@@ -124,6 +127,8 @@ const laod_favorites = async () => {
 };
 
 const laod_wishlist = async () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const client_id = user.id;
   let params = new URLSearchParams();
   params.append("client_id", client_id);
   await axios.post(getWishlistApi, params).then((data) => {
