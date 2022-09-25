@@ -187,8 +187,12 @@ const loginUser = (e) => {
     await axios
       .get(`${url}?email=${email}&password=${password}&user_type=${user_type}`)
       .then((data) => {
-        localStorage.setItem("user", JSON.stringify(data.data[0]));
-        reset_all_inputs();
+        const user = data.data;
+        if (user) {
+          localStorage.setItem("user", JSON.stringify(user));
+          reset_all_inputs();
+          checkUser();
+        }
       })
       .catch((err) => console.log(err.response));
   };

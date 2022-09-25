@@ -6,7 +6,7 @@ $email = $_GET['email'];
 $password = $_GET['password'];
 $password = hash('sha256', $password . 'sayhiecommerce');
 $user_type = $_GET['user_type'];
-
+$response = [];
 
 if ($user_type == 'client') {
     $query = $mysqli->prepare("SELECT id, name,bio, email, phone_number, image_url, access FROM users WHERE email=? and password=? and user_type=?");
@@ -14,7 +14,6 @@ if ($user_type == 'client') {
     $query->execute();
     $array = $query->get_result();
 
-    $response = [];
     $response = $array->fetch_assoc();
 }
 // for seller login
@@ -24,7 +23,6 @@ else {
     $query->execute();
     $array = $query->get_result();
 
-    $response = [];
     $response = $array->fetch_assoc();
 }
 
