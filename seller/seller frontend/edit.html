@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title> Products </title>
+        <title> Edit Product </title>
         <link rel="stylesheet" href="./styles/styles.css" />
         <link rel="icon" type="image/x-icon" href="./assets/logo.png" />
     </head>
@@ -58,20 +58,20 @@
                     <div class="product selected"> 
                         <div class="title section-seperator"> 
                             <p id="product-title"> Product name </p> 
-                            <input type="text" placeholder="name...">
+                            <input id="edited_name" type="text" placeholder="name...">
                         </div>
                         <div class="details"> 
                             <div class="description section-seperator"> 
                                 <p class="product-subtitle"> Description </p>
-                                <div> <input type="text" placeholder="description..."> </div>
+                                <div> <input id="edited_description" type="text" placeholder="description..."> </div>
                             </div>
                             <div class="price section-seperator">  
                                 <p class="product-subtitle"> Price </p>
-                                <div> <input type="text" placeholder="price..."> </div>
+                                <div> <input id="edited_price" type="text" placeholder="price..."> </div>
                             </div>
                             <div class="condition section-seperator">  
                                 <p class="product-subtitle"> Condition </p>
-                                <div> <input type="text" placeholder="condition..."> </div>
+                                <div> <input id="edited_condition" type="text" placeholder="condition..."> </div>
                             </div>
                             <div class="image section-seperator"> 
                                 <p class="product-subtitle"> Images </p>
@@ -101,7 +101,7 @@
                             </div>
                         </div>
                         <div class="edit-delete flex">
-                            <div> <button id="" class="selected text-white" type="submit"> Submit </button> </div>
+                            <div> <button id="submit_edit" class="selected text-white" type="submit"> Submit </button> </div>
                             <div> <a href="./products.html"> <button id="" class="selected text-white" type="submit"> Cancel </button> </a> </div>
                         </div>
                     </div>
@@ -110,6 +110,6 @@
         </section>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-        <script src=""> </script>
+        <script src="./js/products.js"> </script>
     </body>
 </html>

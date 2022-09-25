@@ -68,7 +68,11 @@ const displayProducts = async () => {
 
             container.appendChild(clone);
             j ++;
-        })
+
+        });
+
+        adding_ads();
+        delete_product(); 
 
        })
  }
@@ -145,22 +149,23 @@ add_button.addEventListener("click", () => {
 })
 
 // to the ad pop up to show and catch description
-const add_ad = document.querySelectorAll(".add-ad");
-const pop_up_ad = document.getElementById("pop-up-ad");
 
-add_ad.forEach(button => {
-    button.addEventListener("click", () => {
-        pop_up_ad.classList.toggle("hide");
-        const add_ad_description = document.getElementById("submit-ad");
-        add_ad_description.addEventListener("click", () => {
-            const ad_description = document.getElementById("new_ad").value;
-            const ad_main_descriptin = document.getElementById("ad-description");
-            ad_main_descriptin.innerHTML = ad_description;
+const adding_ads = () => {
+    const add_ad = document.querySelectorAll(".add-ad");
+    const pop_up_ad = document.getElementById("pop-up-ad");
+
+    add_ad.forEach(button => {
+        button.addEventListener("click", () => {
             pop_up_ad.classList.toggle("hide");
-        })
-
-}
-)})
+            const add_ad_description = document.getElementById("submit-ad");
+            add_ad_description.addEventListener("click", () => {
+                const ad_description = document.getElementById("new_ad").value;
+                const ad_main_descriptin = document.getElementById("ad-description");
+                ad_main_descriptin.innerHTML = ad_description;
+                pop_up_ad.classList.toggle("hide");
+            })
+    }
+)})}
 
 // to add the discount pop up 
 const add_discount = document.querySelectorAll(".add-discount");
@@ -188,9 +193,10 @@ add_discount.forEach(button => {
 )})
 
 // delete a product 
-const delete_button = document.querySelectorAll(".delete-product");
-console.log(delete_button.length)
-delete_button.forEach(button => {
+const delete_product = () => {
+    const delete_button = document.querySelectorAll(".delete-product");
+    console.log(delete_button.length)
+    delete_button.forEach(button => {
     button.addEventListener("click", () => {
         console.log("delete");
         const product_selected = document.getElementById("product");
@@ -198,3 +204,17 @@ delete_button.forEach(button => {
         product_selected.classList.add("displaynone");
     })
 })
+}
+
+
+/*
+// edit a product 
+const submit_editing = document.getElementById("submit_edit");
+submit_editing.addEventListener("click", () => {
+    const edited_name = document.getElementById("").value;
+    const edited_name = document.getElementById("").value;
+    const edited_name = document.getElementById("").value;
+    const edited_name = document.getElementById("").value;
+
+})
+*/
