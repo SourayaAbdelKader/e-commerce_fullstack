@@ -1,8 +1,19 @@
 const client_id = 6;
-
+const showProductsBtn = document.getElementById("showProducts")
+const productsPageContent = document.getElementById("products");
+const favoritesPageContent = document.getElementById("favorites");
+const wishlistPageContent = document.getElementById("wishlist");
 const productsWrapper = document.getElementById("productsWrapper");
 const getProductApi = "http://localhost/e-commerce_fullstack/backend/get_products.php";
 const addFavouriteApi = "http://localhost/e-commerce_fullstack/backend/add_favorite.php";
+
+
+// showing only product section when clicked in navbar
+showProductsBtn.addEventListener("click",() => {
+  productsPageContent.classList.add("flex")
+  favoritesPageContent.classList.add("hide")
+  wishlistPageContent.classList.add("hide")
+})
 
 // Function getting products as object and appending them to container
 const load_products = (products) =>{
@@ -62,4 +73,7 @@ const get_product = async () => {
   .catch((err) => console.log(err));
 };
 
+// Calling get_product function
 get_product();
+
+
