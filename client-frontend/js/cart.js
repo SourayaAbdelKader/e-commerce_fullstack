@@ -222,6 +222,9 @@ const applyVoucher = () => {
 // submit the cart to checkout
 const checkoutOrder = async () => {
   //get client_id from localStorage: 1 - for testing:
+  const client_id = 1;
+  const total = parseInt(cart_total_show.textContent);
+  const checkout_date = Date.now();
   // first get all Discount codes from my cart local page inputs
   let discount_codes_added = [];
   for (let code of discount_codes) {
@@ -252,6 +255,7 @@ const checkoutOrder = async () => {
   };
   await finalize_order(); //wait till checkout finishes totally then delete discount codes
   // delete all Discount codes that match valid cart local inputs.
+  
 };
 // ------END OF EVENT LISTENER FUNCTIONS------
 
