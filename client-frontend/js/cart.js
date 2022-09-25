@@ -92,17 +92,25 @@ const incrementItemQuantity = (e) => {
   };
   update_cart();
 };
+// apply discount to item's total if found:
+const applyDiscount = (e)=>{
+  console.log('check-discount');
+}
 //add event listener to each html added item:
 const addItemEventListeners = () => {
   const remove_buttons = document.getElementsByClassName("item-remove");
   const decrement_buttons = document.getElementsByClassName("decrement");
   const increment_buttons = document.getElementsByClassName("increment");
+  const discount_codes = document.getElementsByClassName("discount-code");
   for (let remove_button of remove_buttons)
     remove_button.addEventListener("click", removeItem);
   for (let decrement_button of decrement_buttons)
     decrement_button.addEventListener("click", decrementItemQuantity);
   for (let increment_button of increment_buttons)
     increment_button.addEventListener("click", incrementItemQuantity);
+  for (let discount_input of discount_codes){
+    discount_input.addEventListener('input',applyDiscount); //whenever values inside the input changes
+  }
 };
 // ------END OF EVENT LISTENERS FOR EACH ITEM IN CART------
 
