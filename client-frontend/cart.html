@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Cart</title>
+    <link rel="stylesheet" href="./styles/index.css" />
+  </head>
+  <body class="antiquewhite-bg">
+    <!-- START OF CART HTML -->
+    <main class="cart-page">
+      <h1>My Shopping Cart</h1>
+      <!-- START OF CART ITEMS CONTAINER -->
+      <section class="cart-container">
+        <!-- START OF ITEMS TITLES -->
+        <div class="cart-titles blue-bg">
+          <ul class="antiquewhite-text">
+            <li>Remove</li>
+            <li>Description</li>
+            <li>Quantity</li>
+            <li>Price Per Item($)</li>
+            <li>Discount Code</li>
+            <li>Total($)</li>
+          </ul>
+        </div>
+        <!-- END OF ITEMS TITLES -->
+
+        <!-- START OF ITEMS CART PRODUCTS (PUSHED FROM JS - GET CART ITEMS) --> 
+        <div id="cart-items" class="cart-items">
+        </div>
+        <!-- END OF ALL CARTS ITEMS -->
+      </section>
+      <!-- END OF CART CONTAINER -->
+
+      <!-- START OF CHECKOUT SECTION -->
+      <section class="cart-checkout">
+        <p>If you have a voucher code, please enter it here:</p>
+        <div class="checkout-top">
+          <div class="vouchers-total">
+            <input
+              id="voucher-input"
+              class="voucher-code"
+              placeholder="Enter your Voucher Code"
+              type="text"
+            /><button id="voucher-submit" class="voucher-submit cart-btn">
+              Apply Voucher
+            </button>
+          </div>
+          <div class="cart-total antiquewhite-bg blue-text">
+            <label for="cart-total">Total:</label>
+            <div id="cart-total" class="items-total">0</div>
+            $
+          </div>
+        </div>
+        <div class="checkout-bottom">
+          <button id="checkout-submit" class="checkout-submit cart-btn">
+            Checkout
+          </button>
+        </div>
+      </section>
+      <!-- START OF CHECKOUT SECTION -->
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/cart.js"></script>
+  </body>
+</html>
