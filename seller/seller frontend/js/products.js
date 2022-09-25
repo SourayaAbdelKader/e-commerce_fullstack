@@ -92,23 +92,20 @@ const displayProducts = async () => {
             container.appendChild(clone);
 
         };
-
         adding_ads();
         delete_product(); 
         selectedProduct();
         adding_discount();
-        
-        
-       })
- }
+        editSelectedProduct();    
+})};
 
  displayProducts()
 
 // ______ add product _________
-const add_product = document.getElementById("add_product")
-const add_button = document.getElementById("add_button")
+const add_product = document.getElementById("add_product");
+const add_button = document.getElementById("add_product_button");
 
-add_button.addEventListener("click", () => {
+add_button.addEventListener("click", function() {
     add_product.classList.toggle("hide");
     const submit_add = document.getElementById("submit_add")
     submit_add.addEventListener("click", () => {
@@ -119,7 +116,65 @@ add_button.addEventListener("click", () => {
         const main_image = document.getElementById("main_image").value;
         const image1 = document.getElementById("image1").value;
         const image2 = document.getElementById("image2").vallue;
-
+        
+        let div = document.createElement('div');
+        div.append(<div id="" class="product"> 
+        <div class="title section-seperator"> 
+            <p id="product-title"> ${new_name} </p> 
+            <p id="product_id" class="hide displaynone"> </p>
+        </div>
+        <div class="details"> 
+            <div class="description section-seperator"> 
+                <p class="product-subtitle"> ${new_description} </p>
+                <div> <p id="product-description"> </p></div>
+            </div>
+            <div class="price section-seperator">  
+                <p class="product-subtitle"> Price </p>
+                <div> <p id="product-price">  </p></div>
+            </div>
+            <div class="condition section-seperator">  
+                <p class="product-subtitle"> Condition </p>
+                <div> <p id="product-condition">  </p></div>
+            </div>
+            <div class="image section-seperator"> 
+                <p class="product-subtitle"> Images </p>
+                <div class="main_image"> <img id="product-main-image" src=""> </div>
+                <div class="image1"> <img id="product-image1" src=""> </div>
+                <div class="image2"> <img id="product-image2" src=""> </div>
+            </div>
+            <div class="discount section-seperator">
+                <p class="product-subtitle"> Discount </p>
+                <div class="discount-code flex"> 
+                    <p class="underline"> Discount code: </p>
+                    <p id="discount-code"> </p>
+                </div>
+                <div class="discount-percentage flex"> 
+                    <p class="underline"> Discount percentage: </p>
+                    <p id="discount-percentage">  </p>
+                </div>
+                <div class="edit-delete flex">
+                    <div> <button id="add-discount" class="add-discount"> Add </button></div>
+                    <div> <button id="delete-discount"> Delete </button></div>
+                </div>
+            </div>
+            <div class="ads section-seperator">
+                <p class="product-subtitle"> Ad </p>
+                <div>  
+                    <p class="underline"> Description </p>
+                    <p id="ad-description"> </p>
+                </div>
+                <div class="edit-delete flex">
+                    <div> <button  class="add-ad" id="add-ad"> Add </button></div>
+                    <div> <button id="delete-ad"> Delete </button></div>
+                </div>
+            </div>
+        </div>
+        <div class="edit-delete flex">
+            <div> <a href="./edit.html"> <button id="edit-product" class="selected text-white" type="submit"> Edit </button> </a> </div>
+            <div> <button id="delete-product" class="delete-product selected text-white" type="submit"> Delete </button> </div>
+        </div>
+    </div>);
+        /*
         // for the cloning
         const product_title = document.getElementById("product-title");
         const product_description = document.getElementById("product-description");
@@ -144,7 +199,7 @@ add_button.addEventListener("click", () => {
         product_image1.src = image1;
         product_image2.src = image2;
 
-        container.appendChild(clone);
+        container.appendChild(clone);*/
 
         document.getElementById("new_name").value = "";
         document.getElementById("new_description").value = "";
@@ -177,12 +232,14 @@ add_button.addEventListener("click", () => {
 
 // to know which product is selected
 const selectedProduct = () => {
-    const selected_product = document.querySelectorAll(".product")
-    selected_product.forEach((product) => {
-        console.log(product.id)
-        product.addEventListener("click", () =>  {
-            localStorage.setItem("selected_product", product.id);
-        })
+    const selected_products = document.querySelectorAll(".product")
+    console.log(selected_products.length)
+    selected_products.forEach(product => {
+        product.addEventListener("click", function () {
+            const product_id = product;
+            console.log(product_id)
+            localStorage.setItem("selected_product", product_id);
+        });
 })};
 
 
@@ -213,7 +270,6 @@ const receiving_discount = async (id) => {
 })};
 
 
-
 // to the ad pop up to show and catch description
 const adding_ads = () => {
     const add_ad = document.querySelectorAll(".add-ad");
@@ -234,7 +290,7 @@ const adding_ads = () => {
                 const add_ads = async () => {
                     const url = add_ad_url;
                     let params = new URLSearchParams();
-                    params.append("product_id", 3);
+                    params.append("product_id", localStorage["selected_product"]);
                     params.append("description", ad_description);
                     await axios
                       .post(url, params)
@@ -271,7 +327,7 @@ const adding_discount = () => {
                 const add_discount = async () => {
                     const url = add_discount_url;
                     let params = new URLSearchParams();
-                    params.append("product_id", 3);
+                    params.append("product_id", localStorage["selected_product"]);
                     params.append("code", input_code);
                     params.append("percentage", input_percentage);
                     await axios
@@ -287,7 +343,7 @@ const delete_product = () => {
     const delete_button = document.querySelectorAll(".delete-product");
     console.log(delete_button.length)
     delete_button.forEach(button => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", function() {
         console.log("delete");
         const product_selected = document.getElementById("product");
         product_selected.classList.add("hide");
@@ -296,7 +352,7 @@ const delete_product = () => {
         const delete_product_db = async () => {
             const url = add_discount_url;
             let params = new URLSearchParams();
-            params.append("product_id", );
+            params.append("product_id", localStorage["selected_product"]);
             params.append("code", input_code);
             params.append("percentage", input_percentage);
             await axios
@@ -309,38 +365,39 @@ const delete_product = () => {
 })};
 
 
-/*
+
 // edit a product 
-const submit_editing = document.getElementById("submit_edit");
-submit_editing.addEventListener("click", () => {
-    // Variables
-    const edited_name = document.getElementById("edited_name").value;
-    const edited_description = document.getElementById("edited_description").value;
-    const edited_price = document.getElementById("edited_price").value;
-    const edited_condition = document.getElementById("edited_condition").value;
-    const edited_main_image = document.getElementById("upload_main_image");
-    const edited_image1 = document.getElementById("upload_image1");
-    const edited_image2 = document.getElementById("upload_image2");
-    
-    const editProducts = async () => {
-        const url = edit_product_url;
-        let params = new URLSearchParams();
-        params.append("product_id", 1);
-        params.append("title", edited_name);
-        params.append("description", edited_description);
-        params.append("price", edited_price);
-        params.append("condition", edited_condition);
-        params.append("main_image", edited_main_image);
-        params.append("image1", edited_image1);
-        params.append("image2", edited_image2);
+const editSelectedProduct = () => {
+    const submit_editing = document.getElementById("submit_edit_button");
+    submit_editing.addEventListener("click", function () {
+        // Variables
+        const edited_name = document.getElementById("edited_name").value;
+        const edited_description = document.getElementById("edited_description").value;
+        const edited_price = document.getElementById("edited_price").value;
+        const edited_condition = document.getElementById("edited_condition").value;
+        const edited_main_image = document.getElementById("upload_main_image");
+        const edited_image1 = document.getElementById("upload_image1");
+        const edited_image2 = document.getElementById("upload_image2");
         
-        await axios
-          .post(url, params)
-          .then((data) => {
-            console.log(data)})
-    }
-    editProducts();
-});*/
+        const editProducts = async () => {
+            const url = edit_product_url;
+            let params = new URLSearchParams();
+            params.append("product_id", localStorage["selected_product"]);
+            params.append("title", edited_name);
+            params.append("description", edited_description);
+            params.append("price", edited_price);
+            params.append("condition", edited_condition);
+            params.append("main_image", edited_main_image);
+            params.append("image1", edited_image1);
+            params.append("image2", edited_image2);
+            
+            await axios
+            .post(url, params)
+            .then((data) => {
+                console.log(data)})
+        }
+        editProducts();
+})};
 
 const main_image_buttons = document.querySelectorAll(".main_image_input");
 
@@ -353,10 +410,20 @@ main_image_buttons.forEach(element =>{
             let image = reader.result;
             console.log(image);
         });
-        reader.readAsDataURL(file)
 
-    })
-})
+        fetch("http://localhost/twitter-website/backend/photo.php",{
+            method:"POST",
+            body: new URLSearchParams({"base64String":image,"username":localStorage.getItem("email")})
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            let imgURL = `../backend/profile-photos/${localStorage.getItem("email")}.png`
+            console.log(imgURL)
+            profilePhoto.innerHTML = `<img src="${imgURL}" class="profile-pic"/>`
+        })
+        reader.readAsDataURL(file);
+    })})
 
 const image1_buttons = document.querySelectorAll(".image1");
 
