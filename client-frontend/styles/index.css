@@ -1,0 +1,666 @@
+/* ------CSS RESET------ */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+a {
+  color: #355c7b;
+  text-decoration: none;
+}
+li {
+  list-style-type: none;
+}
+h1 {
+  font-size: 70px;
+}
+h2 {
+  font-size: 40px;
+}
+input {
+  border: none;
+}
+::placeholder {
+  color: #355c7b;
+  opacity: 0.4;
+  font-size: 20px;
+  padding-left: 10px;
+}
+p {
+  margin: 10px 0;
+}
+
+/* ------UTILITIES------ */
+.blue-bg {
+  background-color: #355c7b;
+}
+.orange-bg {
+  background-color: #f79106;
+}
+.grey-bg {
+  background-color: #94a9b4;
+}
+.antiquewhite-bg {
+  background-color: #eaeada;
+}
+.blue-text {
+  color: #355c7b;
+}
+.antiquewhite-text {
+  color: #eaeada;
+}
+.grey-text {
+  color: #94a9b4;
+}
+.btn {
+  height: 57px;
+  border-radius: 50px;
+  text-transform: capitalize;
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.btn-lg {
+  width: 350px;
+}
+.btn-md {
+  width: 230px;
+}
+.btn-sm {
+  width: 100px;
+  font-size: 16px;
+  height: 25px;
+  text-transform: uppercase;
+}
+.size-32 {
+  font-size: 32px;
+}
+.input {
+  border-radius: 10px;
+  color: #355c7b;
+  background-color: #eaeada;
+  border: none;
+  width: 100%;
+  margin-bottom: 5px;
+  height: 70px;
+}
+.display-flex {
+  display: flex;
+}
+.danger{
+  border: 1px solid red;
+}
+
+/* ------START OF REGISTER.HTML STYLING------ */
+.main {
+  display: flex;
+  text-align: center;
+  font-weight: bold;
+  height: 100vh;
+}
+.main .logo {
+  width: 350px;
+  height: 290px;
+  margin-bottom: 0;
+}
+
+/* Left Section */
+.left-section {
+  width: 50%;
+}
+.left-section .top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.left-section .register {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  border-bottom: 1px solid #355c7b;
+}
+.left-section .bottom {
+  height: 50%;
+}
+.left-section .bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.left-section .bottom .top {
+  gap: 2em;
+}
+.left-section .bottom .text {
+  text-align: center;
+  font-size: 22px;
+  opacity: 0.8;
+  padding: 0 20px;
+}
+
+/* Right section */
+.right-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  min-height: 100vh;
+}
+.right-section .logo {
+  position: absolute;
+  top: 0;
+}
+.right-section .main-border {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90%;
+  width: 100%;
+  border-top: 1px solid #355c7b;
+  border-bottom: 1px solid #355c7b;
+}
+/* Modal */
+.register-modal {
+  height: 90%;
+  width: 60%;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* login modal */
+.login-content {
+  display: flex;
+  justify-content: center;
+}
+.login-content .middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+  height: 50%;
+  width: 80%;
+}
+
+/* Signup Modal */
+.signup-modal {
+  justify-content: space-evenly;
+  height: 90%;
+  gap: 1em;
+  padding-top: 10px;
+}
+.signup-modal .input {
+  height: 55px;
+  margin-bottom: 10px;
+  width: 80%;
+}
+.signup-modal .input::placeholder {
+  font-size: 18px;
+}
+
+.signup-modal .signup-img {
+  border-radius: 50%;
+  width: 100px;
+  cursor: pointer;
+}
+
+/* Seller login modal */
+.seller-login {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-around;
+  width: 85%;
+}
+.seller-login .input {
+  height: 60px;
+  margin-bottom: 10px;
+}
+.seller-login .input::placeholder {
+  font-size: 18px;
+}
+.seller-login .title {
+  font-size: 35px;
+}
+.right-section .icon {
+  width: 110px;
+  height: 110px;
+}
+/* right section - reset password modal */
+.reset-modal {
+  height: 50%;
+  justify-content: space-around;
+}
+.reset-modal .middle {
+  width: 70%;
+}
+.reset-modal .bottom {
+  display: flex;
+  justify-content: center;
+  max-width: 80%;
+}
+/* Utility - placed at end to overwrite all previous display */
+.display-none {
+  display: none;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 900px) {
+  .mobile-columns {
+    flex-direction: column;
+  }
+  .mobile-width {
+    width: 100%;
+  }
+  .right-section {
+    height: 100%;
+  }
+  .modal-mobile {
+    width: 70%;
+  }
+  .left-section .register {
+    width: 90%;
+  }
+  .register .btn {
+    width: 90%;
+  }
+}
+
+/* ------END OF REGISTER.HTML STYLING------ */
+
+/* ------START OF 'SHOW.HTML' STYLING------ */
+/* main-hero: */
+.main-show {
+  background: #eaeada;
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+  gap: 2em;
+}
+/* main-hero: Left-Images Section */
+.show-item-images {
+  flex-direction: column;
+  width: 40%;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.show-item-images .main-img {
+  width: 90%;
+  height: 70%;
+  border-radius: 21.6px;
+}
+.show-item-images .secondary-images {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 80%;
+  gap:2em;
+}
+.show-item-images .secondary-images img {
+  height: 80%;
+  width:18%;
+  border-radius: 13.63px;
+}
+/* main-hero: Right-item-info Section */
+.show-item-info {
+  width: 55%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 0.5em;
+}
+.show-item-info .name {
+  font-size: 55px;
+}
+.show-item-info .category {
+  font-weight: 500;
+  font-size: 22px;
+}
+.show-item-info img {
+  width: 28px;
+  height: 28px;
+  margin-right: 5px;
+}
+.light-text {
+  font-size: 20px;
+  font-weight: 100;
+}
+.show-item-info .buttons-first {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+}
+.quantity-button {
+  border-radius: 5px;
+  width: 130px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+}
+.quantity-button .change-quantity {
+  width: 15%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid black;
+  cursor: pointer;
+}
+.quantity-button .change-quantity:first-child {
+  border-right: 1px solid black;
+  border-left: none;
+}
+
+.quantity-button .quantity-nb {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+.show-item-info .buttons-second {
+  text-align: end;
+  width: 70%;
+}
+.cart-button {
+  border: none;
+  width: 245px;
+  height: 40px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+.show-item-info .buttons-second{
+  display: flex;
+  justify-content: flex-end;
+}
+.show-item-info .buttons-second  .fav-button {
+  width: 120px;
+  height:35px;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  border: none;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+  margin-left: 5px;
+}
+.show-item-info .buttons-second  .fav-button img{
+  margin-right: 5px;
+}
+.show-item-info .buttons-second img {
+  width: 22px;
+  height: 22px;
+  margin-bottom: 2px;
+}
+
+/* Description and seller info section */
+
+.description-section{
+  min-height: 200px;
+  border-top: 2px solid #94a9b4;
+  border-bottom: 2px solid #94a9b4;
+}
+.description-section .buttons{
+  width:60%;
+  display: flex;
+  justify-content: space-around;
+  height:35px;
+}
+.description-section .buttons button{
+  margin: 0;
+  width:25%;
+  border: none;
+  font-size: 18px;
+  border-radius: 2px;
+  background-color: transparent;
+  border: 2px solid #94a9b4;
+  border-top: none;
+}
+.description-section .buttons button:hover{
+  cursor: pointer;
+}
+.description-section .description{
+  padding: 20px 0;
+  width:50%;
+  margin-left: 35px;
+  font-size:20px;
+  line-height: 25px;
+}
+.bold{
+  font-weight: bold;
+}
+.upper{
+  text-transform: uppercase;
+}
+/* ------END OF 'SHOW.HTML' STYLING------ */
+
+/* ------START OF PROFILE.HTML STYLING-------- */
+/* Start of left profile Section styling */
+.main-profile {
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+}
+.main-profile img {
+  border-radius: 50%;
+}
+.main-profile .left-profile {
+  padding: 20px;
+  width: 40%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+.main-profile .left-profile .edit-button {
+  text-transform: uppercase;
+  box-shadow: 0px 6px 18px -5px rgba(237, 103, 85, 1);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 150px;
+  padding: 14px;
+  font-size: 18px;
+}
+.main-profile .left-profile img {
+  width: 200px;
+}
+.main-profile .left-profile .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+.main-profile .left-profile .top-left {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.main-profile .left-profile .top-left h2 {
+  margin-top: 10px;
+  color: #355c7b;
+  text-transform: uppercase;
+  font-size: 30px;
+  margin-top: 20px;
+}
+.main-profile .left-profile .user-bio {
+  font-size: 20px;
+  line-height: 40px;
+  width: 80%;
+  margin-top: 20px;
+}
+/* End of left profile Section styling */
+
+/* Start of right profile section styling (messages-section) */
+.main-profile .main-messages {
+  margin-top: 20px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  padding: 20px;
+  width: 40%;
+  overflow: scroll;
+  border-radius: 20px;
+}
+.main-messages .chat-boxes {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 500px;
+}
+.main-profile .main-messages h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.main-messages .chat img {
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+}
+.main-messages .single-chat {
+  width: 80%;
+  height: 200px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #355c7b;
+  border-radius: 10px;
+  margin: 8px 0;
+  font-weight: 550;
+  background-color: #94a9b451;
+}
+.main-messages .chat {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+.main-messages .single-chat .reply-button {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.main-messages .chat .shop-name {
+  width: 60%;
+  font-size: 18px;
+}
+.main-messages .chat .date {
+  width: 75%;
+  text-align: end;
+}
+/* End of right profile section styling (messages-section) */
+
+/* Start of Message Reply Modal */
+.reply-content {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+  border-radius: 20px;
+  padding: 30px 30px 70px;
+  position: fixed;
+  top: 25%;
+  left: 40%;
+}
+.reply-content button.close {
+  width: 30px;
+  font-size: 20px;
+  color: #c0c5cb;
+  align-self: flex-end;
+  background-color: transparent;
+  border: none;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.reply-content .reply-message {
+  height: 50px;
+  width: 80%;
+  margin-bottom: 20px;
+}
+.reply-content img {
+  width: 82px;
+  margin-bottom: 15px;
+}
+p {
+  margin-bottom: 40px;
+  font-size: 18px;
+}
+button.send {
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+  padding: 14px;
+  font-size: 16px;
+  color: white;
+  box-shadow: 0px 6px 18px -5px rgba(237, 103, 85, 1);
+  cursor: pointer;
+}
+.disable-pointer {
+  pointer-events: none;
+}
+/* START OF MEDIA QUERIES FOR REPLY MESSAGE */
+
+/* END MEDIA QUERIES FOR REPLY MESSAGE */
+@media only screen and (max-width: 900px) {
+  .reply-content {
+    left: 30%;
+  }
+}
+/* End of Message Reply Modal */
+
+/* Edit Profile modal */
+.edit-profile-popup img {
+  cursor: pointer;
+}
+.edit-profile-popup .reply-message {
+  font-size: 20px;
+}
+.edit-profile-popup .profile-new-name {
+  text-transform: uppercase;
+}
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+}
+
+/* Profile HTML MEDIA QUERIES */
+@media only screen and (max-width: 900px) {
+  .main-profile {
+    flex-direction: column;
+    align-items: center;
+  }
+  .main-profile .left-profile {
+    width: 80%;
+  }
+  .main-profile .main-messages {
+    width: 80%;
+  }
+}
+/* End of Profile HTML MEDIA QUERIES */
+
+/* ------START OF PROFILE.HTML STYLING------ */

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAR & CLOSE</title>
+    <link
+      class="icon"
+      rel="icon"
+      type="image/x-icon"
+      href="assets/only_logo.png"
+    />
+    <link rel="stylesheet" href="./styles/index.css" />
+  </head>
+  <body>
+    <main class="main mobile-columns">
+      <!-- START OF LEFT SECTION -->
+      <section class="left-section blue-text orange-bg mobile-width">
+        <!-- Start of Top-left  -->
+        <div class="top">
+          <img class="logo" src="./assets/logo_withname.png" />
+          <div class="register">
+            <div class="sign-up">
+              <p class="blue-text size-32">New User</p>
+              <div id="signup-btn">
+              <button
+                class="btn btn-md blue-text antiquewhite-bg"
+              >
+                Sign Up
+              </button>
+              </div>
+            </div>
+            <div class="login">
+              <p class="blue-text size-32">Already have an account?</p>
+              <button
+                id="login-btn"
+                class="btn btn-md blue-text antiquewhite-bg"
+              >
+                Login
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- End of Top-left  -->
+        <!-- Start of Bottom-left -->
+        <div class="bottom">
+          <div class="top">
+            <p class="blue-text size-32">Sell on FAR & CLOSE</p>
+            <button
+              id="login-seller-btn"
+              class="btn btn-lg blue-text antiquewhite-bg"
+            >
+              Login
+            </button>
+          </div>
+          <p class="blue-text text">
+            Publish the item you want, in the way you want, and always have
+            control of your own content.
+          </p>
+        </div>
+        <!-- End of Bottom-left  -->
+      </section>
+      <!-- END OF LEFT-SECTION -->
+
+      <!-- START OF RIGHT SECTION -->
+      <section class="right-section antiquewhite-bg mobile-width">
+        <div class="main-border">
+          <!-- Start of login-modal (shown by default)-->
+          <div
+            id="login-modal"
+            class="register-modal login-content modal-mobile antiquewhite-text grey-bg"
+          >
+            <h2 class="antiquewhite-text">Login</h2>
+            <div class="middle">
+              <input
+                id="login-client-email"
+                class="input"
+                type="text"
+                placeholder="Email"
+              />
+              <input
+                id="login-client-password"
+                class="input"
+                type="password"
+                placeholder="Password"
+              />
+            </div>
+            <div class="bottom">
+              <button
+                id="login-submit"
+                class="btn btn-lg antiquewhite-bg blue-text"
+              >
+                Login
+              </button>
+              <button class="btn btn-md" id="reset-password-show">
+                Forgot Password?
+              </button>
+            </div>
+          </div>
+          <!-- End of User login-modal-->
+
+          <!-- User Reset Password Modal -->
+          <div
+            id="reset-password-modal"
+            class="display-none register-modal reset-modal modal-mobile antiquewhite-text grey-bg"
+          >
+            <h2 class="antiquewhite-text">Reset Password</h2>
+            <div class="middle">
+              <input
+                id="reset-email"
+                class="input"
+                type="email"
+                placeholder="Email"
+              />
+            </div>
+            <div class="bottom">
+              <button
+                id="reset-submit"
+                class="btn btn-lg antiquewhite-bg blue-text"
+              >
+                Send Code to email
+              </button>
+            </div>
+          </div>
+
+          <!-- Start of password update password modal: -->
+          <div
+            id="new-password-modal"
+            class="display-none register-modal reset-modal modal-mobile antiquewhite-text grey-bg"
+          >
+            <h2 class="antiquewhite-text">New Password</h2>
+            <div class="middle">
+              <input
+                id="new-password-data"
+                class="input"
+                type="password"
+                placeholder="New Password (Check your email)"
+              />
+            </div>
+            <div class="bottom">
+              <button
+                id="new-password-submit"
+                class="btn btn-lg antiquewhite-bg blue-text"
+              >
+                Update Your Password
+              </button>
+            </div>
+          </div>
+          <!-- End of password update password modal: -->
+
+          <!-- Start of User Signup-modal (hidden by default)-->
+          <div
+            id="signup-modal"
+            class="display-none register-modal modal-mobile signup-modal antiquewhite-text grey-bg display-none"
+          >
+            <h2 class="antiquewhite-text">Sign Up</h2>
+            <div class="middle">
+              <input
+                class="input"
+                id="signup-name"
+                type="text"
+                placeholder="Name"
+              />
+              <input
+                class="input"
+                id="signup-email"
+                type="email"
+                placeholder="Email"
+              />
+              <input
+                class="input"
+                id="signup-phone"
+                type="text"
+                placeholder="Phone Number"
+              />
+              <input
+                id="signup-password"
+                class="input"
+                type="password"
+                placeholder="Password"
+              />
+            </div>
+            <div class="img-section">
+              <label for="signup-imgurl">
+                <img
+                  id="signup-img"
+                  class="signup-img"
+                  src="./assets/icons8-customer-96.png"
+                />
+              </label>
+              <input
+                type="file"
+                id="signup-imgurl"
+                accept="image/*"
+                class="display-none"
+              />
+            </div>
+            <div class="bottom">
+              <button
+                id="signup-submit"
+                class="btn btn-lg antiquewhite-bg blue-text"
+              >
+                SignUp
+              </button>
+            </div>
+          </div>
+          <!-- End of User-register modal -->
+
+          <!-- Start of Seller login-modal (hidden by default) -->
+          <div
+            id="login-seller-modal"
+            class="display-none register-modal modal-mobile antiquewhite-text grey-bg"
+          >
+            <div class="seller-login">
+              <h2 class="title antiquewhite-text">
+                Reach Your Customers All Around The World
+              </h2>
+              <div class="img-section">
+                <img class="icon" src="./assets/icons8-seller-64.png" />
+              </div>
+              <div class="middle">
+                <input
+                  id="login-seller-email"
+                  class="input"
+                  type="text"
+                  placeholder="Seller Email"
+                />
+                <input
+                  id="login-seller-password"
+                  class="input"
+                  type="password"
+                  placeholder="Seller Password"
+                />
+              </div>
+              <div class="bottom">
+                <button
+                  id="login-seller-submit"
+                  class="btn btn-lg antiquewhite-bg blue-text"
+                >
+                  Login
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- End of Seller login-modal (hidden by default) -->
+        </div>
+      </section>
+      <!-- END OF RIGHT SECTION -->
+
+      <!-- SELLER LOGIN MODAL  -->
+      <!--  -->
+      <!--  -->
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/register.js"></script>
+  </body>
+</html>

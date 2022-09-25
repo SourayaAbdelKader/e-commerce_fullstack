@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="./styles/index.css" />
+  </head>
+  <body class="profile-html antiquewhite-bg">
+    <section id="profile-html">
+      <!-- Start of navbar -->
+      <nav></nav>
+      <!-- End of navbar -->
+
+      <!-- Start of main Section -->
+      <main class="main-profile antiquewhite-bg">
+        <!-- Start of left main section -->
+        <section class="left-profile">
+          <div class="top">
+            <div class="top-left">
+              <img id="profile-img" src="./assets/dummy-profile.png" />
+              <h2 id="profile-name" class="orange-text">Souraya Abdel Sater</h2>
+            </div>
+            <button id="edit-profile-button" class="edit-button btn orange-bg">
+              Edit
+            </button>
+          </div>
+          <p id="profile-bio" class="user-bio">
+            <i class="grey-text">NO BIO YET</i>
+          </p>
+        </section>
+        <!-- End of left main section -->
+
+        <!-- Start of right main section -->
+        <div class="main-messages">
+          <h2>Messages</h2>
+          <div id="chat-main-box" class="chat-boxes">
+            
+          </div>
+        </div>
+        <!-- End of right main section -->
+      </main>
+      <!-- End of main Section -->
+    </section>
+
+    <!-- Start Of Single message/main chat Section -->
+    <section id="reply-popup" class="reply-popup">
+      <div class="reply-content">
+        <button id="close-reply-popup" class="close">✖</button>
+        <img src="./assets/icons8-mail-64.png" />
+        <input
+          id="reply-message"
+          class="reply-message"
+          type="text"
+          placeholder="Write your reply"
+        />
+        <button id="reply-submit" class="send orange-bg">Send!</button>
+        <input type="hidden" id="new-receiver-id" value="">
+      </div>
+    </section>
+    <!-- End Of Single message/main chat Section -->
+
+    <!-- Start of Edit Profile popup Modal -->
+    <section
+      id="edit-profile-popup"
+      class="display-none edit-profile-popup reply-popup"
+    >
+      <div class="reply-content">
+        <button id="close-profile-popup" class="close">✖</button>
+        <div class="img-section">
+          <label for="edit-profile-imgurl">
+            <img
+              id="edit-profile-new-img"
+              src="./assets/icons8-customer-96.png"
+            />
+          </label>
+          <input
+            type="file"
+            id="edit-profile-imgurl"
+            accept="image/*"
+            class="display-none"
+          />
+        </div>
+        <input
+          id="profile-new-name"
+          class="reply-message profile-new-name blue-text"
+          type="text"
+          placeholder="Name"
+        />
+        <input
+          id="profile-new-bio"
+          class="reply-message blue-text"
+          type="text"
+          placeholder="No Bio Yet"
+        />
+        <button id="edit-profile-submit" class="send orange-bg">Update!</button>
+      </div>
+    </section>
+    <!-- End of Edit Profile popup Modal -->
+
+    <!-- Start of footer section -->
+    <footer></footer>
+    <!-- End of footer section -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/profile.js"></script>
+  </body>
+</html>
