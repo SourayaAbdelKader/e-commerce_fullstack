@@ -16,7 +16,6 @@ $main_image = $_POST["main_image"];
 $image1 = $_POST["image1"];
 $image2 = $_POST["image2"];
 
-//INSERT INTO `products` (`id`, `title`, `description`, `price`, `main_image`, `categorie_id`, `image1`, `image2`, `condition`) VALUES ('4', 'baba', 'haha', '52', '\"\"', '1', '\"\"', '\"\"', 'crying');
 $query = $mysqli -> prepare("INSERT INTO products (title, description, price, main_image, categorie_id, image1, image2, `condition`) VALUE (?, ?, ?, ?, ?, ?, ?, ?)") ;
 
 $query->bind_param('ssssssss', $name,  $description, $price, $main_image, $id, $image1, $image2, $condition );

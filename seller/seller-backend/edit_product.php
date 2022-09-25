@@ -21,10 +21,10 @@ SET
     title = ?,
     description = ?,
     price = ?,
-    condition = ?,
+    `condition` = ?,
     main_image = ?,
     image1 = ?,
-    image2 = ?,
+    image2 = ?
 WHERE
     id = ? ");
 $query->bind_param('ssssssss', $title, $description, $price, $condition, $main_image, $image1, $image2, $id);

@@ -41,12 +41,10 @@ const displayCategoryTitle = async () => {
     await axios
       .post(url, params)
       .then((data) => {
-        console.log("hi")
         data.data.forEach(element =>{
             if (element.id == localStorage["selected_category"]) { 
                 const title = document.getElementById("category_title");
-                title.innerHTML = element.name;
-                console.log(element.name)}
+                title.innerHTML = element.name;}
 })})}
         
 
@@ -61,12 +59,8 @@ const displayProducts = async () => {
         await axios
           .post(url, params)
           .then((data) => {
-            console.log(data)
-            console.log(data.data)
-            console.log(data.data.length)
             
             for (let element of data.data){
-                console.log(element)
             const product_title = document.getElementById("product-title");
             const product_description = document.getElementById("product-description");
             const product_price = document.getElementById("product-price");
@@ -125,7 +119,6 @@ add_button.addEventListener("click", () => {
         const main_image = document.getElementById("main_image").value;
         const image1 = document.getElementById("image1").value;
         const image2 = document.getElementById("image2").vallue;
-        console.log(new_name)
 
         // for the cloning
         const product_title = document.getElementById("product-title");
@@ -189,7 +182,6 @@ const selectedProduct = () => {
         console.log(product.id)
         product.addEventListener("click", () =>  {
             localStorage.setItem("selected_product", product.id);
-            console.log(product.id)
         })
 })};
 
@@ -202,8 +194,6 @@ const receiving_ad = async (id) => {
     await axios
       .post(url, params)
       .then((data) => {
-        console.log("ad");
-        console.log(data.data[0]);
         const display_description = document.getElementById("ad-description");
         display_description.innerHTML = data.data[0].description;     
 })};
@@ -216,8 +206,6 @@ const receiving_discount = async (id) => {
     await axios
       .post(url, params)
       .then((data) => {
-        console.log("discount");
-        console.log(data.data[0]);
         const display_code = document.getElementById("discount-code");
         const display_percentage = document.getElementById("discount-percentage");
         display_code.innerHTML = data.data[0].code; 
@@ -321,7 +309,7 @@ const delete_product = () => {
 })};
 
 
-
+/*
 // edit a product 
 const submit_editing = document.getElementById("submit_edit");
 submit_editing.addEventListener("click", () => {
@@ -330,14 +318,14 @@ submit_editing.addEventListener("click", () => {
     const edited_description = document.getElementById("edited_description").value;
     const edited_price = document.getElementById("edited_price").value;
     const edited_condition = document.getElementById("edited_condition").value;
-    const edited_main_image = document.getElementById("upload_main_image").value;
-    const edited_image1 = document.getElementById("upload_image1").value;
-    const edited_image2 = document.getElementById("upload_image2").value;
+    const edited_main_image = document.getElementById("upload_main_image");
+    const edited_image1 = document.getElementById("upload_image1");
+    const edited_image2 = document.getElementById("upload_image2");
     
     const editProducts = async () => {
         const url = edit_product_url;
         let params = new URLSearchParams();
-        params.append("product_id", iproduct_id);
+        params.append("product_id", 1);
         params.append("title", edited_name);
         params.append("description", edited_description);
         params.append("price", edited_price);
@@ -352,12 +340,20 @@ submit_editing.addEventListener("click", () => {
             console.log(data)})
     }
     editProducts();
-})
+});*/
 
-const main_image_buttons = document.querySelectorAll(".main_image");
+const main_image_buttons = document.querySelectorAll(".main_image_input");
 
 main_image_buttons.forEach(element =>{ 
-    element.addEventListener("click", () => {
+    element.addEventListener("change", e => {
+        const reader = new FileReader();
+        let file = element.files[0];
+        console.log(file);
+        reader.addEventListener("load", () => {
+            let image = reader.result;
+            console.log(image);
+        });
+        reader.readAsDataURL(file)
 
     })
 })
@@ -365,7 +361,7 @@ main_image_buttons.forEach(element =>{
 const image1_buttons = document.querySelectorAll(".image1");
 
 image1_buttons.forEach(element =>{ 
-    element.addEventListener("click", () => {
+    element.addEventListener("change", () => {
         
     })
 })
@@ -373,7 +369,7 @@ image1_buttons.forEach(element =>{
 const image2_buttons = document.querySelectorAll(".image2");
 
 image2_buttons.forEach(element =>{ 
-    element.addEventListener("click", () => {
+    element.addEventListener("change", () => {
         
     })
 })
