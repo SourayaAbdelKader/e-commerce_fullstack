@@ -26,7 +26,8 @@ var base64profile;
 const messages_container = document.getElementById("chat-main-box");
 //navbar links:
 const go_to_cart_button = document.getElementById('go-to-cart-button');
-const signout_button = document.getElementById('signout-button');
+const back_to_products = document.getElementById('back-to-products');
+const signout_button = document.getElementById("signout-button");
 
 // -----START OF FUNCTIONS---------//
 // show image and save url (signup)
@@ -261,6 +262,9 @@ signout_button.addEventListener("click", () => {
   localStorage.clear();
   window.location.href = "./register.html";
 });
+back_to_products.addEventListener('click',()=>{
+  window.location.href = "./products.html";
+})
 // --------END OF EVENT LISTENERS-------------
 
 
