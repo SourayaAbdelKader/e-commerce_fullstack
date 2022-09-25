@@ -45,6 +45,13 @@ showWishlistBtn.addEventListener("click",() => {
     laod_wishlist();
 })
 
+// Function generating a random integer between the 2 passed integer parameters
+function randomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
 // Function getting products as object and appending them to a wrapper
 const load_products = (products,wrapper) =>{
   if(products.length != 0){
