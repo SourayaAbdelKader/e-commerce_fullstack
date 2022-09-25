@@ -47,7 +47,7 @@ const getShopInfo = async () => {
         shop_location.innerHTML = data.data[0].shop_location;
         shop_phone.innerHTML = data.data[0].phone_number;
         shop_mail.innerHTML = data.data[0].email;
-        shop_description.innerHTML = data.data[0].shop_description;
+        shop_description.innerHTML = data.data[0].bio;
         shop_image.src = data.data[0].image_url;
         console.log(data.data[0].id);
       })    

@@ -306,6 +306,8 @@ const delete_product = () => {
               .post(url, params)
               .then((data) => {
                 console.log(data)})};
+
+        delete_product_db();
     })
 })
 }
