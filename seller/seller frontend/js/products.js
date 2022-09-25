@@ -61,35 +61,69 @@ const displayProducts = async () => {
           .then((data) => {
             
             for (let element of data.data){
-            const product_title = document.getElementById("product-title");
-            const product_description = document.getElementById("product-description");
-            const product_price = document.getElementById("product-price");
-            const product_condition = document.getElementById("product-condition");
-            const product_mainimage = document.getElementById("product-main-image");
-            const product_image1 = document.getElementById("product-image1");
-            const product_image2 = document.getElementById("product-image2");
-            const product_id = document.getElementById("product_id")
-
+                console.log(element.id)
+            
             const container = document.getElementById("products");
-            const div = document.getElementById("product");
-            const clone = div.cloneNode(true);
-            product_id.innerHTML = element.id;
-            (console.log(product_id.innerHTML));
-
-            product_title.innerHTML = element.title;
-            product_description.innerHTML = element.description;
-            product_price.innerHTML = element.price;
-            product_condition.innerHTML = element.condition;
-            product_mainimage.src = element.main_image;
-            product_image1.src = element.image1;
-            product_image2.src = element.image2;
-
-            receiving_ad(element.id);
-            receiving_discount(element.id);
-
-            // adding the ad to the product 
-
-            container.appendChild(clone);
+            let div = document.createElement('div');
+            div.innerHTML = `<div id="" class="product"> 
+            <div class="title section-seperator"> 
+                <p id="${element.id}"> ${element.title} </p> 
+                <p id="product_id" class="hide displaynone"> ${element.id} </p>
+            </div>
+            <div class="details"> 
+                <div class="description section-seperator"> 
+                    <p class="product-subtitle"> Description </p>
+                    <div> <p id="product-description"> ${element.description} </p></div>
+                </div>
+                <div class="price section-seperator">  
+                    <p class="product-subtitle"> Price </p>
+                    <div> <p id="product-price"> ${element.price} </p></div>
+                </div>
+                <div class="condition section-seperator">  
+                    <p class="product-subtitle"> Condition </p>
+                    <div> <p id="product-condition"> ${element.conditon}  </p></div>
+                </div>
+                <div class="image section-seperator"> 
+                    <p class="product-subtitle"> Images </p>
+                    <div class="main_image"> <img id="product-main-image" src= ${element.main_image}> </div>
+                    <div class="image1"> <img id="product-image1" src=${element.image1}> </div>
+                    <div class="image2"> <img id="product-image2" src=${element.image2}> </div>
+                </div>
+                <div class="discount section-seperator">
+                    <p class="product-subtitle"> Discount </p>
+                    <div class="discount-code flex"> 
+                        <p class="underline"> Discount code: </p>
+                        <p id="discount-code"> </p>
+                    </div>
+                    <div class="discount-percentage flex"> 
+                        <p class="underline"> Discount percentage: </p>
+                        <p id="discount-percentage">  </p>
+                    </div>
+                    <div class="edit-delete flex">
+                        <div> <button id="add-discount" class="add-discount"> Add </button></div>
+                        <div> <button id="delete-discount"> Delete </button></div>
+                    </div>
+                </div>
+                <div class="ads section-seperator">
+                    <p class="product-subtitle"> Ad </p>
+                    <div>  
+                        <p class="underline"> Description </p>
+                        <p id="ad-description"> </p>
+                    </div>
+                    <div class="edit-delete flex">
+                        <div> <button  class="add-ad" id="add-ad"> Add </button></div>
+                        <div> <button id="delete-ad"> Delete </button></div>
+                    </div>
+                </div>
+            </div>
+            <div class="edit-delete flex">
+                <div> <a href="./edit.html"> <button id="edit-product" class="selected text-white" type="submit"> Edit </button> </a> </div>
+                <div> <button id="delete-product" class="delete-product selected text-white" type="submit"> Delete </button> </div>
+            </div>
+        </div>`;
+        container.appendChild(div);
+        receiving_ad(element.id);
+        receiving_discount(element.id);
 
         };
         adding_ads();
@@ -113,34 +147,36 @@ add_button.addEventListener("click", function() {
         const new_description = document.getElementById("new_description").value;
         const new_price = document.getElementById("new_price").value;
         const new_conditon = document.getElementById("new_condition").value;
-        const main_image = document.getElementById("main_image").value;
-        const image1 = document.getElementById("image1").value;
-        const image2 = document.getElementById("image2").vallue;
-        
+        const main_image = document.getElementById("main_image");
+        const image1 = document.getElementById("image1");
+        const image2 = document.getElementById("image2");
+
+
+        const container = document.getElementById("products");
         let div = document.createElement('div');
-        div.append(<div id="" class="product"> 
+        div.innerHTML = `<div id="" class="product"> 
         <div class="title section-seperator"> 
             <p id="product-title"> ${new_name} </p> 
             <p id="product_id" class="hide displaynone"> </p>
         </div>
         <div class="details"> 
             <div class="description section-seperator"> 
-                <p class="product-subtitle"> ${new_description} </p>
-                <div> <p id="product-description"> </p></div>
+                <p class="product-subtitle"> Description </p>
+                <div> <p id="product-description"> ${new_description} </p></div>
             </div>
             <div class="price section-seperator">  
                 <p class="product-subtitle"> Price </p>
-                <div> <p id="product-price">  </p></div>
+                <div> <p id="product-price"> ${new_price} </p></div>
             </div>
             <div class="condition section-seperator">  
                 <p class="product-subtitle"> Condition </p>
-                <div> <p id="product-condition">  </p></div>
+                <div> <p id="product-condition"> ${new_conditon}  </p></div>
             </div>
             <div class="image section-seperator"> 
                 <p class="product-subtitle"> Images </p>
-                <div class="main_image"> <img id="product-main-image" src=""> </div>
-                <div class="image1"> <img id="product-image1" src=""> </div>
-                <div class="image2"> <img id="product-image2" src=""> </div>
+                <div class="main_image"> <img id="product-main-image" src= ${main_image}> </div>
+                <div class="image1"> <img id="product-image1" src=${image1}> </div>
+                <div class="image2"> <img id="product-image2" src=${image2}> </div>
             </div>
             <div class="discount section-seperator">
                 <p class="product-subtitle"> Discount </p>
@@ -161,7 +197,7 @@ add_button.addEventListener("click", function() {
                 <p class="product-subtitle"> Ad </p>
                 <div>  
                     <p class="underline"> Description </p>
-                    <p id="ad-description"> </p>
+                    <p id="ad-description" class="ad_decsription" > </p>
                 </div>
                 <div class="edit-delete flex">
                     <div> <button  class="add-ad" id="add-ad"> Add </button></div>
@@ -173,33 +209,8 @@ add_button.addEventListener("click", function() {
             <div> <a href="./edit.html"> <button id="edit-product" class="selected text-white" type="submit"> Edit </button> </a> </div>
             <div> <button id="delete-product" class="delete-product selected text-white" type="submit"> Delete </button> </div>
         </div>
-    </div>);
-        /*
-        // for the cloning
-        const product_title = document.getElementById("product-title");
-        const product_description = document.getElementById("product-description");
-        const product_price = document.getElementById("product-price");
-        const product_condition = document.getElementById("product-condition");
-        const product_mainimage = document.getElementById("product-main-image");
-        const product_image1 = document.getElementById("product-image1");
-        const product_image2 = document.getElementById("product-image2");
-            
-        const container = document.getElementById("products");
-        const div = document.getElementById("product");
-        const clone = div.cloneNode(true);
-        clone.classList.add("product");
-        clone.classList.add("show");
-        clone.classList.remove("displaynone")
-                
-        product_title.innerHTML = new_name;
-        product_description.innerHTML = new_description;
-        product_price.innerHTML = new_price;
-        product_condition.innerHTML = new_conditon;
-        product_mainimage.src = main_image;
-        product_image1.src = image1;
-        product_image2.src = image2;
-
-        container.appendChild(clone);*/
+    </div>`;
+    container.appendChild(div);
 
         document.getElementById("new_name").value = "";
         document.getElementById("new_description").value = "";
@@ -236,9 +247,10 @@ const selectedProduct = () => {
     console.log(selected_products.length)
     selected_products.forEach(product => {
         product.addEventListener("click", function () {
-            const product_id = product;
-            console.log(product_id)
-            localStorage.setItem("selected_product", product_id);
+            childDiv = product.getElementsByTagName('p')[0],
+            console.log(childDiv.id);
+            localStorage.setItem("selected_product", childDiv.id);
+            console.log(localStorage["selected_product"])
         });
 })};
 
@@ -278,7 +290,9 @@ const adding_ads = () => {
     add_ad.forEach(button => {
         button.addEventListener("click", () => {
             pop_up_ad.classList.toggle("hide");
+        
             const add_ad_description = document.getElementById("submit-ad");
+            
             add_ad_description.addEventListener("click", () => {
                 const ad_description = document.getElementById("new_ad").value;
                 const ad_main_descriptin = document.getElementById("ad-description");
