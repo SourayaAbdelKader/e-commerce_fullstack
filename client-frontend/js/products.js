@@ -46,6 +46,7 @@ showWishlistBtn.addEventListener("click",() => {
 
 // Function getting products as object and appending them to a wrapper
 const load_products = (products,wrapper) =>{
+  if(products.length != 0){
   products.forEach(product => {
       // add seller name
       wrapper.innerHTML+=`<div class="productCard grey-bg">
@@ -60,7 +61,10 @@ const load_products = (products,wrapper) =>{
                                           </div>
                                       </div>
                                   </div>`
-  });
+  })
+} else{
+  wrapper.innerHTML = "<p>No Results</p>"
+}
 }
 
 // function that adds to all like icons an event listner for fetching in a later function
@@ -137,6 +141,13 @@ const get_search_result = async (key) => {
     productsPageContent.classList.add("hide");
     searchResultPageContent.classList.remove("hide");
     load_products(searchResult,searchResultWrapper)
+
+    let back = document.getElementById("backSearch");
+    back.addEventListener("click", () => {
+      searchResultWrapper.innerHTML = "";
+      productsPageContent.classList.remove("hide");
+      searchResultPageContent.classList.add("hide");
+    })
   })
 }
 
