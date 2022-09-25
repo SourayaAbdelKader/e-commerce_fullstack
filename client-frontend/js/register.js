@@ -33,7 +33,8 @@ var base64string_profile;
 
 const checkUser = () => {
   const user = localStorage.getItem("user");
-  if (user) window.location.href = "./products.html";
+  if (user.user_type == "client") window.location.href = "./products.html";
+  // else window.location.href = './'
 };
 // show image and save url (signup)
 function uploadImage() {
