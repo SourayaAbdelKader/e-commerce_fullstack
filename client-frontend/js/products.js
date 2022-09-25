@@ -18,32 +18,6 @@ const getWishlistApi = "http://localhost/e-commerce_fullstack/backend/get_wishli
 const searchApi = "http://localhost/e-commerce_fullstack/backend/search.php";
 const getAdsApi = "http://localhost/e-commerce_fullstack/backend/get_ads.php";
 
-// showing only product section when clicked in navbar
-showProductsBtn.addEventListener("click",() => {
-  productsPageContent.classList.remove("hide")
-  favoritesPageContent.classList.add("hide")
-  wishlistPageContent.classList.add("hide")
-})
-
-// showing only favorites section when clicked in navbar
-showFavoritesBtn.addEventListener("click",() => {
-  productsPageContent.classList.add("hide")
-  favoritesPageContent.classList.remove("hide")
-  wishlistPageContent.classList.add("hide")
-
-  // Calling load_favorites function to show favorite products
-  laod_favorites();
-})
-
-// showing only favorites section when clicked in navbar
-showWishlistBtn.addEventListener("click",() => {
-  productsPageContent.classList.add("hide")
-  favoritesPageContent.classList.add("hide")
-  wishlistPageContent.classList.remove("hide")
-
-    // Calling load_wishlist function to show wishlist products
-    laod_wishlist();
-})
 
 // Function generating a random integer between the 2 passed integer parameters
 function random_int(min, max) {
@@ -73,7 +47,26 @@ const load_products = (products,wrapper) =>{
 } else{
   //if passed parameter is empty
   wrapper.innerHTML = "<p>No Results</p>"
+  }
 }
+
+
+const load_ad = (ad) => {
+  adContainer.innerHTML =`<div class="productAdImage">
+                            <div class="fade">
+                                <img src="../../backend/${ad.main_image}" alt="Ad Image">
+                            </div>
+                          </div>
+                          <div class="adInfo flex column antiquewhite-text">
+                            <div class="adSeller">
+                                <h1>${ad.title}</h1>
+                                <p>${ad.ads_description}</p>
+                            </div>
+                            <div class="AdView">
+                                <p>Price: <span>${ad.price}$</span></p>
+                                <button class="btn antiquewhite-text grey-bg">View</button>
+                            </div>
+                          </div>`
 }
 
 // function that adds to all like icons an event listner for fetching in a later function
@@ -167,11 +160,10 @@ const get_ads = async () => {
   .then((data) => {
     let ads = data.data;
     let random = random_int(0,ads.length);
-    console.log(ads[random])
+    load_ad(ads[random])
   })
   .catch((err) => console.log(err));
 }
-get_ads()
 
 
 // Sending the search key to get_search_result function on change
@@ -179,5 +171,38 @@ searchBar.addEventListener("change", () => {
   get_search_result(searchBar.value)
 })
 
+// Showing only product section when clicked in navbar
+showProductsBtn.addEventListener("click",() => {
+  productsPageContent.classList.remove("hide")
+  favoritesPageContent.classList.add("hide")
+  wishlistPageContent.classList.add("hide")
+
+  //Calling for a new random ad
+  get_ads()
+})
+
+// Showing only favorites section when clicked in navbar
+showFavoritesBtn.addEventListener("click",() => {
+  productsPageContent.classList.add("hide")
+  favoritesPageContent.classList.remove("hide")
+  wishlistPageContent.classList.add("hide")
+
+  // Calling load_favorites function to show favorite products
+  laod_favorites();
+})
+
+// showing only favorites section when clicked in navbar
+showWishlistBtn.addEventListener("click",() => {
+  productsPageContent.classList.add("hide")
+  favoritesPageContent.classList.add("hide")
+  wishlistPageContent.classList.remove("hide")
+
+    // Calling load_wishlist function to show wishlist products
+    laod_wishlist();
+})
+
 // Calling get_product function to show products
 get_product();
+
+// Calling a new random ad
+get_ads()
