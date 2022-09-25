@@ -22,6 +22,10 @@ const searchApi =
   "http://localhost/e-commerce_fullstack/ecommerce-server/search.php";
 const getAdsApi =
   "http://localhost/e-commerce_fullstack/ecommerce-server/get_ads.php";
+// buttons linking to another pages:
+const signout_button = document.getElementById("signout-button");
+const go_to_cart_button = document.getElementById("go-to-cart-button");
+const go_to_profile_button = document.getElementById("go-to-profile-button");
 
 // Function generating a random integer between the 2 passed integer parameters
 function random_int(min, max) {
@@ -202,6 +206,20 @@ showWishlistBtn.addEventListener("click", () => {
   // Calling load_wishlist function to show wishlist products
   laod_wishlist();
 });
+
+//Start of Event listeners linking to another pages:
+//
+signout_button.addEventListener("click", () => {
+  localStorage.clear();
+  window.location.href = "./register.html";
+});
+go_to_cart_button.addEventListener("click", () => {
+  window.location.href = "./cart.html";
+});
+go_to_profile_button.addEventListener("click", () => {
+  window.location.href = "./profile.html";
+});
+//End of Event listeners linking to another pages:
 
 // Calling get_product function to show products
 get_product();
