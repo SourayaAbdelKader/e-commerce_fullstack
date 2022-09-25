@@ -44,31 +44,41 @@ back_to_products_button.addEventListener("click", () => {
 //End of Event listeners linking to another pages:
 
 // START OF POST APIs (add_to_cart && add_favorite && add_wishlist)
-const addToFavorites = ()=>{
-  console.log('fav');
-  const user = JSON.parse(localStorage.getItem('user'));
-  const client_id = user.id;
-  const product_id = JSON.parse(localStorage.getItem('product_id'));
-  console.log(client_id, product_id);
-}
-const addToWishlist = () => {
-  console.log("wishlist");
+const addToFavorites = () => {
+  console.log("fav");
   const user = JSON.parse(localStorage.getItem("user"));
   const client_id = user.id;
   const product_id = JSON.parse(localStorage.getItem("product_id"));
-  console.log(client_id, product_id);
+
+  const update_favorites = async () => {
+    let params = new URLSearchParams();
+    params.append("client_id", client_id);
+    params.append("product_id", product_id);
+    const url =
+      "http://localhost/e-commerce_fullstack/ecommerce-server/add_favorite.php";
+    await axios
+      .post(url, params)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  };
+  update_favorites();
+};
+const addToWishlist = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const client_id = user.id;
+  const product_id = JSON.parse(localStorage.getItem("product_id"));
 };
 const addToCart = () => {
-  console.log("cart");
   const user = JSON.parse(localStorage.getItem("user"));
   const client_id = user.id;
   const product_id = JSON.parse(localStorage.getItem("product_id"));
-  const quantity = 1; 
-  console.log(client_id, product_id, quantity);
+  const quantity = 1;
 };
 // END OF POST APIs
 
 // Event listeners for APIs (add_to_cart && add_favorite && add_wishlist):
-add_to_favorite_button.addEventListener('click',addToFavorites);
+add_to_favorite_button.addEventListener("click", addToFavorites);
 add_to_wishlist_button.addEventListener("click", addToWishlist);
-add_to_cart_button.addEventListener('click',addToCart);
+add_to_cart_button.addEventListener("click", addToCart);
