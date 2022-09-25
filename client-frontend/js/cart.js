@@ -5,7 +5,6 @@ const cart_total_show = document.getElementById("cart-total");
 const cart_container = document.getElementById("cart-items");
 var cart_total = 0; //to calculate and affect after each change in quantity(used in many different event listeners)
 
-
 // ------START OF EVENT LISTENERS FOR EACH ITEM IN CART------
 //  remove the whole item/product from the cart/ when X button is clicked:
 const removeItem = (e) => {
@@ -93,9 +92,33 @@ const incrementItemQuantity = (e) => {
   update_cart();
 };
 // apply discount to item's total if found:
-const applyDiscount = (e)=>{
-  console.log('check-discount');
-}
+const applyDiscount = async (e) => {
+  //get the id of the item where the input belongs, and input(self) value inside
+  const item_id = e.target.parentNode.children[0].value;
+  const code = e.target.value;
+  let discount_percentage;
+
+  const get_percentage = async () => {
+    let params = new URLSearchParams();
+    params.append("product_id", item_id);
+    params.append("code", code);
+    const url =
+      "http://localhost/e-commerce_fullstack/ecommerce-server/check_discount_code.php";
+    await axios
+      .post(url, params)
+      .then((data) => {
+        if (data.data[0]) {
+          discount_percentage = data.data[0].percentage;
+        } else {
+          discount_percentage = 0;
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
+  await get_percentage(); //get the percentage of discount if found
+  console.log(discount_percentage);
+};
 //add event listener to each html added item:
 const addItemEventListeners = () => {
   const remove_buttons = document.getElementsByClassName("item-remove");
@@ -108,12 +131,11 @@ const addItemEventListeners = () => {
     decrement_button.addEventListener("click", decrementItemQuantity);
   for (let increment_button of increment_buttons)
     increment_button.addEventListener("click", incrementItemQuantity);
-  for (let discount_input of discount_codes){
-    discount_input.addEventListener('focusout',applyDiscount); //whenever we leave the input (instead of 'change' to don't reach the database after each key click)
+  for (let discount_input of discount_codes) {
+    discount_input.addEventListener("focusout", applyDiscount); //whenever we leave the input (instead of 'change' to don't reach the database after each key click)
   }
 };
 // ------END OF EVENT LISTENERS FOR EACH ITEM IN CART------
-
 
 // ------START OFEVENT LISTENERS FUNCTIONS:------
 // add item to html content:
@@ -158,7 +180,6 @@ const checkoutOrder = () => {
   console.log(cart_total_show.textContent);
 };
 // ------END OF EVENT LISTENER FUNCTIONS------
-
 
 // ------START OF MAIN EVENT LISTENERS ADDITION------
 // on window load, get all cart items:
