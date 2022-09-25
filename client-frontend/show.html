@@ -8,9 +8,37 @@
     <link rel="stylesheet" href="./styles/index.css" />
   </head>
   <body class="antiquewhite-bg">
-    <!-- START OF NAVBAR -->
-    <nav></nav>
-    <!-- END OF NAVBAR -->
+    <!-- START OF WHOLE NAVBAR -->
+    <!-- Start of navbar -->
+    <div class="products-container flex column">
+      <!-- Start of Header Section -->
+      <div class="header orange-bg flex">
+        <div class="logo">
+          <img src="assets/logo_withname-no-margin.png" alt="Logo" />
+        </div>
+        <div class="header-top-right flex">
+          <button
+            id="signout-button"
+            class="btn signout-btn grey-bg antiquewhite-bg"
+          >
+            Sign out
+          </button>
+          <button id="go-to-cart-button" class="btn eclipse">
+            <img src="assets/cart-icon.png" />
+          </button>
+        </div>
+      </div>
+      <!-- Ender of Header Section -->
+
+      <!-- Start of Navbar Section -->
+      <div class="navbar grey-bg">
+        <ul class="navElements">
+          <li><button id="back-to-products">Back to Products</button></li>
+        </ul>
+      </div>
+    </div>
+    <!-- End of navbar -->
+    <!-- END OF WHOLE NAVBAR -->
 
     <!-- START OF HERO -->
     <main class="main-show">
@@ -90,9 +118,15 @@
     </section>
     <!-- END OF DESCRIPTION SECTION -->
 
-    <!-- START OF FOOTER -->
-    <footer></footer>
-    <!-- END OF FOOTER -->
+    <!-- Start of Footer Section -->
+    <div class="footer orange-bg flex">
+      <div class="footerLogo flex column">
+        <img src="assets/logo_withname-no-margin.png" alt="Logo" />
+        <p class="antiquewhite-text">Choose to see the good stuff</p>
+      </div>
+    </div>
+    <div class="break grey-bg"></div>
+    <!-- End of Footer Section -->
 
     <script src="./js/show.js"></script>
   </body>
