@@ -280,6 +280,10 @@ const checkoutOrder = async () => {
     console.log(code);
     await remove_discount_code(code);
   }
+
+  // remove all carts items instantly:
+  cart_container.remove();
+  cart_total_show.textContent = 0;
 };
 // ------END OF EVENT LISTENER FUNCTIONS------
 
