@@ -3,14 +3,37 @@ const apply_voucher = document.getElementById("voucher-submit");
 const voucher_code = document.getElementById("voucher-input");
 const cart_total_show = document.getElementById("cart-total");
 const cart_container = document.getElementById("cart-items");
+const discount_codes = document.getElementsByClassName("discount-code");
+const remove_buttons = document.getElementsByClassName("item-remove");
+const decrement_buttons = document.getElementsByClassName("decrement");
+const increment_buttons = document.getElementsByClassName("increment");
 var cart_total = 0; //to calculate and affect after each change in quantity(used in many different event listeners)
 
 // ------START OF EVENT LISTENERS FOR EACH ITEM IN CART------
 //  remove the whole item/product from the cart/ when X button is clicked:
 const removeItem = (e) => {
+  const cart_item = e.target.parentNode;
   const item_id = e.target.parentNode.children[0].value;
-  const quantity = -1; //when API receive -1 => it is handled to remove the whole item
-  console.log(item_id, quantity);
+  const quantity_value = -1; //when API receive -1 => it is handled to remove the whole item
+  const client_id = 1;
+  cart_item.remove();
+
+  // update cart in db both cases ( 0 or positive product quantity)
+  const update_cart = async () => {
+    let params = new URLSearchParams();
+    params.append("client_id", client_id);
+    params.append("product_id", item_id);
+    params.append("new_quantity", quantity_value);
+    const url =
+      "http://localhost/e-commerce_fullstack/ecommerce-server/update_cart.php";
+    await axios
+      .post(url, params)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  };
+  update_cart();
 };
 // decrement quantity of single item and update DB
 const decrementItemQuantity = (e) => {
@@ -141,15 +164,12 @@ const applyDiscount = async (e) => {
     //update item total and cart total, to make sure discount is removed:
     console.log(new_item_total, old_item_total);
     current_item_total.textContent = new_item_total;
-    cart_total_show.textContent = parseInt(cart_total_show.textContent) + (new_item_total - old_item_total);
+    cart_total_show.textContent =
+      parseInt(cart_total_show.textContent) + (new_item_total - old_item_total);
   }
 };
 //add event listener to each html added item:
 const addItemEventListeners = () => {
-  const remove_buttons = document.getElementsByClassName("item-remove");
-  const decrement_buttons = document.getElementsByClassName("decrement");
-  const increment_buttons = document.getElementsByClassName("increment");
-  const discount_codes = document.getElementsByClassName("discount-code");
   for (let remove_button of remove_buttons)
     remove_button.addEventListener("click", removeItem);
   for (let decrement_button of decrement_buttons)
@@ -202,7 +222,7 @@ const applyVoucher = () => {
 };
 // submit the cart to checkout -> turn isCheckout bool to true and create new empty car for user:
 const checkoutOrder = () => {
-  console.log(cart_total_show.textContent);
+  console.log("checkout");
 };
 // ------END OF EVENT LISTENER FUNCTIONS------
 
