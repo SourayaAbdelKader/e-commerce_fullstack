@@ -221,15 +221,36 @@ const applyVoucher = () => {
 };
 // submit the cart to checkout
 const checkoutOrder = async () => {
+  //get client_id from localStorage: 1 - for testing:
   // first get all Discount codes from my cart local page inputs
   let discount_codes_added = [];
-  for(let code of discount_codes){
-    if(code.value){
+  for (let code of discount_codes) {
+    if (code.value) {
       discount_codes_added.push(code.value);
     }
   }
   // then update orders table where this order_id to isCheckout=1(true) and create new empty cart for this user
-
+  const finalize_order = async () => {
+    const url =
+      "http://localhost/e-commerce_fullstack/ecommerce-server/checkout_order.php";
+    await axios({
+      method: "post",
+      url,
+      data: {
+        client_id,
+        total,
+        checkout_date,
+      },
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
+    })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  };
+  await finalize_order(); //wait till checkout finishes totally then delete discount codes
   // delete all Discount codes that match valid cart local inputs.
 };
 // ------END OF EVENT LISTENER FUNCTIONS------
