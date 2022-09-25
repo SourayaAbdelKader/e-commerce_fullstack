@@ -16,6 +16,7 @@ const addFavouriteApi = "http://localhost/e-commerce_fullstack/backend/add_favor
 const getFavoritesApi = "http://localhost/e-commerce_fullstack/backend/get_favorites.php";
 const getWishlistApi = "http://localhost/e-commerce_fullstack/backend/get_wishlist.php";
 const searchApi = "http://localhost/e-commerce_fullstack/backend/search.php";
+const getAdsApi = "http://localhost/e-commerce_fullstack/backend/get_ads.php";
 
 // showing only product section when clicked in navbar
 showProductsBtn.addEventListener("click",() => {
@@ -63,6 +64,7 @@ const load_products = (products,wrapper) =>{
                                   </div>`
   })
 } else{
+  //if passed parameter is empty
   wrapper.innerHTML = "<p>No Results</p>"
 }
 }
@@ -142,6 +144,7 @@ const get_search_result = async (key) => {
     searchResultPageContent.classList.remove("hide");
     load_products(searchResult,searchResultWrapper)
 
+    // Empty result content and go back to products page when back is clicked
     let back = document.getElementById("backSearch");
     back.addEventListener("click", () => {
       searchResultWrapper.innerHTML = "";
@@ -151,6 +154,18 @@ const get_search_result = async (key) => {
   })
 }
 
+const get_ads = async () => {
+  await axios
+  .post(getAdsApi)
+  .then((data) => {
+    let ads = data.data;
+    console.log(ads)
+  })
+  .catch((err) => console.log(err));
+}
+get_ads()
+
+
 // Sending the search key to get_search_result function on change
 searchBar.addEventListener("change", () => {
   get_search_result(searchBar.value)
@@ -158,5 +173,3 @@ searchBar.addEventListener("change", () => {
 
 // Calling get_product function to show products
 get_product();
-
-
