@@ -24,14 +24,31 @@ hoover_elements.forEach(element => {
 })
 
 // ___________ Products _____________
+// get the category name 
+const displayCategoryTitle = async () => {
+    const url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/receive_categories.php";
+    let params = new URLSearchParams();
+    params.append("id", 1);
+    await axios
+      .post(url, params)
+      .then((data) => {
+        console.log("hi")
+        data.data.forEach(element =>{
+            if (element.id == localStorage["selected_category"]) { 
+                const title = document.getElementById("category_title");
+                title.innerHTML = element.name;
+                console.log(element.name)}
+})})}
+        
+
+displayCategoryTitle();
 
 // retrieving products from db
 let j = 0;
 const displayProducts = async () => {
         const url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/receive_products.php";
         let params = new URLSearchParams();
-        params.append("categorie_id", 1);
-
+        params.append("categorie_id", localStorage["selected_category"]);
         await axios
           .post(url, params)
           .then((data) => {
@@ -51,28 +68,24 @@ const displayProducts = async () => {
             
             const container = document.getElementById("products");
             const div = document.getElementById("product");
-            const number = document.getElementById("product_id")
             const clone = div.cloneNode(true);
             clone.classList.add("product");
             clone.classList.add("show");
             clone.classList.remove("displaynone")
-            number.innerHTML = number;
-            clone.id = j;
-            number.innerHTML = element.id;
-            
-                
+            // giving the clone the same id in the db
+            clone.id = element.id;
             product_title.innerHTML = element.title;
             product_description.innerHTML = element.description;
             product_price.innerHTML = element.price;
             product_condition.innerHTML = element.condition;
 
             container.appendChild(clone);
-            j ++;
 
         });
 
         adding_ads();
         delete_product(); 
+        selectedProduct();
 
        })
  }
@@ -107,12 +120,10 @@ add_button.addEventListener("click", () => {
             
         const container = document.getElementById("products");
         const div = document.getElementById("product");
-        const number = document.getElementById("product_id")
-        const clone = div.clone(true);
+        const clone = div.cloneNode(true);
         clone.classList.add("product");
         clone.classList.add("show");
         clone.classList.remove("displaynone")
-        clone.id = j;
                 
         product_title.innerHTML = new_name;
         product_description.innerHTML = new_description;
@@ -120,7 +131,6 @@ add_button.addEventListener("click", () => {
         product_condition.innerHTML = new_conditon;
 
         container.appendChild(clone);
-        j ++;  
 
         document.getElementById("new_name").value = "";
         document.getElementById("new_description").value = "";
@@ -131,12 +141,12 @@ add_button.addEventListener("click", () => {
         const addProducts = async () => {
             const url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/add_product.php";
             let params = new URLSearchParams();
+            params.append("categorie_id", localStorage["selected_category"]);
             params.append("title", new_name);
             params.append("description", new_description);
             params.append("price", new_price);
             params.append("condition", new_conditon);
-            params.append("categorie_id", 1);
-    
+            
             await axios
               .post(url, params)
               .then((data) => {
@@ -147,6 +157,17 @@ add_button.addEventListener("click", () => {
         alert("Product added");
     })
 })
+
+// to know which product is selected
+const selectedProduct = () => {
+    const selected_product = document.querySelectorAll(".product")
+    selected_product.forEach(product => {
+        console.log(product.id)
+        product.addEventListener("click", () =>  {
+            localStorage.setItem("selected_product", product.id);
+            console.log(product.id + "HAHA")
+        })
+})};
 
 // to the ad pop up to show and catch description
 
@@ -207,14 +228,14 @@ const delete_product = () => {
 }
 
 
-/*
+
 // edit a product 
 const submit_editing = document.getElementById("submit_edit");
 submit_editing.addEventListener("click", () => {
     const edited_name = document.getElementById("").value;
-    const edited_name = document.getElementById("").value;
-    const edited_name = document.getElementById("").value;
-    const edited_name = document.getElementById("").value;
+    const edited_description = document.getElementById("").value;
+    const edited_price = document.getElementById("").value;
+    const edited_condition = document.getElementById("").value;
 
 })
-*/
+

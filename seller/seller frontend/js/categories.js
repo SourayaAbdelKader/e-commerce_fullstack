@@ -50,8 +50,6 @@ const displayCategories = async () => {
             clone.classList.add("show");
             clone.classList.remove("displaynone")
             clone.id = element.id;
-            // to save the category id
-            //category_id.innerHTML = element.id;
             clone.innerHTML= '<a href="products.html">' + element.name + '</a>';
             
             container.appendChild(clone);
@@ -109,9 +107,7 @@ const selectedCategory = () => {
     console.log(selected_category.length + "hhhh")
     selected_category.forEach(category => {
         category.addEventListener("click", () =>  {
-            console.log(i);
             localStorage.setItem("selected_category", category.id);
             console.log(category.id)
         })
 })};
-// get the id of the clicked 

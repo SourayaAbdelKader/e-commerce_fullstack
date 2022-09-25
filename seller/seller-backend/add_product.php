@@ -6,27 +6,18 @@ header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
 header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X-Request-With');
 
 
-$id = $_POST["id"];
+$id = $_POST["categorie_id"];
 
 $name = $_POST["title"];
-$description = $_POST["desciption"];
+$description = $_POST["description"];
 $price = $_POST["price"];
 $condition =$_POST["condition"];
 
 $query = $mysqli -> prepare("INSERT INTO products (title, description, price, categorie_id, condition) VALUE (?, ?, ?, ?, ?)") ;
 
-$query->bind_param('ssss', $name,  $description, $price, 1, $condition );
+$query->bind_param('sssss', $name,  $description, $price, $id, $condition );
 
-$query -> execute();
-$array = $query -> get_result();
+echo $query -> execute();
 
-$response = [];
-
-while($a = $array->fetch_assoc()){
-    $response[] = $a;
-}
-
-$json = json_encode($response);
-echo $json;
 
 ?>
