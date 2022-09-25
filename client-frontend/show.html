@@ -8,54 +8,72 @@
     <link rel="stylesheet" href="./styles/index.css" />
   </head>
   <body class="antiquewhite-bg">
-    <!-- START OF NAVBAR -->
-    <nav></nav>
-    <!-- END OF NAVBAR -->
+    <!-- START OF WHOLE NAVBAR -->
+    <!-- Start of navbar -->
+    <div class="products-container flex column">
+      <!-- Start of Header Section -->
+      <div class="header orange-bg flex">
+        <div class="logo">
+          <img src="assets/logo_withname-no-margin.png" alt="Logo" />
+        </div>
+        <div class="header-top-right flex">
+          <button
+            id="signout-button"
+            class="btn signout-btn grey-bg antiquewhite-bg"
+          >
+            Sign out
+          </button>
+          <button id="go-to-cart-button" class="btn eclipse">
+            <img src="assets/cart-icon.png" />
+          </button>
+        </div>
+      </div>
+      <!-- Ender of Header Section -->
+
+      <!-- Start of Navbar Section -->
+      <div class="navbar grey-bg">
+        <ul class="navElements">
+          <li><button id="back-to-products">Back to Products</button></li>
+        </ul>
+      </div>
+    </div>
+    <!-- End of navbar -->
+    <!-- END OF WHOLE NAVBAR -->
 
     <!-- START OF HERO -->
     <main class="main-show">
       <!-- Start of LEFT Images section -->
       <section class="show-item-images">
-        <img class="main-img" src="./assets/mac-main.jfif" />
+        <img id="item-main-img" class="main-img" src="./assets/mac-main.jfif" />
         <div class="secondary-images">
-          <img src="./assets/mac-2.jfif" alt="sec-img" />
-          <img src="./assets/mac-main.jfif" alt="sec-img" />
-          <img src="./assets/mac-3.jfif" alt="sec-img" />
+          <img id="item-img1" src="./assets/mac-2.jfif" alt="sec-img" />
+          <img id="item-img2" src="./assets/mac-main.jfif" alt="sec-img" />
+          <img id="item-img3" src="./assets/mac-3.jfif" alt="sec-img" />
         </div>
       </section>
       <!-- End of LEFT Images Section -->
 
       <!-- Start of RIGHT Product Info Section -->
       <section class="show-item-info">
-        <p class="category">
-          Category: <span id="item-category">Video Card</span>
-        </p>
-        <h2 id="name" class="name">Gigabyte GeForce RTX 3090 GAMING</h2>
+        <p class="category">Category: <span id="item-category"></span></p>
+        <h2 id="item-name" class="name upper"></h2>
         <p class="condition light-text">
-          Condition: <span id="item-condition">New</span>
+          Condition: <span id="item-condition"></span>
         </p>
-        <h1 id="price" class="price">1899$</h1>
-        <p class="upper">QUANTITY</p>
-
-        <div class="buttons-first">
-          <div class="quantity-button">
-            <span id="decrement-quantity" class="change-quantity bold">-</span>
-            <span id="quantity" class="quantity-nb">1</span>
-            <span id="increment-quantity" class="change-quantity bold">+</span>
-          </div>
+        <h1 class="price"><span id="price"></span>$</h1>
+        <div class="buttons">
           <button id="cart-button" class="cart-button orange-bg upper">
             <img class="cart-icon" src="./assets/icons8-addtocart-50.png" />Add
             to Cart
           </button>
-        </div>
-
-        <div class="buttons-second">
-          <button class="fav-button upper grey-bg">
-            <img src="./assets/heart-fav.png" />favorite
-          </button>
-          <button class="fav-button upper grey-bg">
-            <img src="./assets/free-favourite-icon-2765-thumb.png" />Wishlist
-          </button>
+          <div class="buttons-second">
+            <button id="fav-button" class="fav-button upper grey-bg">
+              <img src="./assets/heart-fav.png" />favorite
+            </button>
+            <button id="wish-button" class="fav-button upper grey-bg">
+              <img src="./assets/free-favourite-icon-2765-thumb.png" />Wishlist
+            </button>
+          </div>
         </div>
       </section>
       <!-- End of RIGHT Product Info Section -->
@@ -68,20 +86,13 @@
         <button id="description-button" class="upper bold">description</button>
         <button id="seller-info-button" class="upper bold">seller info</button>
       </div>
-      <p id="item-description" class="description">
-        VIDIA Ampere Streaming Multiprocessors 2nd Generation RT Cores 3rd
-        Generation Tensor Cores Powered by GeForce RTX™ 3090 Integrated with
-        24GB GDDR6X 384-bit memory interface WATERFORCE all-in-one cooling
-        system 240mm radiator with 2x 120mm ARGB fans RGB Fusion 2.0 6 Outputs
-        Protection metal back plate 4 Years Warranty (Online registration
-        required)
-      </p>
+      <p id="item-description" class="description"></p>
       <div id="seller-info" class="description display-none seller-info">
-        <h2 class="shop-name">World Technology</h2>
+        <h2><u>Shop:</u> <span id="shop-name" class="shop-name"></span></h2>
         <p class="shop-location">
-          440 S Vermont Ave #108, Los Angeles, CA 90020, United States
+          <u>Location:</u> <span id="shop-location"></span>
         </p>
-        <p class="shop-info">
+        <p id="shop-info" class="shop-info">
           Tech Shop · Computers & Tablets · All Computers & Tablets · Apple ·
           Headphones & Audio · All Headphones & Audio · Earbuds · Software · All
           Software · Mac · Displays.
@@ -90,10 +101,17 @@
     </section>
     <!-- END OF DESCRIPTION SECTION -->
 
-    <!-- START OF FOOTER -->
-    <footer></footer>
-    <!-- END OF FOOTER -->
+    <!-- Start of Footer Section -->
+    <div class="footer orange-bg flex">
+      <div class="footerLogo flex column">
+        <img src="assets/logo_withname-no-margin.png" alt="Logo" />
+        <p class="antiquewhite-text">Choose to see the good stuff</p>
+      </div>
+    </div>
+    <div class="break grey-bg"></div>
+    <!-- End of Footer Section -->
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./js/show.js"></script>
   </body>
 </html>

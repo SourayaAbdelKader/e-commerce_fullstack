@@ -27,7 +27,7 @@ if (isset($_POST["client_id"]) && isset($_POST["product_id"]) && isset($_POST["q
     $query->execute();
     $done = true;
   } else {
-    //elese add this product to the cart 
+    //else add this product to the cart 
     $query = $mysqli->prepare("INSERT into order_products (order_id,product_id,quantity) VALUES(?,?,?)");
     $query->bind_param("iii", $order_id, $product_id, $quantity,);
     $query->execute();
