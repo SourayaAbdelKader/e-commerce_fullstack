@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Seller </title>
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="icon" type="image/x-icon" href="./assets/logo.png" />
+</head>
+
+<body>
+
+    <!-- pop up to edit seller info -->
+    <div id="popup_seller" class=" d-none ">
+        <section id="edit-popup" class="edit-popup ">
+            <button id="close-popup" class="close-popup">✖</button>
+            <div class="edit-content">
+
+                <div class="img-section">
+                    <label for="edit-imgurl" class="edit-imgurl">
+                         <img id="edit-img" class="edit-img" src="./assets/client.png" />
+                    </label>
+                 </div>
+
+                <div class="container-edit">
+                    <input id="edit-name" type="text" placeholder="Name" />
+                    <input id="edit-phone" type="number" placeholder="Phone" />
+                    <input id="edit-bio" type="text" placeholder="No Bio Yet" />
+                    <input id="edit-location" type="text" placeholder="Location" />
+                    <p id="error" class="d-none error">All Input are required </p>
+                    <button id="update">Update!</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- pop up to add new seller info -->
+    <div id="popup_addseller" class=" d-none ">
+        <section class="edit-popup ">
+            <button id="close-addpopup" class="close-popup">✖</button>
+            <div class="edit-content">
+                <div class="img-section">
+                    <label for="add_imgurl" class="imgurl">
+                        <p class="click">Click</p>
+                        <img id="add-img" class="edit-img" src="./assets/client.png" />
+                    </label>
+                    <input type="file" id="add_imgurl" accept="image/*" class="d-none" />
+                </div>
+                <div class="container-edit">
+                    <input id="addNew-name" type="text" placeholder="Name" />
+                    <input id="addNew-email" type="email" placeholder="Email" />
+                    <input id="addNew-phone" type="number" placeholder="Phone" />
+                    <input id="addNew-bio" type="text" placeholder="No Bio Yet" />
+                    <input id="addNew-shop-location" type="text" placeholder="Description" />
+                    <p id="error2" class="d-none error">All Input are required</p>
+                    <button id="add_new_seller">Add!</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <!-- start of the header-->
+    <section>
+        <div class="header">
+            <div class="logo"> <img class="logo-image" src="./assets/logo.png"> </div>
+            <div class="logout">
+                <button id="logoutBtn" class="button light-gray" type="submit"> Log out </button>
+            </div>
+        </div>
+    </section>
+    <!-- end of the header-->
+
+    <!-- start of the body-->
+    <section class="container flex">
+        <div class="panel">
+            <div class="choises ">
+                <a class="flex" href="./admin.html">
+                    <img class="icon" src="./assets/shop-profile.png">
+                    <p> Admin </p>
+                </a>
+            </div>
+
+            <div class="choises ">
+                <a class="flex" href="./clients.html">
+                    <img class="icon" src="./assets/shop-categories.png">
+                    <p>Clients </p>
+                </a>
+            </div>
+
+            <div class="choises selected">
+                <a class="flex" href="./seller.html">
+                    <img class="icon" src="./assets/shop-revenue.png">
+                    <p>Seller </p>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="screen">
+            <h2>Sellers</h2>
+            <button class="add_seller" id="add_seller">Add Seller</button>
+            <!-- seller info/view -->
+            <div id="registered_user" class="registered_user">
+
+
+            </div>
+        </div>
+    </section>
+    <!-- end of the body-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/seller.js"> </script>
+</body>
+
+</html>
