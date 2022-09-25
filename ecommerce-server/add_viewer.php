@@ -4,7 +4,7 @@ $done = false; //will return it depending on result of the query
 if (isset($_POST["user_id"]) && isset($_POST["product_id"])) {
   $user_id = $_POST["user_id"];
   $product_id = $_POST["product_id"];
-//check if this product exists for this client to avoid adding duplicate data
+  //check if this product exists for this client to avoid adding duplicate data
   $query = $mysqli->prepare("SELECT * from  viewers where user_id=? and product_id=? ");
   $query->bind_param("ii",  $user_id, $product_id);
   if ($query->execute()) {
