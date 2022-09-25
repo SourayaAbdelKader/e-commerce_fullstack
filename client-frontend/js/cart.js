@@ -8,6 +8,9 @@ const remove_buttons = document.getElementsByClassName("item-remove");
 const decrement_buttons = document.getElementsByClassName("decrement");
 const increment_buttons = document.getElementsByClassName("increment");
 var cart_total = 0; //to calculate and affect after each change in quantity(used in many different event listeners)
+// navbar links:
+const signout_button = document.getElementById('signout-button');
+const back_to_products_button = document.getElementById('back-to-products');
 
 // ------START OF EVENT LISTENERS FOR EACH ITEM IN CART------
 //  remove the whole item/product from the cart/ when X button is clicked:
@@ -15,7 +18,8 @@ const removeItem = (e) => {
   const cart_item = e.target.parentNode;
   const item_id = e.target.parentNode.children[0].value;
   const quantity_value = -1; //when API receive -1 => it is handled to remove the whole item
-  const client_id = 1;
+  const user = JSON.parse(localStorage.getItem("user"));
+  const client_id = user.id;
   cart_item.remove();
 
   // update cart in db both cases ( 0 or positive product quantity)
@@ -38,7 +42,8 @@ const removeItem = (e) => {
 // decrement quantity of single item and update DB
 const decrementItemQuantity = (e) => {
   //load client_id from localStorage:
-  const client_id = 1;
+  const user = JSON.parse(localStorage.getItem("user"));
+  const client_id = user.id;
   const cart_item = e.target.parentNode.parentNode.parentNode;
   const item_id = e.target.parentNode.parentNode.parentNode.children[0].value;
   const quantity = e.target.nextSibling;
@@ -79,8 +84,8 @@ const decrementItemQuantity = (e) => {
 };
 // increment quantity of single item
 const incrementItemQuantity = (e) => {
-  //load client_id from localStorage:
-  const client_id = 1;
+  const user = JSON.parse(localStorage.getItem("user"));
+  const client_id = user.id;
   const item_id = e.target.parentNode.parentNode.parentNode.children[0].value;
   const quantity = e.target.previousSibling;
   const price_per_item_value =
@@ -186,13 +191,14 @@ const addItemEventListeners = () => {
 const showItem = (item) => {
   const total_price = parseInt(item.price) * parseInt(item.quantity);
   cart_total += total_price; //calculate the whole cart total while adding each item
-  const itemHTML = `<div class="cart-item"><input type="hidden" value="${item.id}" /><div class="item-remove">&times;</div><div class="item-info"><img class="item-image" src="${item.main_image}" alt="product-main-image" /><h3 class="item-name">${item.title}</h3></div><div class="item-quantity"><div class="quantity-box blue-bg"><span class="decrement">-</span><span class="quantity antiquewhite-bg">${item.quantity}</span><span class="increment">+</span></div></div><div class="price-item">${item.price}</div><input class="discount-code" maxlength="10" placeholder='Discount Code'></input><div class="item-total">${total_price}</div></div>`;
+  const itemHTML = `<div class="cart-item"><input type="hidden" value="${item.id}" /><div class="item-remove">&times;</div><div class="item-info"><img class="item-image" src="../ecommerce-server/product_images/${item.main_image}" alt="product-main-image" /><h3 class="item-name">${item.title}</h3></div><div class="item-quantity"><div class="quantity-box blue-bg"><span class="decrement">-</span><span class="quantity antiquewhite-bg">${item.quantity}</span><span class="increment">+</span></div></div><div class="price-item">${item.price}</div><input class="discount-code" maxlength="10" placeholder='Discount Code'></input><div class="item-total">${total_price}</div></div>`;
   cart_container.innerHTML += itemHTML;
 };
 // when loading the page get all the items in user cart:
 const getCartItems = async () => {
   // get client_id from localStorage first
-  const client_id = 1; //for testing
+  const user = JSON.parse(localStorage.getItem("user"));
+  const client_id = user.id;
   const get_items = async () => {
     let params = new URLSearchParams();
     params.append("client_id", client_id);
@@ -222,7 +228,8 @@ const applyVoucher = () => {
 // submit the cart to checkout
 const checkoutOrder = async () => {
   //get client_id from localStorage: 1 - for testing:
-  const client_id = 1;
+  const user = JSON.parse(localStorage.getItem("user"));
+  const client_id = user.id;
   const total = parseInt(cart_total_show.textContent);
   const checkout_date = Date.now();
   // first get all Discount codes from my cart local page inputs
@@ -285,6 +292,16 @@ const checkoutOrder = async () => {
   cart_container.remove();
   cart_total_show.textContent = 0;
 };
+
+// loguser out:
+const logUserOut = ()=>{
+  localStorage.clear();
+  window.location.href = './register.html';
+}
+// return back to products page:
+const getBackToProducts = ()=>{
+  window.location.href = './products.html';
+}
 // ------END OF EVENT LISTENER FUNCTIONS------
 
 // ------START OF MAIN EVENT LISTENERS ADDITION------
@@ -293,4 +310,7 @@ window.addEventListener("load", getCartItems);
 // event listeners for clicked (remove, increment, decrement, checkout, apply voucher)
 apply_voucher.addEventListener("click", applyVoucher);
 checkout_submit.addEventListener("click", checkoutOrder);
+//navlinks:
+signout_button.addEventListener('click',logUserOut);
+back_to_products_button.addEventListener('click',getBackToProducts);
 // ------END OF MAIN EVENT LISTENERS ADDITION------

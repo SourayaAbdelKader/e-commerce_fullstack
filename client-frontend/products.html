@@ -1,126 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Products</title>
-    <link rel="stylesheet" href="styles/products.css">
-</head>
-<body>
-    <div class="container flex column">
-
-        <!-- Start of Header Section -->
-        <div class="header orange-bg flex">
-            <div class="logo">
-                <img src="assets/logo_withname-no-margin.png" alt="Logo">
-            </div>
-            <div class="header-top-right flex">
-                <button class="btn LoginBtn grey-bg antiquewhite-bg">Sign out</button>
-                <button class="btn eclipse "><img src="assets/cart-icon.png"></button>
-            </div>
+    <link rel="stylesheet" href="./styles/index.css" />
+  </head>
+  <body>
+    <div class="products-container flex column">
+      <!-- Start of Header Section -->
+      <div class="header orange-bg flex">
+        <div class="logo">
+          <img src="assets/logo_withname-no-margin.png" alt="Logo" />
         </div>
-        <!-- Ender of Header Section -->
-
-        <!-- Start of Navbar Section -->
-        <div class="navbar grey-bg">
-            <ul class="navElements">
-                <li><button id="showProducts">Products</button></li>
-                <li><button id="showFavorites">Favorites</button></li>
-                <li><button id="showWishlist">Wishlist</button></li>
-                <li><button>Profile</button></li>
-            </ul>
+        <div class="header-top-right flex">
+          <button
+            id="signout-button"
+            class="btn signout-btn grey-bg antiquewhite-bg"
+          >
+            Sign out
+          </button>
+          <button id="go-to-cart-button" class="btn eclipse">
+            <img src="assets/cart-icon.png" />
+          </button>
         </div>
-        <!-- End of Navbar Section -->
+      </div>
+      <!-- Ender of Header Section -->
 
-        <!-- Start of Products Section -->
-        <div id="products" class="pageContent flex column">
-            <!-- Start of Hero Section -->
-            <div class="heroSection">
-                <div class="fade">
-                    <div class="heroContent">
-                        <p>Choose to see the good stuff</p>
-                        <input id="searchBar" type="text" placeholder="Search">
-                    </div>
-                </div>
+      <!-- Start of Navbar Section -->
+      <div class="navbar grey-bg">
+        <ul class="navElements">
+          <li><button id="showProducts">Products</button></li>
+          <li><button id="showFavorites">Favorites</button></li>
+          <li><button id="showWishlist">Wishlist</button></li>
+          <li><button id="go-to-profile-button">Profile</button></li>
+        </ul>
+      </div>
+      <!-- End of Navbar Section -->
+
+      <!-- Start of Products Section -->
+      <div id="products" class="products-pageContent flex column">
+        <!-- Start of Hero Section -->
+        <div class="heroSection">
+          <div class="fade">
+            <div class="heroContent">
+              <p>Choose to see the good stuff</p>
+              <input id="searchBar" type="text" placeholder="Search" />
             </div>
-            <!-- End of Hero Section -->
-
-            <!-- Start of Products Feed Section -->
-            <div class="productSection">
-                <p class="sectionTitle">Products</p>
-                <div id="productsWrapper" class="wrapper">
-                </div>
-            </div>
-            <!-- Start of Products Feed Section -->
-
-            <!-- Start of Ads Section -->
-            <div id="adContainer" class="adSection">
-            </div>
-            <!-- End of Ads Section -->
-
+          </div>
         </div>
-        <!-- End of Products Section -->
+        <!-- End of Hero Section -->
 
-        <!-- Start of Search Results Section -->
-        <div id="searchResult" class="pageContent flex column hide">
-            <div class="search flex column">
-                <div class="flex">
-                    <button id="backSearch" class="flex grey-bg">Back</button>
-                </div>
-                <div class="flex">
-                    <p class="sectionTitle">Search Results:</p>
-                </div>
-            </div>
-            <div id="searchWrapper" class="wrapper">
-
-            </div>
+        <!-- Start of Products Feed Section -->
+        <div class="productSection">
+          <p class="sectionTitle">Products</p>
+          <div id="productsWrapper" class="wrapper"></div>
         </div>
-        <!-- End of Search Results Section -->
+        <!-- Start of Products Feed Section -->
 
-        <!-- Start of Favorites Section -->
-        <div id="favorites" class="pageContent flex column hide">
-            <p class="sectionTitle">Favorites</p>
-            <div id="favoritesWrapper" class="wrapper">
+        <!-- Start of Ads Section -->
+        <div id="adContainer" class="adSection"></div>
+        <!-- End of Ads Section -->
+      </div>
+      <!-- End of Products Section -->
 
-            </div>
+      <!-- Start of Search Results Section -->
+      <div id="searchResult" class="pageContent flex column hide">
+        <div class="search flex column">
+          <div class="flex">
+            <button id="backSearch" class="flex grey-bg">Back</button>
+          </div>
+          <div class="flex">
+            <p class="sectionTitle">Search Results:</p>
+          </div>
         </div>
-        <!-- End of Favorites Section -->
+        <div id="searchWrapper" class="wrapper"></div>
+      </div>
+      <!-- End of Search Results Section -->
 
-        <!-- Start of Wishlist Section -->
-        <div id="wishlist" class="pageContent flex column hide">
-            <p class="sectionTitle">Wishlist</p>
-            <div id="wishlistWrapper" class="wrapper">
+      <!-- Start of Favorites Section -->
+      <div id="favorites" class="pageContent flex column hide">
+        <p class="sectionTitle">Favorites</p>
+        <div id="favoritesWrapper" class="wrapper"></div>
+      </div>
+      <!-- End of Favorites Section -->
 
-            </div>
+      <!-- Start of Wishlist Section -->
+      <div id="wishlist" class="pageContent flex column hide">
+        <p class="sectionTitle">Wishlist</p>
+        <div id="wishlistWrapper" class="wrapper"></div>
+      </div>
+      <!-- End of Wishlist Section -->
+
+      <!-- Start of Footer Section -->
+      <div class="footer orange-bg flex">
+        <div class="footerLogo flex column">
+          <img src="assets/logo_withname-no-margin.png" alt="Logo" />
+          <p class="antiquewhite-text">Choose to see the good stuff</p>
         </div>
-        <!-- End of Wishlist Section -->
-
-        <!-- Start of Footer Section -->
-        <div class="footer orange-bg flex">
-            <div class="footerLogo flex column">
-                <img src="assets/logo_withname-no-margin.png" alt="Logo">
-                <p class="antiquewhite-text">Choose to see the good stuff</p>
-            </div>
-            <div class="footerElements flex">
-                <ul>
-                    <li>Products</li>
-                    <li>Favorites</li>
-                    <li>Whishlist</li>
-                    <li>Profile</li>
-                </ul>
-            </div>
-            <div class="footerMessage">
-                <p>Send us a message</p>
-                <input type="text">
-                <button class="btn blue-text">Send</button>
-            </div>
-        </div>
-        <div class="break grey-bg"></div>
-        <!-- End of Footer Section -->
-        
+      </div>
+      <div class="break grey-bg"></div>
+      <!-- End of Footer Section -->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/products.js"></script>
-</body>
+  </body>
 </html>

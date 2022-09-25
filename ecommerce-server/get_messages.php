@@ -1,5 +1,6 @@
 <?php
 include "connection.php"; //get connection and add header to allow access
+
 $data = [];
 if (isset($_POST["receiver_id"])) {
   $id = $_POST["receiver_id"];
