@@ -117,7 +117,18 @@ const applyDiscount = async (e) => {
   };
 
   await get_percentage(); //get the percentage of discount if found
-  console.log(discount_percentage);
+  //if perc > 0 : update current_item_total and the whole cart total
+  if (discount_percentage > 0) {
+    const current_item_total = e.target.nextSibling;
+    let current_item_total_value = parseInt(current_item_total.textContent);
+    const discount = current_item_total_value*(discount_percentage/100);
+    current_item_total_value -= discount;
+    current_item_total.textContent = current_item_total_value;
+    cart_total_show.textContent = parseInt(cart_total_show.textContent)-discount;
+    console.log(cart_total_show);
+    console.log(current_item_total);
+
+  }
 };
 //add event listener to each html added item:
 const addItemEventListeners = () => {
