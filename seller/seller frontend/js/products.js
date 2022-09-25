@@ -74,12 +74,14 @@ const displayProducts = async () => {
             const product_mainimage = document.getElementById("product-main-image");
             const product_image1 = document.getElementById("product-image1");
             const product_image2 = document.getElementById("product-image2");
-            
+            const product_id = document.getElementById("product_id")
+
             const container = document.getElementById("products");
             const div = document.getElementById("product");
             const clone = div.cloneNode(true);
-            clone.id = element.id;
-           
+            product_id.innerHTML = element.id;
+            (console.log(product_id.innerHTML));
+
             product_title.innerHTML = element.title;
             product_description.innerHTML = element.description;
             product_price.innerHTML = element.price;
@@ -164,9 +166,9 @@ add_button.addEventListener("click", () => {
             params.append("title", new_name);
             params.append("description", new_description);
             params.append("price", new_price);
-            params.append("main_image", main_image;
+            params.append("main_image", main_image);
             params.append("image1", image1);
-            params.append("image2", image2;
+            params.append("image2", image2);
             params.append("condition", new_conditon);
             
             await axios
@@ -183,7 +185,7 @@ add_button.addEventListener("click", () => {
 // to know which product is selected
 const selectedProduct = () => {
     const selected_product = document.querySelectorAll(".product")
-    selected_product.forEach(product => {
+    selected_product.forEach((product) => {
         console.log(product.id)
         product.addEventListener("click", () =>  {
             localStorage.setItem("selected_product", product.id);
@@ -288,7 +290,6 @@ const adding_discount = () => {
                     .post(url, params)
                     .then((data) => {
                         console.log(data)})};
-
             add_discount();
         })
 })})}
@@ -353,3 +354,26 @@ submit_editing.addEventListener("click", () => {
     editProducts();
 })
 
+const main_image_buttons = document.querySelectorAll(".main_image");
+
+main_image_buttons.forEach(element =>{ 
+    element.addEventListener("click", () => {
+
+    })
+})
+
+const image1_buttons = document.querySelectorAll(".image1");
+
+image1_buttons.forEach(element =>{ 
+    element.addEventListener("click", () => {
+        
+    })
+})
+
+const image2_buttons = document.querySelectorAll(".image2");
+
+image2_buttons.forEach(element =>{ 
+    element.addEventListener("click", () => {
+        
+    })
+})

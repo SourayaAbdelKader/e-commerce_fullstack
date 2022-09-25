@@ -54,9 +54,16 @@
                 <div class="add-category"> 
                     <div class="page-name"> <h2> Messages </h2> </div>
                 </div>
-                <div class="main-messages">
-                    <div id="chat-main-box" class="chat-boxes"> </div>
-                  </div>
+                <table>
+                    <thead>
+                      <tr>
+                        <th class='prop__name' data-prop-name='Sender'>Sender</th>
+                        <th class='prop__name' data-prop-name='Message'>Message</th>
+                        <th class='prop__name' data-prop-name='Reply'>Reply</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
           
               <!-- Start Of Single message/main chat Section -->
               <section id="reply-popup" class="reply-popup">
@@ -79,6 +86,6 @@
         <!-- end of the body-->
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-        <script src=""> </script>
+        <script src="./js/seller.js"> </script>
     </body>
 </html>

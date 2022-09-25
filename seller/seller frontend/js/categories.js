@@ -84,7 +84,6 @@ add_category_button.addEventListener("click", () => {
             clone.classList.add("category");
             clone.classList.remove("displaynone");
             clone.innerHTML='<a href="products.html">' + new_category + '</a>';
-            clone.id = i;
             container.appendChild(clone);   
             
             const add_categories = async () => {
