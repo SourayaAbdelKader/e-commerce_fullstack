@@ -26,6 +26,7 @@ const getAdsApi =
 const signout_button = document.getElementById("signout-button");
 const go_to_cart_button = document.getElementById("go-to-cart-button");
 const go_to_profile_button = document.getElementById("go-to-profile-button");
+// all products cards shown:
 
 // Function generating a random integer between the 2 passed integer parameters
 function random_int(min, max) {
@@ -39,7 +40,7 @@ const load_products = (products, wrapper) => {
   if (products.length != 0) {
     products.forEach((product) => {
       // add seller name
-      wrapper.innerHTML += `<div class="productCard grey-bg">
+      wrapper.innerHTML += `<div class="productCard grey-bg" data-value=${product.id}>
                                     <div class="productMainImage">
                                       <img src="../../ecommerce-server/${product.main_image}" alt="">
                                     </div>
@@ -59,7 +60,7 @@ const load_products = (products, wrapper) => {
 };
 
 const load_ad = (ad) => {
-  adContainer.innerHTML = `<div class="productAdImage">
+  adContainer.innerHTML = `<div class="productAdImage" data-value=${ad.product_id}>
                             <div class="fade">
                                 <img src="../../ecommerce-server/${ad.main_image}" alt="Ad Image">
                             </div>
@@ -76,12 +77,25 @@ const load_ad = (ad) => {
                           </div>`;
 };
 
+
+// showing item:
+const show_specific_product = ()=>{
+const all_products_cards = document.querySelectorAll(".productCard");
+all_products_cards.forEach(card=>{
+  const product_id = card.getAttribute('data-value'); 
+  card.addEventListener('click',()=>{
+    console.log(product_id);
+  })
+})
+}
+
 // function that adds to all like icons an event listner for fetching in a later function
 const favorite_products = () => {
   const likes = document.querySelectorAll(".like");
   likes.forEach((like) => {
     let product_id = like.getAttribute("data-value");
-    like.addEventListener("click", () => {
+    like.addEventListener("click", (e) => {
+      e.stopPropagation();
       add_favourite(product_id);
     });
   });
@@ -112,7 +126,8 @@ const get_product = async () => {
       // passing all products to load_product function as objects
       load_products(allProducts, productsWrapper);
 
-      // adding event listeners to favorite icons only after products are loaded
+      // adding event listeners to show specific product and favorite icons only after products are loaded
+      show_specific_product();
       favorite_products();
     })
     .catch((err) => console.log(err));
@@ -220,6 +235,9 @@ go_to_profile_button.addEventListener("click", () => {
   window.location.href = "./profile.html";
 });
 //End of Event listeners linking to another pages:
+
+//Event listener to show page (specific item):
+adContainer.addEventListener('click',advertisementClicked);
 
 // Calling get_product function to show products
 get_product();
