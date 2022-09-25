@@ -46,7 +46,7 @@ showWishlistBtn.addEventListener("click",() => {
 })
 
 // Function generating a random integer between the 2 passed integer parameters
-function randomInt(min, max) {
+function random_int(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
@@ -166,7 +166,8 @@ const get_ads = async () => {
   .post(getAdsApi)
   .then((data) => {
     let ads = data.data;
-    console.log(ads)
+    let random = random_int(0,ads.length);
+    console.log(ads[random])
   })
   .catch((err) => console.log(err));
 }
