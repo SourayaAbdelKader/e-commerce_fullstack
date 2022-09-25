@@ -155,7 +155,7 @@ p {
 
 .eclipse {
   height: 50%;
-  width: 30%;
+  width: 70%;
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0);
@@ -168,6 +168,9 @@ p {
 
 .eclipse:hover {
   background-color: rgba(0, 0, 0, 20%);
+}
+.signout-btn{
+  width:50%;
 }
 
 /* Start of Navbar */
@@ -362,7 +365,7 @@ p {
 }
 .adInfo {
   font-size: 5vh;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 50%;
 }
 .adSeller {
@@ -371,7 +374,7 @@ p {
 }
 .AdView {
   align-self: end;
-  margin: 0 4vh 4vh 0;
+  margin: 0 4vh 4vh 4vh;
 }
 .AdView > button {
   width: 80%;
