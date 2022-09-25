@@ -283,7 +283,7 @@ p {
   width: 90%;
 }
 .cart-container .cart-titles {
-  height: 15%;
+  min-height: 15%;
 }
 .cart-container .cart-titles ul {
   display: flex;

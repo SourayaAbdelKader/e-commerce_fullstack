@@ -3,9 +3,10 @@ const apply_voucher = document.getElementById("voucher-submit");
 const voucher_code = document.getElementById("voucher-input");
 const cart_total_show = document.getElementById("cart-total");
 const cart_container = document.getElementById("cart-items");
-var cart_total = 0;
+var cart_total = 0; //to calculate and affect after each change in quantity(used in many different event listeners)
 
-// START OF EVENT LISTENERS FOR EACH ITEM IN CART
+
+// ------START OF EVENT LISTENERS FOR EACH ITEM IN CART------
 //  remove the whole item/product from the cart/ when X button is clicked:
 const removeItem = (e) => {
   const item_id = e.target.parentNode.children[0].value;
@@ -103,9 +104,10 @@ const addItemEventListeners = () => {
   for (let increment_button of increment_buttons)
     increment_button.addEventListener("click", incrementItemQuantity);
 };
-// END OF EVENT LISTENERS FOR EACH ITEM IN CART
+// ------END OF EVENT LISTENERS FOR EACH ITEM IN CART------
 
-// EVENT LISTENERS FUNCTIONS:
+
+// ------START OFEVENT LISTENERS FUNCTIONS:------
 // add item to html content:
 const showItem = (item) => {
   const total_price = parseInt(item.price) * parseInt(item.quantity);
@@ -139,7 +141,7 @@ const getCartItems = async () => {
   cart_total_show.textContent = cart_total;
 };
 
-// apply the voucher code added to the total and recalculate the new total
+// apply the voucher code added to the total and recalculate the new total ('VOUCHER' FEATURE NOT ADDED YET)
 const applyVoucher = () => {
   console.log(voucher_code.value);
 };
@@ -147,12 +149,13 @@ const applyVoucher = () => {
 const checkoutOrder = () => {
   console.log(cart_total_show.textContent);
 };
-// END OF EVENT LISTENER FUNCTIONS
+// ------END OF EVENT LISTENER FUNCTIONS------
 
-// START OF MAIN EVENT LISTENERS ADDITION
+
+// ------START OF MAIN EVENT LISTENERS ADDITION------
 // on window load, get all cart items:
 window.addEventListener("load", getCartItems);
 // event listeners for clicked (remove, increment, decrement, checkout, apply voucher)
 apply_voucher.addEventListener("click", applyVoucher);
 checkout_submit.addEventListener("click", checkoutOrder);
-// END OF MAIN EVENT LISTENERS ADDITION
+// ------END OF MAIN EVENT LISTENERS ADDITION------
