@@ -2,6 +2,7 @@ const client_id = 1;
 const showProductsBtn = document.getElementById("showProducts")
 const showFavoritesBtn = document.getElementById("showFavorites")
 const showWishlistBtn = document.getElementById("showWishlist")
+const searchBar = document.getElementById("searchBar");
 const productsPageContent = document.getElementById("products");
 const favoritesPageContent = document.getElementById("favorites");
 const wishlistPageContent = document.getElementById("wishlist");
@@ -12,6 +13,7 @@ const getProductApi = "http://localhost/e-commerce_fullstack/backend/get_product
 const addFavouriteApi = "http://localhost/e-commerce_fullstack/backend/add_favorite.php";
 const getFavoritesApi = "http://localhost/e-commerce_fullstack/backend/get_favorites.php";
 const getWishlistApi = "http://localhost/e-commerce_fullstack/backend/get_wishlist.php";
+const searchApi = "http://localhost/e-commerce_fullstack/backend/search.php";
 
 // showing only product section when clicked in navbar
 showProductsBtn.addEventListener("click",() => {
@@ -36,7 +38,7 @@ showWishlistBtn.addEventListener("click",() => {
   favoritesPageContent.classList.add("hide")
   wishlistPageContent.classList.remove("hide")
 
-    // Calling load_wishlist function to show favorite products
+    // Calling load_wishlist function to show wishlist products
     laod_wishlist();
 })
 
@@ -121,6 +123,23 @@ const laod_wishlist = async() => {
     load_products(wishlistProducts,wishlistWrapper)
   })
 }
+
+// Function fetching for products according to the passes search key
+const get_search_result = async (key) => {
+  let params = new URLSearchParams();
+  params.append("key", key);
+  await axios
+  .post(searchApi,params)
+  .then((data) => {
+    let searchResult = data.data;
+    console.log(searchResult)
+  })
+}
+
+// Sending the search key to get_search_result function on change
+searchBar.addEventListener("change", () => {
+  get_search_result(searchBar.value)
+})
 
 // Calling get_product function to show products
 get_product();
