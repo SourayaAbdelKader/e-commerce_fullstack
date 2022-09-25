@@ -79,12 +79,15 @@ const displayProducts = async () => {
             const div = document.getElementById("product");
             const clone = div.cloneNode(true);
             clone.id = element.id;
-            //clone.classList.add("product");
-            // giving the clone the same id in the db
+           
             product_title.innerHTML = element.title;
             product_description.innerHTML = element.description;
             product_price.innerHTML = element.price;
             product_condition.innerHTML = element.condition;
+            product_mainimage.src = element.main_image;
+            product_image1.src = element.image1;
+            product_image2.src = element.image2;
+
             receiving_ad(element.id);
             receiving_discount(element.id);
 
@@ -142,6 +145,9 @@ add_button.addEventListener("click", () => {
         product_description.innerHTML = new_description;
         product_price.innerHTML = new_price;
         product_condition.innerHTML = new_conditon;
+        product_mainimage.src = main_image;
+        product_image1.src = image1;
+        product_image2.src = image2;
 
         container.appendChild(clone);
 
@@ -158,6 +164,7 @@ add_button.addEventListener("click", () => {
             params.append("title", new_name);
             params.append("description", new_description);
             params.append("price", new_price);
+            params.append("condition", new_conditon);
             params.append("condition", new_conditon);
             
             await axios
@@ -231,7 +238,6 @@ const adding_ads = () => {
                 pop_up_ad.classList.toggle("hide");
                 document.getElementById("new_ad").value = "";
                 
-
                 // sending the data into the database
                 const add_ads = async () => {
                     const url = add_ad_url;
@@ -299,7 +305,7 @@ const delete_product = () => {
         const delete_product_db = async () => {
             const url = add_discount_url;
             let params = new URLSearchParams();
-            params.append("product_id", 4);
+            params.append("product_id", );
             params.append("code", input_code);
             params.append("percentage", input_percentage);
             await axios
@@ -309,19 +315,39 @@ const delete_product = () => {
 
         delete_product_db();
     })
-})
-}
+})};
 
 
 
 // edit a product 
 const submit_editing = document.getElementById("submit_edit");
 submit_editing.addEventListener("click", () => {
-    const edited_name = document.getElementById("").value;
-    const edited_description = document.getElementById("").value;
-    const edited_price = document.getElementById("").value;
-    const edited_condition = document.getElementById("").value;
-
-
+    // Variables
+    const edited_name = document.getElementById("edited_name").value;
+    const edited_description = document.getElementById("edited_description").value;
+    const edited_price = document.getElementById("edited_price").value;
+    const edited_condition = document.getElementById("edited_condition").value;
+    const edited_main_image = document.getElementById("upload_main_image").value;
+    const edited_image1 = document.getElementById("upload_image1").value;
+    const edited_image2 = document.getElementById("upload_image2").value;
+    
+    const editProducts = async () => {
+        const url = add_product_url;
+        let params = new URLSearchParams();
+        params.append("product_id", iproduct_id);
+        params.append("title", edited_name);
+        params.append("description", edited_description);
+        params.append("price", edited_price);
+        params.append("condition", edited_condition);
+        params.append("main_image", edited_main_image);
+        params.append("image1", edited_image1);
+        params.append("image2", edited_image2);
+        
+        await axios
+          .post(url, params)
+          .then((data) => {
+            console.log(data)})
+    }
+    editProducts();
 })
 

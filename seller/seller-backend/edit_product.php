@@ -7,6 +7,13 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorizatio
 include("connection.php");
 
 $id = $_POST["product_id"];
+$title = $_POST["title"];
+$description = $_POST["description"];
+$price = $_POST["price"];
+$condition = $_POST["condition"];
+$main_image = $_POST["main_image"];
+$image1 = $_POST["image1"];
+$image2 = $_POST["image2"];
 
 $query = $mysqli -> prepare("
 UPDATE products 
@@ -15,8 +22,11 @@ SET
     description = ?,
     price = ?,
     condition = ?,
+    main_image = ?,
+    image1 = ?,
+    image2 = ?,
 WHERE
     id = ? ");
-$query->bind_param('sssss', $id);
+$query->bind_param('ssssssss', $title, $description, $price, $condition, $main_image, $image1, $image2, $id);
 echo $query -> execute();
 ?>
