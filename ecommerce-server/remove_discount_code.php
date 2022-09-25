@@ -1,6 +1,9 @@
 <?php
 include "connection.php";
-$code = $_POST['code'];
+$request_body = file_get_contents('php://input');
+$data = json_decode($request_body, true);
+
+$code = $data['code'];
 $sql = "DELETE FROM discounts WHERE code=?";
 $query = $mysqli->prepare($sql);
 $query->bind_param('s', $code);

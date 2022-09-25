@@ -254,8 +254,32 @@ const checkoutOrder = async () => {
       .catch((err) => console.log(err));
   };
   await finalize_order(); //wait till checkout finishes totally then delete discount codes
+
   // delete all Discount codes that match valid cart local inputs.
-  
+  // remove specific discount_code
+  const remove_discount_code = async (code) => {
+    const url =
+      "http://localhost/e-commerce_fullstack/ecommerce-server/remove_discount_code.php";
+    await axios({
+      method: "post",
+      url,
+      data: {
+        code,
+      },
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
+    })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  };
+  //remove all local codes added, if found in db(valid)
+  for (let code of discount_codes_added) {
+    console.log(code);
+    await remove_discount_code(code);
+  }
 };
 // ------END OF EVENT LISTENER FUNCTIONS------
 
