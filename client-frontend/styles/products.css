@@ -271,7 +271,6 @@ body{
     width: 90vw;
     display: flex;
     flex-wrap: wrap;
-    padding: 5% 5%;
 }
 
 .productCard{
