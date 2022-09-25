@@ -13,39 +13,49 @@ const add_to_cart_button = document.getElementById("cart-button");
 const add_to_favorite_button = document.getElementById("fav-button");
 const add_to_wishlist_button = document.getElementById("wish-button");
 
+// START OF WINDOW LOAD
+//show current product and seller values:
+const showProduct= (product)=>{
+  console.log(product);
+}
+const getProductAndSeller = () => {
+  const product_id = JSON.parse(localStorage.getItem("product_id"));
+
+  const get_data = async () => {
+    let params = new URLSearchParams();
+    params.append("product_id", product_id);
+    const url =
+      "http://localhost/e-commerce_fullstack/ecommerce-server/get_product_with_seller.php";
+    await axios
+      .post(url, params)
+      .then((data) => {
+        showProduct(data.data[0]);
+      })
+      .catch((err) => console.log(err));
+  };
+  get_data();
+};
+// END OF WINDOW LOAD
+
+// START OF DESCRIPTION BUTTONS FUNCTIONS
+// on item description button click:
 const showItemDescription = () => {
   seller_info.classList.add("display-none");
   seller_info_button.style.backgroundColor = "transparent";
   item_description_button.style.backgroundColor = "#94a9b4";
   item_description.classList.remove("display-none");
 };
+// on seller info button click:
 const showSellerInfo = () => {
   item_description_button.style.backgroundColor = "transparent";
   item_description.classList.add("display-none");
   seller_info.classList.remove("display-none");
   seller_info_button.style.backgroundColor = "#94a9b4";
 };
-
-seller_info_button.addEventListener("click", showSellerInfo);
-item_description_button.addEventListener("click", showItemDescription);
-
-//Start of Event listeners linking to another pages:
-//
-signout_button.addEventListener("click", () => {
-  localStorage.clear();
-  window.location.href = "./register.html";
-});
-go_to_cart_button.addEventListener("click", () => {
-  window.location.href = "./cart.html";
-});
-back_to_products_button.addEventListener("click", () => {
-  window.location.href = "./products.html";
-});
-//End of Event listeners linking to another pages:
+// END OF DESCRIPTION BUTTONS FUNCTIONS
 
 // START OF POST APIs (add_to_cart && add_favorite && add_wishlist)
 const addToFavorites = () => {
-  console.log("fav");
   const user = JSON.parse(localStorage.getItem("user"));
   const client_id = user.id;
   const product_id = JSON.parse(localStorage.getItem("product_id"));
@@ -110,7 +120,25 @@ const addToCart = () => {
 };
 // END OF POST APIs
 
+// START OF EVENT LISTENERS
 // Event listeners for APIs (add_to_cart && add_favorite && add_wishlist):
 add_to_favorite_button.addEventListener("click", addToFavorites);
 add_to_wishlist_button.addEventListener("click", addToWishlist);
 add_to_cart_button.addEventListener("click", addToCart);
+// on page load - load the product and the seller from the database:
+window.addEventListener("load", getProductAndSeller);
+// buttons toggle description section:
+seller_info_button.addEventListener("click", showSellerInfo);
+item_description_button.addEventListener("click", showItemDescription);
+//linking to another pages:
+signout_button.addEventListener("click", () => {
+  localStorage.clear();
+  window.location.href = "./register.html";
+});
+go_to_cart_button.addEventListener("click", () => {
+  window.location.href = "./cart.html";
+});
+back_to_products_button.addEventListener("click", () => {
+  window.location.href = "./products.html";
+});
+// END OF EVENT LISTENERS
