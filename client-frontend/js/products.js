@@ -1,13 +1,15 @@
-const client_id = 6;
+const client_id = 1;
 const showProductsBtn = document.getElementById("showProducts")
 const showFavoritesBtn = document.getElementById("showFavorites")
+const showWishlistBtn = document.getElementById("showWishlist")
 const productsPageContent = document.getElementById("products");
 const favoritesPageContent = document.getElementById("favorites");
 const wishlistPageContent = document.getElementById("wishlist");
 const productsWrapper = document.getElementById("productsWrapper");
+const favoritesWrapper = document.getElementById("favoritesWrapper");
 const getProductApi = "http://localhost/e-commerce_fullstack/backend/get_products.php";
 const addFavouriteApi = "http://localhost/e-commerce_fullstack/backend/add_favorite.php";
-
+const getFavoritesApi = "http://localhost/e-commerce_fullstack/backend/get_favorites.php";
 
 // showing only product section when clicked in navbar
 showProductsBtn.addEventListener("click",() => {
@@ -21,13 +23,23 @@ showFavoritesBtn.addEventListener("click",() => {
   productsPageContent.classList.add("hide")
   favoritesPageContent.classList.remove("hide")
   wishlistPageContent.classList.add("hide")
+
+  // Calling load_favorites function to show favorite products
+  laod_favorites();
 })
 
-// Function getting products as object and appending them to container
-const load_products = (products) =>{
+// showing only favorites section when clicked in navbar
+showWishlistBtn.addEventListener("click",() => {
+  productsPageContent.classList.add("hide")
+  favoritesPageContent.classList.add("hide")
+  wishlistPageContent.classList.remove("hide")
+})
+
+// Function getting products as object and appending them to a wrapper
+const load_products = (products,wrapper) =>{
   products.forEach(product => {
       // add seller name
-      productsWrapper.innerHTML+=`<div class="productCard grey-bg">
+      wrapper.innerHTML+=`<div class="productCard grey-bg">
                                     <div class="productMainImage">
                                       <img src="../../backend/${product.main_image}" alt="">
                                     </div>
@@ -72,8 +84,9 @@ const get_product = async () => {
   await axios
   .post(getProductApi)
   .then((data) => {
+    allProducts = data.data
     // passing all products to load_product function as objects
-    load_products(data.data)
+    load_products(allProducts,productsWrapper)
 
     // adding event listeners to favorite icons only after products are loaded
     favorite_products()
@@ -81,7 +94,19 @@ const get_product = async () => {
   .catch((err) => console.log(err));
 };
 
-// Calling get_product function
+// function that fetch favorite products of the client
+const laod_favorites = async() => {
+  let params = new URLSearchParams();
+  params.append("client_id",client_id)
+  await axios
+  .post(getFavoritesApi,params)
+  .then((data) => {
+    favProducts = data.data
+    load_products(favProducts,favoritesWrapper)
+  })
+}
+
+// Calling get_product function to show products
 get_product();
 
 
