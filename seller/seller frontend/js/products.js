@@ -292,7 +292,7 @@ const adding_ads = () => {
             pop_up_ad.classList.toggle("hide");
         
             const add_ad_description = document.getElementById("submit-ad");
-            
+
             add_ad_description.addEventListener("click", () => {
                 const ad_description = document.getElementById("new_ad").value;
                 const ad_main_descriptin = document.getElementById("ad-description");

@@ -437,4 +437,14 @@ tr {
         display: none;
         visibility: hidden;
     }
+
+    .flex_column {
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .buttons {
+        width: 100px;
+    }
 }
