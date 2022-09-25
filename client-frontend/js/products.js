@@ -7,9 +7,11 @@ const favoritesPageContent = document.getElementById("favorites");
 const wishlistPageContent = document.getElementById("wishlist");
 const productsWrapper = document.getElementById("productsWrapper");
 const favoritesWrapper = document.getElementById("favoritesWrapper");
+const wishlistWrapper = document.getElementById("favoritesWrapper");
 const getProductApi = "http://localhost/e-commerce_fullstack/backend/get_products.php";
 const addFavouriteApi = "http://localhost/e-commerce_fullstack/backend/add_favorite.php";
 const getFavoritesApi = "http://localhost/e-commerce_fullstack/backend/get_favorites.php";
+const getWishlistApi = "http://localhost/e-commerce_fullstack/backend/get_wishlist.php";
 
 // showing only product section when clicked in navbar
 showProductsBtn.addEventListener("click",() => {
@@ -33,6 +35,9 @@ showWishlistBtn.addEventListener("click",() => {
   productsPageContent.classList.add("hide")
   favoritesPageContent.classList.add("hide")
   wishlistPageContent.classList.remove("hide")
+
+    // Calling load_wishlist function to show favorite products
+    laod_wishlist();
 })
 
 // Function getting products as object and appending them to a wrapper
@@ -103,6 +108,17 @@ const laod_favorites = async() => {
   .then((data) => {
     favProducts = data.data
     load_products(favProducts,favoritesWrapper)
+  })
+}
+
+const laod_wishlist = async() => {
+  let params = new URLSearchParams();
+  params.append("client_id",client_id)
+  await axios
+  .post(getWishlistApi,params)
+  .then((data) => {
+    wishlistProducts = data.data
+    load_products(wishlistProducts,wishlistWrapper)
   })
 }
 
