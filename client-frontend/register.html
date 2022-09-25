@@ -24,11 +24,9 @@
             <div class="sign-up">
               <p class="blue-text size-32">New User</p>
               <div id="signup-btn">
-              <button
-                class="btn btn-md blue-text antiquewhite-bg"
-              >
-                Sign Up
-              </button>
+                <button class="btn btn-md blue-text antiquewhite-bg">
+                  Sign Up
+                </button>
               </div>
             </div>
             <div class="login">
@@ -93,61 +91,9 @@
               >
                 Login
               </button>
-              <button class="btn btn-md" id="reset-password-show">
-                Forgot Password?
-              </button>
             </div>
           </div>
           <!-- End of User login-modal-->
-
-          <!-- User Reset Password Modal -->
-          <div
-            id="reset-password-modal"
-            class="display-none register-modal reset-modal modal-mobile antiquewhite-text grey-bg"
-          >
-            <h2 class="antiquewhite-text">Reset Password</h2>
-            <div class="middle">
-              <input
-                id="reset-email"
-                class="input"
-                type="email"
-                placeholder="Email"
-              />
-            </div>
-            <div class="bottom">
-              <button
-                id="reset-submit"
-                class="btn btn-lg antiquewhite-bg blue-text"
-              >
-                Send Code to email
-              </button>
-            </div>
-          </div>
-
-          <!-- Start of password update password modal: -->
-          <div
-            id="new-password-modal"
-            class="display-none register-modal reset-modal modal-mobile antiquewhite-text grey-bg"
-          >
-            <h2 class="antiquewhite-text">New Password</h2>
-            <div class="middle">
-              <input
-                id="new-password-data"
-                class="input"
-                type="password"
-                placeholder="New Password (Check your email)"
-              />
-            </div>
-            <div class="bottom">
-              <button
-                id="new-password-submit"
-                class="btn btn-lg antiquewhite-bg blue-text"
-              >
-                Update Your Password
-              </button>
-            </div>
-          </div>
-          <!-- End of password update password modal: -->
 
           <!-- Start of User Signup-modal (hidden by default)-->
           <div
@@ -160,7 +106,7 @@
                 class="input"
                 id="signup-name"
                 type="text"
-                placeholder="Name"
+                placeholder="Name (at least 6 Characters)"
               />
               <input
                 class="input"
@@ -172,13 +118,13 @@
                 class="input"
                 id="signup-phone"
                 type="text"
-                placeholder="Phone Number"
+                placeholder="+9613... or +961-76/71/70"
               />
               <input
                 id="signup-password"
                 class="input"
                 type="password"
-                placeholder="Password"
+                placeholder="upper,lower,number,special charc (at least 8 charcs)"
               />
             </div>
             <div class="img-section">

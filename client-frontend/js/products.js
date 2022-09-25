@@ -153,6 +153,7 @@ const laod_favorites = async () => {
   await axios.post(getFavoritesApi, params).then((data) => {
     favProducts = data.data;
     load_products(favProducts, favoritesWrapper);
+    show_specific_product();
   });
 };
 
@@ -164,6 +165,7 @@ const laod_wishlist = async () => {
   await axios.post(getWishlistApi, params).then((data) => {
     wishlistProducts = data.data;
     load_products(wishlistProducts, wishlistWrapper);
+    show_specific_product();
   });
 };
 

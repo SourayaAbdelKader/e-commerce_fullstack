@@ -52,7 +52,7 @@ const showProduct = (product) => {
   ] = [
     product.product_price,
     product.product_condition,
-    product.product_name,
+    product.product_title,
     product.product_description,
     product.categorie_name,
     product.seller_name,
