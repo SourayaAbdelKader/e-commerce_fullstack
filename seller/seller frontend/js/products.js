@@ -218,16 +218,17 @@ add_button.addEventListener("click", function() {
         document.getElementById("new_condition").value = "";
 
 
+
         const addProducts = async () => {
             const url = add_product_url;
             let params = new URLSearchParams();
-            params.append("categorie_id", localStorage["selected_category"]);
+            params.append("categorie_id", localStorage.getItem("selected_category"));
             params.append("title", new_name);
             params.append("description", new_description);
             params.append("price", new_price);
-            params.append("main_image", main_image);
-            params.append("image1", image1);
-            params.append("image2", image2);
+            params.append("main_image", localStorage.getItem("main_image"));
+            params.append("image1", localStorage.getItem("image1"));
+            params.append("image2", localStorage.getItem("image2"));
             params.append("condition", new_conditon);
             
             await axios
@@ -250,7 +251,7 @@ const selectedProduct = () => {
             childDiv = product.getElementsByTagName('p')[0],
             console.log(childDiv.id);
             localStorage.setItem("selected_product", childDiv.id);
-            console.log(localStorage["selected_product"])
+            console.log(localStorage.getItem("selected_product"))
         });
 })};
 
@@ -304,7 +305,7 @@ const adding_ads = () => {
                 const add_ads = async () => {
                     const url = add_ad_url;
                     let params = new URLSearchParams();
-                    params.append("product_id", localStorage["selected_product"]);
+                    params.append("product_id",localStorage.getItem("selected_product"));
                     params.append("description", ad_description);
                     await axios
                       .post(url, params)
@@ -341,7 +342,7 @@ const adding_discount = () => {
                 const add_discount = async () => {
                     const url = add_discount_url;
                     let params = new URLSearchParams();
-                    params.append("product_id", localStorage["selected_product"]);
+                    params.append("product_id", localStorage.getItem("selected_product"));
                     params.append("code", input_code);
                     params.append("percentage", input_percentage);
                     await axios
@@ -359,16 +360,14 @@ const delete_product = () => {
     delete_button.forEach(button => {
     button.addEventListener("click", function() {
         console.log("delete");
-        const product_selected = document.getElementById("product");
+        const product_selected = document.getElementById(localStorage.getItem("selected_product"));
         product_selected.classList.add("hide");
         product_selected.classList.add("displaynone");
 
         const delete_product_db = async () => {
             const url = add_discount_url;
             let params = new URLSearchParams();
-            params.append("product_id", localStorage["selected_product"]);
-            params.append("code", input_code);
-            params.append("percentage", input_percentage);
+            params.append("product_id", localStorage.getItem("selected_product"));
             await axios
               .post(url, params)
               .then((data) => {
@@ -396,7 +395,7 @@ const editSelectedProduct = () => {
         const editProducts = async () => {
             const url = edit_product_url;
             let params = new URLSearchParams();
-            params.append("product_id", localStorage["selected_product"]);
+            params.append("product_id", localStorage.getItem("selected_product"));
             params.append("title", edited_name);
             params.append("description", edited_description);
             params.append("price", edited_price);
@@ -413,44 +412,44 @@ const editSelectedProduct = () => {
         editProducts();
 })};
 
-const main_image_buttons = document.querySelectorAll(".main_image_input");
+const main_image_button = document.getElementById("main_image");
 
-main_image_buttons.forEach(element =>{ 
-    element.addEventListener("change", e => {
+main_image_button.addEventListener("change", e => {
         const reader = new FileReader();
-        let file = element.files[0];
+        let file = main_image_button.files[0];
         console.log(file);
         reader.addEventListener("load", () => {
             let image = reader.result;
-            console.log(image);
+            localStorage.setItem("main_image", image)
         });
-
-        fetch("http://localhost/twitter-website/backend/photo.php",{
-            method:"POST",
-            body: new URLSearchParams({"base64String":image,"username":localStorage.getItem("email")})
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-            let imgURL = `../backend/profile-photos/${localStorage.getItem("email")}.png`
-            console.log(imgURL)
-            profilePhoto.innerHTML = `<img src="${imgURL}" class="profile-pic"/>`
-        })
+        
         reader.readAsDataURL(file);
-    })})
+    });
 
-const image1_buttons = document.querySelectorAll(".image1");
+const image1_buttons = document.getElementById("image1");
 
-image1_buttons.forEach(element =>{ 
-    element.addEventListener("change", () => {
-        
-    })
-})
+image1_buttons.addEventListener("change", e => {
+    const reader = new FileReader();
+    let file = image1_buttons.files[0];
+    console.log(file);
+    reader.addEventListener("load", () => {
+        let image = reader.result;
+        localStorage.setItem("image1", image)
+    });
+    
+    reader.readAsDataURL(file);
+});
 
-const image2_buttons = document.querySelectorAll(".image2");
+const image2_buttons = document.getElementById("image2");
 
-image2_buttons.forEach(element =>{ 
-    element.addEventListener("change", () => {
-        
-    })
-})
+image2_buttons.addEventListener("change", e => {
+    const reader = new FileReader();
+    let file = image2_buttons.files[0];
+    console.log(file);
+    reader.addEventListener("load", () => {
+        let image = reader.result;
+        localStorage.setItem("image2", image)
+    });
+    
+    reader.readAsDataURL(file);
+});

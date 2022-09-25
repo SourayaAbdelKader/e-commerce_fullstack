@@ -297,7 +297,7 @@ button {
 }
 
 .calendar {
-    width: 15vw;
+    width: 200px;
 }
 
 .income {
@@ -425,9 +425,6 @@ tr {
 .even {
     background: linear-gradient(#eee 1px, #bbb 1px, #aaa calc(100% - 1px), #999 calc(100% - 1px));
 }
-
-
-
 
 
 /* Media Query */
