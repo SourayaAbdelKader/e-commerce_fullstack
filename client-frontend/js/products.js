@@ -47,7 +47,7 @@ const load_products = (products, wrapper) => {
                                           <p>${product.title}</p>
                                           <div class="bottom">
                                               <p>${product.price}$</p>
-                                              <div class="like" data-value="${product.id}"></div>
+                                              <div class="like" data-value="${product.id}"><img src='./assets/heart-fav.png'></div>
                                           </div>
                                       </div>
                                   </div>`;
