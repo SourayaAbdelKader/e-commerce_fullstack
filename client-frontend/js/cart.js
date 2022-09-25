@@ -109,7 +109,7 @@ const addItemEventListeners = () => {
   for (let increment_button of increment_buttons)
     increment_button.addEventListener("click", incrementItemQuantity);
   for (let discount_input of discount_codes){
-    discount_input.addEventListener('input',applyDiscount); //whenever values inside the input changes
+    discount_input.addEventListener('focusout',applyDiscount); //whenever we leave the input (instead of 'change' to don't reach the database after each key click)
   }
 };
 // ------END OF EVENT LISTENERS FOR EACH ITEM IN CART------
