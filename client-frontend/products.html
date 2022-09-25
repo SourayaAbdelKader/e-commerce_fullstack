@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="styles/products.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container flex column">
+
         <!-- Start of Header Section -->
         <div class="header orange-bg flex">
             <div class="logo">
@@ -24,67 +25,54 @@
         <!-- Start of Navbar Section -->
         <div class="navbar grey-bg">
             <ul class="navElements">
-                <li><button>Products</button></li>
+                <li><button id="showProducts">Products</button></li>
                 <li><button>Favorites</button></li>
                 <li><button>Wishlist</button></li>
                 <li><button>Profile</button></li>
             </ul>
         </div>
         <!-- End of Navbar Section -->
-        
-        <!-- Start of Hero Section -->
-        <div class="section">
+
+        <!-- Start of Products Section -->
+        <div id="products" class="pageContent flex column">
+            <!-- Start of Hero Section -->
             <div class="heroSection">
                 <div class="fade">
                     <div class="heroContent">
                         <p>Choose to see the good stuff</p>
-                        <input type="text" placeholder="Search">
+                        <input id="searchBar" type="text" placeholder="Search">
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- End of Hero Section -->
+            <!-- End of Hero Section -->
 
-        
-        <!-- Start of Products Section -->
-        <div class="productSection">
-            <p>Products</p>
-            <div id="productsWrapper" class="wrapper">
-                <!-- <div class="productCard grey-bg">
-                    <img src="assets/Hero-image.png" alt="">
-                        
-                    <div class="productInfo">
-                        <p>Seller Name</p>
-                        <p>Product Name</p>
-                        <div class="bottom">
-                            <p>$$</p>
-                            <div class="like"></div>
-                        </div>
-                    </div>
-                </div> -->
+            <!-- Start of Products Feed Section -->
+            <div class="productSection">
+                <p>Products</p>
+                <div id="productsWrapper" class="wrapper">
+                </div>
             </div>
-        </div>
-        <!-- Start of Products Section -->
+            <!-- Start of Products Feed Section -->
 
-        <!-- Start of Ads Section -->
-        <div class="adSection">
-            <div class="productAdImage">
-                <div class="fade">
-                    <img src="assets/Hero-image.png" alt="Ad Image">
-                </div>
+            <!-- Start of Ads Section -->
+            <div id="adContainer" class="adSection">
             </div>
-            <div class="adInfo flex column antiquewhite-text">
-                <div class="adSeller">
-                    <h1>Product</h1>
-                    <p>By: <span>Seller</span></p>
-                </div>
-                <div class="AdView">
-                    <p>Price: <span>$$</span></p>
-                    <button class="btn antiquewhite-text grey-bg">View</button>
-                </div>
-            </div>
+            <!-- End of Ads Section -->
+
         </div>
-        <!-- End of Ads Section -->
+        <!-- End of Products Section -->
+
+        <!-- Start of Favorites Section -->
+        <div id="favorites" class="pageContent">
+            <p>Favorites</p>
+        </div>
+        <!-- End of Favorites Section -->
+
+        <!-- Start of Wishlist Section -->
+        <div id="wishlist" class="pageContent">
+            <p>Wishlist</p>
+        </div>
+        <!-- End of Wishlist Section -->
 
         <!-- Start of Footer Section -->
         <div class="footer orange-bg flex">
@@ -108,8 +96,9 @@
         </div>
         <div class="break grey-bg"></div>
         <!-- End of Footer Section -->
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script src="js/products.js"></script>
+        
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/products.js"></script>
 </body>
 </html>
