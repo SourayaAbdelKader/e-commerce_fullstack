@@ -9,7 +9,7 @@ $user_type = $_GET['user_type'];
 
 
 if ($user_type == 'client') {
-    $query = $mysqli->prepare("SELECT id, name,bio, email, phone_number, profile, access FROM users WHERE email=? and password=? and user_type=?");
+    $query = $mysqli->prepare("SELECT id, name,bio, email, phone_number, image_url, access FROM users WHERE email=? and password=? and user_type=?");
     $query->bind_param('sss', $email, $password, $user_type);
     $query->execute();
     $array = $query->get_result();
@@ -19,7 +19,7 @@ if ($user_type == 'client') {
 }
 // for seller login
 else {
-    $query = $mysqli->prepare("SELECT id,name, email, phone_number, profile, access, shop_location, shop_description FROM users WHERE email=? and password=? and user_type=?");
+    $query = $mysqli->prepare("SELECT id,name, email, phone_number, image_url, access, shop_location, shop_description FROM users WHERE email=? and password=? and user_type=?");
     $query->bind_param('sss', $email, $password, $user_type);
     $query->execute();
     $array = $query->get_result();

@@ -134,7 +134,9 @@ const createEmptyCart = async () => {
     "http://localhost/e-commerce_fullstack/ecommerce-server/create_emptycart.php";
   await axios
     .post(url, params)
-    .then((data) => {})
+    .then((data) => {
+      checkUser();
+    })
     .catch((err) => console.log(err));
 };
 
@@ -150,8 +152,7 @@ const postSignUp_loginUser = () => {
     await axios
       .get(`${url}?email=${email}&password=${password}&user_type=${user_type}`)
       .then((data) => {
-        user = data.data[0];
-        console.log(user);
+        const user = data.data;
         localStorage.setItem("user", JSON.stringify(user));
         reset_all_inputs();
         createEmptyCart();
@@ -279,7 +280,6 @@ const createNewUser = async (e) => {
       .get(`${url}?email=${signup_email.value}`)
       .then((data) => {
         const found = JSON.stringify(data.data[0].found);
-        console.log(found);
         if (found > 0) {
           repeated = true;
         }
@@ -293,7 +293,6 @@ const createNewUser = async (e) => {
   if (repeated) {
     signup_email.classList.add("danger");
     //show message about repeated email
-    console.log('repeated');
     return;
   }
 
@@ -307,7 +306,7 @@ const createNewUser = async (e) => {
   params.append("user_type", "client");
   params.append("shop_location", "");
   params.append("bio", "");
-  params.append("profile", profile);
+  params.append("image_url", profile);
 
   const add_user = async () => {
     const url =
