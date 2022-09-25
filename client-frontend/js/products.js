@@ -60,7 +60,7 @@ const load_products = (products, wrapper) => {
 };
 
 const load_ad = (ad) => {
-  adContainer.innerHTML = `<div class="productAdImage" data-value=${ad.product_id}>
+  adContainer.innerHTML = `<div class="productAdImage">
                             <div class="fade">
                                 <img src="../../ecommerce-server/${ad.main_image}" alt="Ad Image">
                             </div>
@@ -72,22 +72,29 @@ const load_ad = (ad) => {
                             </div>
                             <div class="AdView">
                                 <p>Price: <span>${ad.price}$</span></p>
-                                <button class="btn antiquewhite-text grey-bg">View</button>
+                                <button id='view-advertisement-button' data-value=${ad.product_id} class="btn antiquewhite-text grey-bg">View</button>
                             </div>
                           </div>`;
+  // add event listener to select ads id => in order to show to user on (view button click):
+  const view_advertisement_button = document.getElementById(
+    "view-advertisement-button"
+  );
+  view_advertisement_button.addEventListener("click", () => {
+    const product_id = view_advertisement_button.getAttribute("data-value");
+    console.log(product_id);
+  });
 };
 
-
 // showing item:
-const show_specific_product = ()=>{
-const all_products_cards = document.querySelectorAll(".productCard");
-all_products_cards.forEach(card=>{
-  const product_id = card.getAttribute('data-value'); 
-  card.addEventListener('click',()=>{
-    console.log(product_id);
-  })
-})
-}
+const show_specific_product = () => {
+  const all_products_cards = document.querySelectorAll(".productCard");
+  all_products_cards.forEach((card) => {
+    const product_id = card.getAttribute("data-value");
+    card.addEventListener("click", () => {
+      console.log(product_id);
+    });
+  });
+};
 
 // function that adds to all like icons an event listner for fetching in a later function
 const favorite_products = () => {
@@ -235,9 +242,6 @@ go_to_profile_button.addEventListener("click", () => {
   window.location.href = "./profile.html";
 });
 //End of Event listeners linking to another pages:
-
-//Event listener to show page (specific item):
-adContainer.addEventListener('click',advertisementClicked);
 
 // Calling get_product function to show products
 get_product();
