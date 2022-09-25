@@ -1,6 +1,4 @@
 const checkout_submit = document.getElementById("checkout-submit");
-const apply_voucher = document.getElementById("voucher-submit");
-const voucher_code = document.getElementById("voucher-input");
 const cart_total_show = document.getElementById("cart-total");
 const cart_container = document.getElementById("cart-items");
 const discount_codes = document.getElementsByClassName("discount-code");
@@ -221,10 +219,6 @@ const getCartItems = async () => {
   cart_total_show.textContent = cart_total;
 };
 
-// apply the voucher code added to the total and recalculate the new total ('VOUCHER' FEATURE NOT ADDED YET)
-const applyVoucher = () => {
-  console.log(voucher_code.value);
-};
 // submit the cart to checkout
 const checkoutOrder = async () => {
   //get client_id from localStorage: 1 - for testing:
@@ -308,7 +302,6 @@ const getBackToProducts = () => {
 // on window load, get all cart items:
 window.addEventListener("load", getCartItems);
 // event listeners for clicked (remove, increment, decrement, checkout, apply voucher)
-apply_voucher.addEventListener("click", applyVoucher);
 checkout_submit.addEventListener("click", checkoutOrder);
 //navlinks:
 signout_button.addEventListener("click", logUserOut);

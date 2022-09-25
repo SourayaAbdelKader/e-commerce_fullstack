@@ -5,13 +5,8 @@ const login_seller_btn = document.getElementById("login-seller-btn");
 const signup_modal = document.getElementById("signup-modal");
 const login_modal = document.getElementById("login-modal");
 const login_seller_modal = document.getElementById("login-seller-modal");
-const reset_password_btn = document.getElementById("reset-password-show");
-const reset_password_modal = document.getElementById("reset-password-modal");
 const reset_email = document.getElementById("reset-email");
 const reset_submit_btn = document.getElementById("reset-submit");
-const new_password_modal = document.getElementById("new-password-modal");
-const new_password = document.getElementById("new-password-data");
-const new_password_submit = document.getElementById("new-password-submit");
 // signup - new user
 const signup_submit_btn = document.getElementById("signup-submit");
 const signup_name = document.getElementById("signup-name");
@@ -33,7 +28,7 @@ var base64string_profile;
 
 const checkUser = () => {
   const user = localStorage.getItem("user");
-  if(user && !user.user_type) window.location.href = "./products.html";
+  if (user && !user.user_type) window.location.href = "./products.html";
   if (user && user.user_type == "seller") window.location.href = "./"; //souray's page
 };
 // show image and save url (signup)
@@ -66,62 +61,21 @@ const reset_all_inputs = () => {
 // ---Start of show and hide modals Section---
 const showLoginModal = () => {
   reset_all_inputs();
-  reset_password_modal.classList.add("display-none");
-  new_password_modal.classList.add("display-none");
   login_seller_modal.classList.add("display-none");
   signup_modal.classList.add("display-none");
   login_modal.classList.remove("display-none");
 };
 const showSignUpModal = () => {
   reset_all_inputs();
-  reset_password_modal.classList.add("display-none");
-  new_password_modal.classList.add("display-none");
   login_seller_modal.classList.add("display-none");
   login_modal.classList.add("display-none");
   signup_modal.classList.remove("display-none");
 };
 const showSellerLoginModal = () => {
   reset_all_inputs();
-  reset_password_modal.classList.add("display-none");
-  new_password_modal.classList.add("display-none");
   login_modal.classList.add("display-none");
   signup_modal.classList.add("display-none");
   login_seller_modal.classList.remove("display-none");
-};
-const showResetPasswordModal = () => {
-  reset_all_inputs();
-  login_modal.classList.add("display-none");
-  reset_password_modal.classList.remove("display-none");
-};
-const sendNewPasswordByEmail = async () => {
-  reset_all_inputs();
-  const email = reset_email.value;
-  // console.log(email);
-
-  // check if email is found
-  let repeated = false;
-  const check_email = async () => {
-    const url =
-      "http://localhost/e-commerce_fullstack/ecommerce-server/check_email.php";
-    await axios
-      .get(`${url}?email=${email}`)
-      .then((data) => {
-        const found = JSON.stringify(data.data[0]);
-        if (found.length > 0) {
-          repeated = true;
-        }
-      })
-      .catch((err) => console.log(err.response));
-  };
-
-  await check_email();
-  // if(!repeated){
-  // }else{ //where the work begins:
-  // }
-  // reset password php - send email
-  // is_repeated_email(email);
-  // reset_password_modal.classList.add("display-none");
-  // new_password_modal.classList.remove("display-none");
 };
 // ---End of Show and hide modals Section---
 
@@ -332,8 +286,6 @@ const createNewUser = async (e) => {
 login_btn.addEventListener("click", showLoginModal);
 signup_btn.addEventListener("click", showSignUpModal);
 login_seller_btn.addEventListener("click", showSellerLoginModal);
-reset_password_btn.addEventListener("click", showResetPasswordModal);
-reset_submit_btn.addEventListener("click", sendNewPasswordByEmail);
 // signup and login for users - only login for sellers:
 signup_submit_btn.addEventListener("click", createNewUser);
 login_client_submit_btn.addEventListener("click", loginUser);
