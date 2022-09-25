@@ -8,6 +8,38 @@
     <link rel="stylesheet" href="./styles/index.css" />
   </head>
   <body class="antiquewhite-bg">
+    <!-- START OF WHOLE NAVBAR -->
+    <!-- Start of navbar -->
+    <div class="products-container flex column">
+      <!-- Start of Header Section -->
+      <div class="header orange-bg flex">
+        <div class="logo">
+          <img src="assets/logo_withname-no-margin.png" alt="Logo" />
+        </div>
+        <div class="header-top-right flex">
+          <button
+            id="signout-button"
+            class="btn signout-btn grey-bg antiquewhite-bg"
+          >
+            Sign out
+          </button>
+          <button class="btn eclipse">
+            <img src="assets/cart-icon.png" />
+          </button>
+        </div>
+      </div>
+      <!-- Ender of Header Section -->
+
+      <!-- Start of Navbar Section -->
+      <div class="navbar grey-bg">
+        <ul class="navElements">
+          <li><button id="back-to-products">Back to Products</button></li>
+        </ul>
+      </div>
+    </div>
+    <!-- End of navbar -->
+    <!-- END OF WHOLE NAVBAR -->
+
     <!-- START OF CART HTML -->
     <main class="cart-page">
       <h1>My Shopping Cart</h1>
@@ -26,9 +58,8 @@
         </div>
         <!-- END OF ITEMS TITLES -->
 
-        <!-- START OF ITEMS CART PRODUCTS (PUSHED FROM JS - GET CART ITEMS) --> 
-        <div id="cart-items" class="cart-items">
-        </div>
+        <!-- START OF ITEMS CART PRODUCTS (PUSHED FROM JS - GET CART ITEMS) -->
+        <div id="cart-items" class="cart-items"></div>
         <!-- END OF ALL CARTS ITEMS -->
       </section>
       <!-- END OF CART CONTAINER -->
@@ -61,6 +92,16 @@
       </section>
       <!-- START OF CHECKOUT SECTION -->
     </main>
+
+    <!-- Start of Footer Section -->
+    <div class="footer orange-bg flex">
+      <div class="footerLogo flex column">
+        <img src="assets/logo_withname-no-margin.png" alt="Logo" />
+        <p class="antiquewhite-text">Choose to see the good stuff</p>
+      </div>
+    </div>
+    <div class="break grey-bg"></div>
+    <!-- End of Footer Section -->
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./js/cart.js"></script>

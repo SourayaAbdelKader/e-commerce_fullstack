@@ -8,6 +8,9 @@ const remove_buttons = document.getElementsByClassName("item-remove");
 const decrement_buttons = document.getElementsByClassName("decrement");
 const increment_buttons = document.getElementsByClassName("increment");
 var cart_total = 0; //to calculate and affect after each change in quantity(used in many different event listeners)
+// navbar links:
+const signout_button = document.getElementById('signout-button');
+const back_to_products_button = document.getElementById('back-to-products');
 
 // ------START OF EVENT LISTENERS FOR EACH ITEM IN CART------
 //  remove the whole item/product from the cart/ when X button is clicked:
@@ -289,6 +292,16 @@ const checkoutOrder = async () => {
   cart_container.remove();
   cart_total_show.textContent = 0;
 };
+
+// loguser out:
+const logUserOut = ()=>{
+  localStorage.clear();
+  window.location.href = './register.html';
+}
+// return back to products page:
+const getBackToProducts = ()=>{
+  window.location.href = './products.html';
+}
 // ------END OF EVENT LISTENER FUNCTIONS------
 
 // ------START OF MAIN EVENT LISTENERS ADDITION------
@@ -297,4 +310,7 @@ window.addEventListener("load", getCartItems);
 // event listeners for clicked (remove, increment, decrement, checkout, apply voucher)
 apply_voucher.addEventListener("click", applyVoucher);
 checkout_submit.addEventListener("click", checkoutOrder);
+//navlinks:
+signout_button.addEventListener('click',logUserOut);
+back_to_products_button.addEventListener('click',getBackToProducts);
 // ------END OF MAIN EVENT LISTENERS ADDITION------
