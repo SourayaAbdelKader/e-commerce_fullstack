@@ -24,6 +24,9 @@ const profile_new_bio = document.getElementById("profile-new-bio");
 var base64profile;
 // chat-box to add all received message to it's html content:
 const messages_container = document.getElementById("chat-main-box");
+//navbar links:
+const go_to_cart_button = document.getElementById('go-to-cart-button');
+const signout_button = document.getElementById('signout-button');
 
 // -----START OF FUNCTIONS---------//
 // show image and save url (signup)
@@ -250,6 +253,14 @@ window.addEventListener("load", showUserData);
 edit_profile_img_input.addEventListener("change", uploadImage);
 // load all messages received to this user_id when window loads:
 window.addEventListener("load", getAllReceivedMessages);
+//navbar links click:
+go_to_cart_button.addEventListener("click", () => {
+  window.location.href = "./cart.html";
+});
+signout_button.addEventListener("click", () => {
+  localStorage.clear();
+  window.location.href = "./register.html";
+});
 // --------END OF EVENT LISTENERS-------------
 
 
