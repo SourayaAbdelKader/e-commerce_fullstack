@@ -81,7 +81,7 @@ const load_ad = (ad) => {
   );
   view_advertisement_button.addEventListener("click", () => {
     const product_id = view_advertisement_button.getAttribute("data-value");
-    console.log(product_id);
+    localStorage.setItem("product_id", JSON.stringify(product_id));
   });
 };
 
@@ -91,7 +91,7 @@ const show_specific_product = () => {
   all_products_cards.forEach((card) => {
     const product_id = card.getAttribute("data-value");
     card.addEventListener("click", () => {
-      console.log(product_id);
+      localStorage.setItem("product_id", JSON.stringify(product_id));
     });
   });
 };
