@@ -91,7 +91,7 @@ const incrementItemQuantity = (e) => {
   };
   update_cart();
 };
-// apply discount to item's total if found:
+// apply discount to item's total if found: //it wouldn't be saved, so when the user wanna checkout he would add it
 const applyDiscount = async (e) => {
   //get the id of the item where the input belongs, and input(self) value inside
   const item_id = e.target.parentNode.children[0].value;
@@ -118,16 +118,30 @@ const applyDiscount = async (e) => {
 
   await get_percentage(); //get the percentage of discount if found
   //if perc > 0 : update current_item_total and the whole cart total
+  let old_item_total = parseInt(e.target.nextSibling.textContent);
+  const current_item_total = e.target.nextSibling;
+
   if (discount_percentage > 0) {
-    const current_item_total = e.target.nextSibling;
     let current_item_total_value = parseInt(current_item_total.textContent);
-    const discount = current_item_total_value*(discount_percentage/100);
+    const discount = current_item_total_value * (discount_percentage / 100);
     current_item_total_value -= discount;
     current_item_total.textContent = current_item_total_value;
-    cart_total_show.textContent = parseInt(cart_total_show.textContent)-discount;
-    console.log(cart_total_show);
-    console.log(current_item_total);
-
+    cart_total_show.textContent =
+      parseInt(cart_total_show.textContent) - discount;
+  }
+  // if user removed the discount code, or change it to unvalid one:
+  else {
+    //recalculate: find new_time_total(price*quantity), then cart_total+= (new_item_total-old_item_total);
+    const quantity_show =
+      e.target.parentNode.children[3].children[0].children[1];
+    const price_per_item_show = e.target.parentNode.children[4];
+    const new_item_total =
+      parseInt(quantity_show.textContent) *
+      parseInt(price_per_item_show.textContent);
+    //update item total and cart total, to make sure discount is removed:
+    console.log(new_item_total, old_item_total);
+    current_item_total.textContent = new_item_total;
+    cart_total_show.textContent = parseInt(cart_total_show.textContent) + (new_item_total - old_item_total);
   }
 };
 //add event listener to each html added item:
