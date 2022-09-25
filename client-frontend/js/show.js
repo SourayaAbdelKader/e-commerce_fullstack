@@ -69,6 +69,21 @@ const addToWishlist = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const client_id = user.id;
   const product_id = JSON.parse(localStorage.getItem("product_id"));
+
+  const update_wishlist = async () => {
+    let params = new URLSearchParams();
+    params.append("client_id", client_id);
+    params.append("product_id", product_id);
+    const url =
+      "http://localhost/e-commerce_fullstack/ecommerce-server/add_wishlist.php";
+    await axios
+      .post(url, params)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  };
+  update_wishlist();
 };
 const addToCart = () => {
   const user = JSON.parse(localStorage.getItem("user"));
