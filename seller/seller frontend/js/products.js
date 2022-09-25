@@ -6,7 +6,7 @@ const add_ad_url = "http://localhost/seller-fullstack/e-commerce_fullstack/selle
 const add_discount_url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/add_discount.php";
 const receive_ads_url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/receive_ad.php";
 const receive_discounts_url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/receive_discount.php";
-
+const edit_product_url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/edit_product.php";
 //get today's date:
 const getTodayDate = () => {
     var today = new Date();
@@ -164,7 +164,9 @@ add_button.addEventListener("click", () => {
             params.append("title", new_name);
             params.append("description", new_description);
             params.append("price", new_price);
-            params.append("condition", new_conditon);
+            params.append("main_image", main_image;
+            params.append("image1", image1);
+            params.append("image2", image2;
             params.append("condition", new_conditon);
             
             await axios
@@ -332,7 +334,7 @@ submit_editing.addEventListener("click", () => {
     const edited_image2 = document.getElementById("upload_image2").value;
     
     const editProducts = async () => {
-        const url = add_product_url;
+        const url = edit_product_url;
         let params = new URLSearchParams();
         params.append("product_id", iproduct_id);
         params.append("title", edited_name);
