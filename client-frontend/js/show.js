@@ -12,12 +12,52 @@ const back_to_products_button = document.getElementById("back-to-products");
 const add_to_cart_button = document.getElementById("cart-button");
 const add_to_favorite_button = document.getElementById("fav-button");
 const add_to_wishlist_button = document.getElementById("wish-button");
+// show item information tags:
+const product_price = document.getElementById("price");
+const product_condition = document.getElementById("item-condition");
+const product_name = document.getElementById("item-name");
+const product_category = document.getElementById("item-category");
+const product_description = document.getElementById("item-description");
+const product_main_image = document.getElementById("item-main-img");
+const product_image1 = document.getElementById("item-img1");
+const product_image2 = document.getElementById("item-img2");
+const product_image3 = document.getElementById("item-img3");
+const seller_shop_name = document.getElementById("shop-name");
+const seller_shop_location = document.getElementById("shop-location");
+const seller_shop_info = document.getElementById("shop-info");
 
 // START OF WINDOW LOAD
 //show current product and seller values:
-const showProduct= (product)=>{
+const showProduct = (product) => {
   console.log(product);
-}
+  // always we should have images, but for testing and styling, we wanna keep html fixed image (we use same main image, for main image and the middle one)
+  if (product.product_image) {
+    product_main_image.src = `../ecommerce-server/product_images/${product.product_image}`;
+    product_image2.src = `../ecommerce-server/product_images/${product.product_image}`;
+  }
+  if (product.product_image1)
+    product_image1.src = `../ecommerce-server/product_images/${product.product_image1}`;
+  if (product.product_image2)
+    product_image2.src = `../ecommerce-server/product_images/${product.product_image2}`;
+
+  [
+    product_price.textContent,
+    product_condition.textContent,
+    product_name.textContent,
+    product_description.textContent,
+    seller_shop_name.textContent,
+    seller_shop_location.textContent,
+    seller_shop_info.textContent,
+  ] = [
+    product.product_price,
+    product.product_condition,
+    product.product_name,
+    product.product_description,
+    product.seller_name,
+    product.seller_location,
+    product.seller_description,
+  ];
+};
 const getProductAndSeller = () => {
   const product_id = JSON.parse(localStorage.getItem("product_id"));
 

@@ -44,11 +44,11 @@
     <main class="main-show">
       <!-- Start of LEFT Images section -->
       <section class="show-item-images">
-        <img class="main-img" src="./assets/mac-main.jfif" />
+        <img id="item-main-img" class="main-img" src="./assets/mac-main.jfif" />
         <div class="secondary-images">
-          <img src="./assets/mac-2.jfif" alt="sec-img" />
-          <img src="./assets/mac-main.jfif" alt="sec-img" />
-          <img src="./assets/mac-3.jfif" alt="sec-img" />
+          <img id="item-img1" src="./assets/mac-2.jfif" alt="sec-img" />
+          <img id='item-img2' src="./assets/mac-main.jfif" alt="sec-img" />
+          <img id='item-img3' src="./assets/mac-3.jfif" alt="sec-img" />
         </div>
       </section>
       <!-- End of LEFT Images Section -->
@@ -56,13 +56,13 @@
       <!-- Start of RIGHT Product Info Section -->
       <section class="show-item-info">
         <p class="category">
-          Category: <span id="item-category">Video Card</span>
+          Category: <span id="item-category"></span>
         </p>
-        <h2 id="name" class="name">Gigabyte GeForce RTX 3090 GAMING</h2>
+        <h2 id="item-name" class="name"></h2>
         <p class="condition light-text">
-          Condition: <span id="item-condition">New</span>
+          Condition: <span id="item-condition"></span>
         </p>
-        <h1 id="price" class="price">1899$</h1>
+        <h1 class="price"><span id="price"></span>$</h1>
         <div class="buttons">
           <button id="cart-button" class="cart-button orange-bg upper">
             <img class="cart-icon" src="./assets/icons8-addtocart-50.png" />Add
@@ -89,19 +89,13 @@
         <button id="seller-info-button" class="upper bold">seller info</button>
       </div>
       <p id="item-description" class="description">
-        VIDIA Ampere Streaming Multiprocessors 2nd Generation RT Cores 3rd
-        Generation Tensor Cores Powered by GeForce RTX™ 3090 Integrated with
-        24GB GDDR6X 384-bit memory interface WATERFORCE all-in-one cooling
-        system 240mm radiator with 2x 120mm ARGB fans RGB Fusion 2.0 6 Outputs
-        Protection metal back plate 4 Years Warranty (Online registration
-        required)
+      
       </p>
       <div id="seller-info" class="description display-none seller-info">
-        <h2 class="shop-name">World Technology</h2>
-        <p class="shop-location">
-          440 S Vermont Ave #108, Los Angeles, CA 90020, United States
+        <h2 id='shop-name' class="shop-name">World Technology</h2>
+        <p id="shop-location" class="shop-location">
         </p>
-        <p class="shop-info">
+        <p id="shop-info" class="shop-info">
           Tech Shop · Computers & Tablets · All Computers & Tablets · Apple ·
           Headphones & Audio · All Headphones & Audio · Earbuds · Software · All
           Software · Mac · Displays.
