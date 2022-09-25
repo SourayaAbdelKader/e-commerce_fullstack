@@ -147,7 +147,7 @@ const addToCart = () => {
     let params = new URLSearchParams();
     params.append("client_id", client_id);
     params.append("product_id", product_id);
-    params.append("product_id", quantity);
+    params.append("quantity", quantity);
 
     const url =
       "http://localhost/e-commerce_fullstack/ecommerce-server/add_to_cart.php";
