@@ -336,13 +336,13 @@ body{
     padding: 0 2vh;
 }
 
-.backBtnContainer{
+.search > div{
     height: fit-content;
     width: fit-content;
     align-self: start;
 }
 
-.backSearch{
+.search > div > button{
     width: 16vh;
     height: 8vh;
     align-items: center;
