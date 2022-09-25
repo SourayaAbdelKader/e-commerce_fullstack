@@ -21,7 +21,7 @@ function base64_to_jpeg($base64_string, $output_file)
 $name = $_POST['name'];
 $email = $_POST['email'];
 $password = $_POST['password'];
-$phone_number= $_POST['phone_number'];
+$phone_number = $_POST['phone_number'];
 $user_type = $_POST['user_type'];
 $shop_location = $_POST['shop_location'];
 $bio = $_POST['bio'];
@@ -33,15 +33,15 @@ if ($profile_base64) {
     $image = base64_to_jpeg($profile_base64, 'user_images/' . $email . '.jpeg');
     $target_Path = "/user_images";
     move_uploaded_file($image, $target_Path);
-    $profile = "../ecommerce-server/user_images/" . $email . ".jpeg";
+    $profile = $email . ".jpeg";
 } else {
     $profile = '';
 }
 
 $password = hash('sha256', $password . 'sayhiecommerce');
-$query = $mysqli-> prepare("INSERT INTO users(name, email, password, phone_number, profile, access, user_type, shop_location, bio) VALUE (?,?,?,?,?,?,?,?,?)");
+$query = $mysqli->prepare("INSERT INTO users(name, email, password, phone_number, profile, access, user_type, shop_location, bio) VALUE (?,?,?,?,?,?,?,?,?)");
 $query->bind_param('sssssssss', $name, $email, $password, $phone_number, $profile, $access, $user_type, $shop_location, $bio); //change to ?,? to strings vars
-$query-> execute();
+$query->execute();
 
 $response = [];
 $response['success'] = true;

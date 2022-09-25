@@ -99,7 +99,8 @@ const checkCurrentUser = () => {
 };
 const showUserData = () => {
   const user = checkCurrentUser();
-  if (user.profile) profile_user_image.src = user.profile;
+  if (user.profile)
+    profile_user_image.src = `../../ecommerce-server/user_images/${user.image_url}`;
   else profile_user_image.src = "./assets/dummy-profile.png";
   profile_user_name.textContent = user.name;
   if (user.bio) profile_user_bio.textContent = user.bio;
@@ -110,10 +111,10 @@ const showReceivedMessage = (message) => {
     <div class="single-chat">
   <div class="chat">
   `;
-  if (message.profile) {
+  if (message.image_url) {
     chatHTML += `<img
       class="shop-profile"
-      src="${message.profile}"
+      src="../../ecommerce-server/user_images/${message.image_url}"
       alt="shop profile"
     />`;
   } else {
