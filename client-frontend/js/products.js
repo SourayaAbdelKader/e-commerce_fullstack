@@ -8,7 +8,7 @@ const wishlistPageContent = document.getElementById("wishlist");
 const searchResultPageContent = document.getElementById("searchResult");
 const productsWrapper = document.getElementById("productsWrapper");
 const favoritesWrapper = document.getElementById("favoritesWrapper");
-const wishlistWrapper = document.getElementById("favoritesWrapper");
+const wishlistWrapper = document.getElementById("wishlistWrapper");
 const searchResultWrapper = document.getElementById("searchWrapper");
 const getProductApi =
   "http://localhost/e-commerce_fullstack/ecommerce-server/get_products.php";
@@ -37,6 +37,7 @@ function random_int(min, max) {
 
 // Function getting products as object and appending them to a wrapper
 const load_products = (products, wrapper) => {
+  console.log(products, wrapper);
   if (products.length != 0) {
     products.forEach((product) => {
       // add seller name
