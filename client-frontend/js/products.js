@@ -38,6 +38,7 @@ function random_int(min, max) {
 // Function getting products as object and appending them to a wrapper
 const load_products = (products, wrapper) => {
   console.log(products, wrapper);
+  wrapper.innerHTML = '';
   if (products.length != 0) {
     products.forEach((product) => {
       // add seller name
