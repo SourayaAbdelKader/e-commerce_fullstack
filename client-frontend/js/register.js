@@ -31,10 +31,10 @@ const login_seller_password = document.getElementById("login-seller-password");
 // global base64String
 var base64string_profile;
 
-const checkCurrentUser = () => {
+
+const checkUser = () => {
   const user = localStorage.getItem("user");
-  if (user) return JSON.parse(user);
-  return "";
+  if (user) window.location.href = "./profile.html";
 };
 // show image and save url (signup)
 function uploadImage() {
@@ -125,7 +125,7 @@ const sendNewPasswordByEmail = async () => {
 };
 // ---End of Show and hide modals Section---
 
-// Start of login submit(get exisiting user) //
+
 // create empty cart for new registered user so we can add to it directly:
 const createEmptyCart = async () => {
   const new_user = JSON.parse(localStorage.getItem("user"));
@@ -136,9 +136,7 @@ const createEmptyCart = async () => {
     "http://localhost/e-commerce_fullstack/ecommerce-server/create_emptycart.php";
   await axios
     .post(url, params)
-    .then((data) => {
-      console.log(data);
-    })
+    .then((data) => {})
     .catch((err) => console.log(err));
 };
 
@@ -345,4 +343,5 @@ login_client_submit_btn.addEventListener("click", loginUser);
 login_seller_submit_btn.addEventListener("click", loginUser);
 // show new image whenever image in signup modal changes by user
 signup_profile.addEventListener("change", uploadImage);
-// reset password main activity:
+// on window load if there is a user redirect:
+window.addEventListener("load", checkUser);
