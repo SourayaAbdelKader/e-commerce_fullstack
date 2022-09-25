@@ -1,5 +1,6 @@
 const client_id = 6;
 const showProductsBtn = document.getElementById("showProducts")
+const showFavoritesBtn = document.getElementById("showFavorites")
 const productsPageContent = document.getElementById("products");
 const favoritesPageContent = document.getElementById("favorites");
 const wishlistPageContent = document.getElementById("wishlist");
@@ -10,7 +11,7 @@ const addFavouriteApi = "http://localhost/e-commerce_fullstack/backend/add_favor
 
 // showing only product section when clicked in navbar
 showProductsBtn.addEventListener("click",() => {
-  productsPageContent.classList.add("flex")
+  productsPageContent.classList.remove("hide")
   favoritesPageContent.classList.add("hide")
   wishlistPageContent.classList.add("hide")
 })
