@@ -204,7 +204,7 @@ body{
 /* Hero Section */
 
 .heroSection{
-    margin: 5vh 0;
+    margin-top: 5vh;
     width: 90vw;
     height: 70vh;
     background-image: url("/client-frontend/assets/Hero-image.png");
@@ -262,8 +262,9 @@ body{
     justify-items: center;
 }
 
-.productSection > p{
+.sectionTitle{
     font-size: 8vh;
+    margin-top: 8vh;
 }
 
 .wrapper{
