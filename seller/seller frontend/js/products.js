@@ -4,7 +4,8 @@ const receive_products_url = "http://localhost/seller-fullstack/e-commerce_fulls
 const add_product_url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/add_product.php";
 const add_ad_url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/add_ad.php";
 const add_discount_url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/add_discount.php";
-
+const receive_ads_url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/receive_ad.php";
+const receive_discounts_url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/receive_discount.php";
 
 //get today's date:
 const getTodayDate = () => {
@@ -84,6 +85,8 @@ const displayProducts = async () => {
             product_description.innerHTML = element.description;
             product_price.innerHTML = element.price;
             product_condition.innerHTML = element.condition;
+            receiving_ad(element.id);
+            receiving_discount(element.id);
 
             // adding the ad to the product 
 
@@ -94,11 +97,13 @@ const displayProducts = async () => {
         adding_ads();
         delete_product(); 
         selectedProduct();
-
+        adding_discount();
+        
+        
        })
  }
-displayProducts()
 
+ displayProducts()
 
 // ______ add product _________
 const add_product = document.getElementById("add_product")
@@ -173,12 +178,44 @@ const selectedProduct = () => {
         console.log(product.id)
         product.addEventListener("click", () =>  {
             localStorage.setItem("selected_product", product.id);
-            console.log(product.id + "HAHA")
+            console.log(product.id)
         })
 })};
 
-// to the ad pop up to show and catch description
 
+// a function to retrieve an ad of a certain product
+const receiving_ad = async (id) => {
+    const url = receive_ads_url;
+    let params = new URLSearchParams();
+    params.append("product_id", id);
+    await axios
+      .post(url, params)
+      .then((data) => {
+        console.log("ad");
+        console.log(data.data[0]);
+        const display_description = document.getElementById("ad-description");
+        display_description.innerHTML = data.data[0].description;     
+})};
+
+// a function to retrieve a discount of a certain product
+const receiving_discount = async (id) => {
+    const url = receive_discounts_url;
+    let params = new URLSearchParams();
+    params.append("product_id", id);
+    await axios
+      .post(url, params)
+      .then((data) => {
+        console.log("discount");
+        console.log(data.data[0]);
+        const display_code = document.getElementById("discount-code");
+        const display_percentage = document.getElementById("discount-percentage");
+        display_code.innerHTML = data.data[0].code; 
+        display_percentage.innerHTML = data.data[0].percentage;   
+})};
+
+
+
+// to the ad pop up to show and catch description
 const adding_ads = () => {
     const add_ad = document.querySelectorAll(".add-ad");
     const pop_up_ad = document.getElementById("pop-up-ad");
@@ -192,56 +229,61 @@ const adding_ads = () => {
                 const ad_main_descriptin = document.getElementById("ad-description");
                 ad_main_descriptin.innerHTML = ad_description;
                 pop_up_ad.classList.toggle("hide");
+                document.getElementById("new_ad").value = "";
+                
 
                 // sending the data into the database
                 const add_ads = async () => {
                     const url = add_ad_url;
                     let params = new URLSearchParams();
-                    params.append("product_id",);
+                    params.append("product_id", 3);
                     params.append("description", ad_description);
                     await axios
                       .post(url, params)
                       .then((data) => {
-                        console.log(data)});
-    };
+                        console.log(data)});}
+        add_ads();
 })})})};
 
 // to add the discount pop up 
-const add_discount = document.querySelectorAll(".add-discount");
-const pop_up_discount = document.getElementById("pop_up_discount");
-console.log(add_discount.length)
-add_discount.forEach(button => {
-    button.addEventListener("click", () => {
-        console.log("discount")
-        pop_up_discount.classList.toggle("hide");
-        const add_discount_button = document.getElementById("submit_discount_button");
-
-        add_discount_button.addEventListener("click", () => {
-            const input_code = document.getElementById("input_code").value;
-            const input_percentage = document.getElementById("input_percentage").value;
-
-            const code_place = document.getElementById("discount-code");
-            const percentage_place = document.getElementById("discount-percentage");
-
-            code_place.innerHTML = input_code;
-            percentage_place.innerHTML = input_percentage;
+const adding_discount = () => {
+    const add_discount = document.querySelectorAll(".add-discount");
+    const pop_up_discount = document.getElementById("pop_up_discount");
+    console.log(add_discount.length)
+    add_discount.forEach(button => {
+        button.addEventListener("click", () => {
+            console.log("discount")
             pop_up_discount.classList.toggle("hide");
+            const add_discount_button = document.getElementById("submit_discount_button");
 
-            // sending the data into the database
-            const add_ads = async () => {
-                const url = add_discount_url;
-                let params = new URLSearchParams();
-                params.append("product_id",);
-                params.append("code", ad_description);
-                params.append("percentage", percentage);
-                await axios
-                  .post(url, params)
-                  .then((data) => {
-                    console.log(data)})};
+            add_discount_button.addEventListener("click", () => {
+                const input_code = document.getElementById("input_code").value;
+                const input_percentage = document.getElementById("input_percentage").value;
 
+                const code_place = document.getElementById("discount-code");
+                const percentage_place = document.getElementById("discount-percentage");
+
+                code_place.innerHTML = input_code;
+                percentage_place.innerHTML = input_percentage;
+                pop_up_discount.classList.toggle("hide");
+                document.getElementById("input_percentage").value = "";
+                document.getElementById("input_code").value = "";
+
+                // sending the data into the database
+                const add_discount = async () => {
+                    const url = add_discount_url;
+                    let params = new URLSearchParams();
+                    params.append("product_id", 3);
+                    params.append("code", input_code);
+                    params.append("percentage", input_percentage);
+                    await axios
+                    .post(url, params)
+                    .then((data) => {
+                        console.log(data)})};
+
+            add_discount();
         })
-}
-)})
+})})}
 
 // delete a product 
 const delete_product = () => {
@@ -253,6 +295,17 @@ const delete_product = () => {
         const product_selected = document.getElementById("product");
         product_selected.classList.add("hide");
         product_selected.classList.add("displaynone");
+
+        const delete_product_db = async () => {
+            const url = add_discount_url;
+            let params = new URLSearchParams();
+            params.append("product_id", 4);
+            params.append("code", input_code);
+            params.append("percentage", input_percentage);
+            await axios
+              .post(url, params)
+              .then((data) => {
+                console.log(data)})};
     })
 })
 }
@@ -266,6 +319,7 @@ submit_editing.addEventListener("click", () => {
     const edited_description = document.getElementById("").value;
     const edited_price = document.getElementById("").value;
     const edited_condition = document.getElementById("").value;
+
 
 })
 
