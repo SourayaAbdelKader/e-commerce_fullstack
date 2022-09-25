@@ -164,6 +164,7 @@ const laod_wishlist = async () => {
   await axios.post(getWishlistApi, params).then((data) => {
     wishlistProducts = data.data;
     load_products(wishlistProducts, wishlistWrapper);
+    show_specific_product();
   });
 };
 
