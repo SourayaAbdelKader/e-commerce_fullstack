@@ -16,6 +16,13 @@ showProductsBtn.addEventListener("click",() => {
   wishlistPageContent.classList.add("hide")
 })
 
+// showing only favorites section when clicked in navbar
+showFavoritesBtn.addEventListener("click",() => {
+  productsPageContent.classList.add("hide")
+  favoritesPageContent.classList.remove("hide")
+  wishlistPageContent.classList.add("hide")
+})
+
 // Function getting products as object and appending them to container
 const load_products = (products) =>{
   products.forEach(product => {
