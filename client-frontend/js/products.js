@@ -153,6 +153,7 @@ const laod_favorites = async () => {
   await axios.post(getFavoritesApi, params).then((data) => {
     favProducts = data.data;
     load_products(favProducts, favoritesWrapper);
+    show_specific_product();
   });
 };
 
