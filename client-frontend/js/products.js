@@ -6,9 +6,11 @@ const searchBar = document.getElementById("searchBar");
 const productsPageContent = document.getElementById("products");
 const favoritesPageContent = document.getElementById("favorites");
 const wishlistPageContent = document.getElementById("wishlist");
+const searchResultPageContent = document.getElementById("searchResult")
 const productsWrapper = document.getElementById("productsWrapper");
 const favoritesWrapper = document.getElementById("favoritesWrapper");
 const wishlistWrapper = document.getElementById("favoritesWrapper");
+const searchResultWrapper = document.getElementById("searchWrapper")
 const getProductApi = "http://localhost/e-commerce_fullstack/backend/get_products.php";
 const addFavouriteApi = "http://localhost/e-commerce_fullstack/backend/add_favorite.php";
 const getFavoritesApi = "http://localhost/e-commerce_fullstack/backend/get_favorites.php";
@@ -132,7 +134,9 @@ const get_search_result = async (key) => {
   .post(searchApi,params)
   .then((data) => {
     let searchResult = data.data;
-    console.log(searchResult)
+    productsPageContent.classList.add("hide");
+    searchResultPageContent.classList.remove("hide");
+    load_products(searchResult,searchResultWrapper)
   })
 }
 
