@@ -1,3 +1,11 @@
+// URLS 
+const receive_category_url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/receive_categories.php";
+const receive_products_url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/receive_products.php";
+const add_product_url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/add_product.php";
+const add_ad_url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/add_ad.php";
+const add_discount_url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/add_discount.php";
+
+
 //get today's date:
 const getTodayDate = () => {
     var today = new Date();
@@ -26,7 +34,7 @@ hoover_elements.forEach(element => {
 // ___________ Products _____________
 // get the category name 
 const displayCategoryTitle = async () => {
-    const url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/receive_categories.php";
+    const url = receive_category_url;
     let params = new URLSearchParams();
     params.append("id", 1);
     await axios
@@ -44,9 +52,9 @@ const displayCategoryTitle = async () => {
 displayCategoryTitle();
 
 // retrieving products from db
-let j = 0;
+
 const displayProducts = async () => {
-        const url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/receive_products.php";
+        const url = receive_products_url;
         let params = new URLSearchParams();
         params.append("categorie_id", localStorage["selected_category"]);
         await axios
@@ -56,7 +64,7 @@ const displayProducts = async () => {
             console.log(data.data)
             console.log(data.data.length)
             
-            data.data.forEach(element =>{
+            for (let element of data.data){
                 console.log(element)
             const product_title = document.getElementById("product-title");
             const product_description = document.getElementById("product-description");
@@ -69,19 +77,19 @@ const displayProducts = async () => {
             const container = document.getElementById("products");
             const div = document.getElementById("product");
             const clone = div.cloneNode(true);
-            clone.classList.add("product");
-            clone.classList.add("show");
-            clone.classList.remove("displaynone")
-            // giving the clone the same id in the db
             clone.id = element.id;
+            //clone.classList.add("product");
+            // giving the clone the same id in the db
             product_title.innerHTML = element.title;
             product_description.innerHTML = element.description;
             product_price.innerHTML = element.price;
             product_condition.innerHTML = element.condition;
 
+            // adding the ad to the product 
+
             container.appendChild(clone);
 
-        });
+        };
 
         adding_ads();
         delete_product(); 
@@ -139,7 +147,7 @@ add_button.addEventListener("click", () => {
 
 
         const addProducts = async () => {
-            const url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/add_product.php";
+            const url = add_product_url;
             let params = new URLSearchParams();
             params.append("categorie_id", localStorage["selected_category"]);
             params.append("title", new_name);
@@ -184,9 +192,19 @@ const adding_ads = () => {
                 const ad_main_descriptin = document.getElementById("ad-description");
                 ad_main_descriptin.innerHTML = ad_description;
                 pop_up_ad.classList.toggle("hide");
-            })
-    }
-)})}
+
+                // sending the data into the database
+                const add_ads = async () => {
+                    const url = add_ad_url;
+                    let params = new URLSearchParams();
+                    params.append("product_id",);
+                    params.append("description", ad_description);
+                    await axios
+                      .post(url, params)
+                      .then((data) => {
+                        console.log(data)});
+    };
+})})})};
 
 // to add the discount pop up 
 const add_discount = document.querySelectorAll(".add-discount");
@@ -208,6 +226,18 @@ add_discount.forEach(button => {
             code_place.innerHTML = input_code;
             percentage_place.innerHTML = input_percentage;
             pop_up_discount.classList.toggle("hide");
+
+            // sending the data into the database
+            const add_ads = async () => {
+                const url = add_discount_url;
+                let params = new URLSearchParams();
+                params.append("product_id",);
+                params.append("code", ad_description);
+                params.append("percentage", percentage);
+                await axios
+                  .post(url, params)
+                  .then((data) => {
+                    console.log(data)})};
 
         })
 }

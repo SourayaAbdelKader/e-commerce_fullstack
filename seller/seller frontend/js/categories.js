@@ -1,3 +1,7 @@
+// URLS
+const receive_categories = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/receive_categories.php"
+const add_category = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/add-categories.php";
+
 //get today's date:
 const getTodayDate = () => {
     var today = new Date();
@@ -30,7 +34,7 @@ window.addEventListener("load", () => {
 });
 
 const displayCategories = async () => {
-        const url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/receive_categories.php";
+        const url = receive_categories;
         let params = new URLSearchParams();
         params.append("id", 1);
         await axios
@@ -73,19 +77,18 @@ add_category_button.addEventListener("click", () => {
     
         if (new_category != "") {
             console.log(new_category);
-            const container = document.getElementById("categories")
-            const div = document.getElementById("category")
+            const container = document.getElementById("categories");
+            const div = document.getElementById("category");
             const clone = div.cloneNode(true);
             clone.classList.add("show");
             clone.classList.add("category");
             clone.classList.remove("displaynone");
             clone.innerHTML='<a href="products.html">' + new_category + '</a>';
             clone.id = i;
-            container.appendChild(clone); 
-            i++;   
+            container.appendChild(clone);   
             
             const add_categories = async () => {
-                const url = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/add-categories.php";
+                const url = add_category;
                 let params = new URLSearchParams();
                 params.append("name", new_category)
                 params.append("seller_id", 1);

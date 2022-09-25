@@ -7,7 +7,7 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorizatio
 
 
 $id = $_POST["product_id"];
-$description = $_POST["code"];
+$description = $_POST["description"];
 
 $query = $mysqli -> prepare("INSERT INTO advertisements (description, product_id) VALUE (?, ?)") ;
 

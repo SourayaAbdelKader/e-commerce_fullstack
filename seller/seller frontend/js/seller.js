@@ -1,3 +1,8 @@
+//URL 
+const get_seller_info = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/receive-seller-info.php";
+const top5 = "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/top5products.php"
+
+
 //get today's date:
 const getTodayDate = () => {
     var today = new Date();
@@ -26,8 +31,7 @@ hoover_elements.forEach(element => {
 // ___________ for the seller page ___________________________
 //adding the information on load to the seller page
 const getShopInfo = async () => {
-    const url =
-      "http://localhost/seller-fullstack/e-commerce_fullstack/seller/seller-backend/receive-seller-info.php";
+    const url = get_seller_info;
       let params = new URLSearchParams();
         params.append("id", 1);
     await axios
@@ -48,11 +52,10 @@ const getShopInfo = async () => {
         console.log(data.data[0].id);
       })    
     }
-/*
+
 // _______________ get top 5 _________
 const getTop5 = async () => {
-    const url =
-      "";
+    const url = top5;
       let params = new URLSearchParams();
         params.append("id", 1);
     await axios
@@ -64,18 +67,18 @@ const getTop5 = async () => {
         const top4 = document.getElementById("top4");
         const top5 = document.getElementById("top5");
 
-        top1.innerHTML = ;
-        top2.innerHTML = ;
-        top3.innerHTML = ;
-        top4.innerHTML = ;
-        top5.innerHTML= ;
+        top1.innerHTML = data.data[0].name;
+        top2.innerHTML = data.data[1].name;
+        top3.innerHTML = data.data[2].name;
+        top4.innerHTML = data.data[3].name;
+        top5.innerHTML= data.data[4].name;
       })    
     }
-*/
+
 
 window.addEventListener("load", () => {
     getShopInfo ();
-    //getTop5 ();
+    getTop5 ();
 }
 );
 
