@@ -330,7 +330,29 @@ body{
     background-color: #355c7b;
 }
 
-  
+/* Search Section */
+.search{
+    width: 100%;
+    padding: 0 2vh;
+}
+
+.backBtnContainer{
+    height: fit-content;
+    width: fit-content;
+    align-self: start;
+}
+
+.backSearch{
+    width: 16vh;
+    height: 8vh;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2vh;
+    font-size: 3vh;
+    border: none;
+    cursor: pointer;
+    margin-top: 3vh;
+}
 
 /* Ads Section */
 
