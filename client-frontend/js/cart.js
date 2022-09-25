@@ -15,7 +15,8 @@ const removeItem = (e) => {
   const cart_item = e.target.parentNode;
   const item_id = e.target.parentNode.children[0].value;
   const quantity_value = -1; //when API receive -1 => it is handled to remove the whole item
-  const client_id = 1;
+  const user = JSON.parse(localStorage.getItem("user"));
+  const client_id = user.id;
   cart_item.remove();
 
   // update cart in db both cases ( 0 or positive product quantity)
@@ -38,7 +39,8 @@ const removeItem = (e) => {
 // decrement quantity of single item and update DB
 const decrementItemQuantity = (e) => {
   //load client_id from localStorage:
-  const client_id = 1;
+  const user = JSON.parse(localStorage.getItem("user"));
+  const client_id = user.id;
   const cart_item = e.target.parentNode.parentNode.parentNode;
   const item_id = e.target.parentNode.parentNode.parentNode.children[0].value;
   const quantity = e.target.nextSibling;
@@ -79,8 +81,8 @@ const decrementItemQuantity = (e) => {
 };
 // increment quantity of single item
 const incrementItemQuantity = (e) => {
-  //load client_id from localStorage:
-  const client_id = 1;
+  const user = JSON.parse(localStorage.getItem("user"));
+  const client_id = user.id;
   const item_id = e.target.parentNode.parentNode.parentNode.children[0].value;
   const quantity = e.target.previousSibling;
   const price_per_item_value =
@@ -192,7 +194,8 @@ const showItem = (item) => {
 // when loading the page get all the items in user cart:
 const getCartItems = async () => {
   // get client_id from localStorage first
-  const client_id = 1; //for testing
+  const user = JSON.parse(localStorage.getItem("user"));
+  const client_id = user.id;
   const get_items = async () => {
     let params = new URLSearchParams();
     params.append("client_id", client_id);
@@ -222,7 +225,8 @@ const applyVoucher = () => {
 // submit the cart to checkout
 const checkoutOrder = async () => {
   //get client_id from localStorage: 1 - for testing:
-  const client_id = 1;
+  const user = JSON.parse(localStorage.getItem("user"));
+  const client_id = user.id;
   const total = parseInt(cart_total_show.textContent);
   const checkout_date = Date.now();
   // first get all Discount codes from my cart local page inputs
