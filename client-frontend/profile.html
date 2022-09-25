@@ -35,9 +35,7 @@
         <!-- Start of right main section -->
         <div class="main-messages">
           <h2>Messages</h2>
-          <div id="chat-main-box" class="chat-boxes">
-            
-          </div>
+          <div id="chat-main-box" class="chat-boxes"></div>
         </div>
         <!-- End of right main section -->
       </main>
@@ -45,7 +43,7 @@
     </section>
 
     <!-- Start Of Single message/main chat Section -->
-    <section id="reply-popup" class="reply-popup">
+    <section id="reply-popup" class="reply-popup display-none">
       <div class="reply-content">
         <button id="close-reply-popup" class="close">✖</button>
         <img src="./assets/icons8-mail-64.png" />
@@ -56,7 +54,7 @@
           placeholder="Write your reply"
         />
         <button id="reply-submit" class="send orange-bg">Send!</button>
-        <input type="hidden" id="new-receiver-id" value="">
+        <input type="hidden" id="new-receiver-id" value="" />
       </div>
     </section>
     <!-- End Of Single message/main chat Section -->

@@ -99,7 +99,7 @@ const checkCurrentUser = () => {
 };
 const showUserData = () => {
   const user = checkCurrentUser();
-  if (user.profile)
+  if (user.image_url)
     profile_user_image.src = `../ecommerce-server/user_images/${user.image_url}`;
   else profile_user_image.src = "./assets/dummy-profile.png";
   profile_user_name.textContent = user.name;
@@ -151,7 +151,6 @@ const getAllReceivedMessages = () => {
       .post(url, params)
       .then((data) => {
         const messages = data.data;
-        console.log(messages);
         for (let message of messages) showReceivedMessage(message);
         // add event listener to all messages after they are added to html content
         const reply_buttons = document.getElementsByClassName("reply-button");
@@ -178,7 +177,7 @@ const updateUserInDB = () => {
   params.append("new_name", user.name);
   params.append("email", user.email);
   params.append("new_bio", user.bio);
-  params.append("profile", profile);
+  params.append("image_url", profile);
   // validation before sending to API
   const update_user = async () => {
     const url =
@@ -205,7 +204,8 @@ const updateUserData = () => {
   updateUserInDB();
   const user = JSON.parse(localStorage.getItem("user"));
   // update shown data directly
-  if (user.profile) profile_user_image.src = user.profile;
+  if (user.image_url)
+    profile_user_image.src = `../ecommerce-server/user_images/${user.image_url}`;
   profile_user_name.textContent = user.name;
   profile_user_bio.textContent = user.bio;
   closeProfileModal();
@@ -213,7 +213,8 @@ const updateUserData = () => {
 const loadUserData = () => {
   //load user data to edit-profile inputs
   const user = checkCurrentUser();
-  if (user.profile) profile_new_image_show.src = user.profile;
+  if (user.image_url)
+    profile_new_image_show.src = `../ecommerce-server/user_images/${user.image_url}`;
   profile_new_name.value = user.name;
   if (user.bio) profile_new_bio.value = user.bio;
 };
@@ -251,24 +252,4 @@ edit_profile_img_input.addEventListener("change", uploadImage);
 window.addEventListener("load", getAllReceivedMessages);
 // --------END OF EVENT LISTENERS-------------
 
-{
-  /* <div class="single-chat">
-  <div class="chat">
-    <img
-      class="shop-profile"
-      src="./assets/dummy-profile.png"
-      alt="shop profile"
-    />
-    <span class="shop-name" id="shop-name">
-      Ali Rida
-    </span>
-    <span class="date" id="last-message-date">
-      10m
-    </span>
-  </div>
-  <p id="message-text">Lorem ipsum dolor sit amet.</p>
-  <div class="reply-button">
-    <button class="btn btn-sm grey-bg">Reply</button>
-  </div>
-</div>; */
-}
+

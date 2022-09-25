@@ -21,21 +21,21 @@ $client_id = $_POST['client_id'];
 $email = $_POST['email']; //used to overwrite picture
 $new_name = $_POST['new_name'];
 $bio = $_POST['new_bio'];
-$new_profile_base64 = $_POST['profile'];
+$image_url_base64 = $_POST['image_url'];
 
 
-$new_profile = '';
+$image_url = '';
 // update profile picture/overwrite old one if there exists a new one 
-if ($new_profile_base64) {
-    $image = base64_to_jpeg($new_profile_base64, 'user_images/' . $email . '.jpeg');
+if ($image_url_base64) {
+    $image = base64_to_jpeg($image_url_base64, 'user_images/' . $email . '.jpeg');
     $target_Path = "/user_images";
     move_uploaded_file($image, $target_Path);
-    $new_profile = "../ecommerce-server/user_images/" . $email . ".jpeg";
+    $image_url = $email . ".jpeg";
 }
 
 
 // new profile picture exists
-if ($new_profile) {
+if ($image_url) {
     $sql_query = "
 UPDATE users 
 SET 
@@ -43,7 +43,7 @@ name =? , bio = ?, profile=?
 WHERE
     id = ?";
     $query = $mysqli->prepare($sql_query);
-    $query->bind_param('ssss', $new_name, $bio, $new_profile, $client_id);
+    $query->bind_param('ssss', $new_name, $bio, $image_url, $client_id);
 }
 // no new profile picture exists
 else {
@@ -62,4 +62,4 @@ $query->execute();
 $response = [];
 $response['success'] = true;
 
-if ($response) echo json_encode($new_profile);
+if ($response) echo json_encode($image_url);
