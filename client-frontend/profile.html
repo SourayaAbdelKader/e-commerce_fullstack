@@ -11,26 +11,31 @@
     <section id="profile-html">
       <!-- Start of navbar -->
       <div class="products-container flex column">
-      <!-- Start of Header Section -->
-      <div class="header orange-bg flex">
-        <div class="logo">
-          <img src="assets/logo_withname-no-margin.png" alt="Logo" />
+        <!-- Start of Header Section -->
+        <div class="header orange-bg flex">
+          <div class="logo">
+            <img src="assets/logo_withname-no-margin.png" alt="Logo" />
+          </div>
+          <div class="header-top-right flex">
+            <button
+              id="signout-button"
+              class="btn signout-btn grey-bg antiquewhite-bg"
+            >
+              Sign out
+            </button>
+            <button id="go-to-cart-button" class="btn eclipse">
+              <img src="assets/cart-icon.png" />
+            </button>
+          </div>
         </div>
-        <div class="header-top-right flex">
-          <button id="signout-button" class="btn signout-btn grey-bg antiquewhite-bg">Sign out</button>
-          <button id="go-to-cart-button" class="btn eclipse">
-            <img src="assets/cart-icon.png" />
-          </button>
-        </div>
-      </div>
-      <!-- Ender of Header Section -->
+        <!-- Ender of Header Section -->
 
-      <!-- Start of Navbar Section -->
-      <div class="navbar grey-bg">
-        <ul class="navElements">
-          <li><button id="back-to-products">Back to Products</button></li>
-        </ul>
-      </div>
+        <!-- Start of Navbar Section -->
+        <div class="navbar grey-bg">
+          <ul class="navElements">
+            <li><button id="back-to-products">Back to Products</button></li>
+          </ul>
+        </div>
       </div>
       <!-- End of navbar -->
 
@@ -119,7 +124,15 @@
     <!-- End of Edit Profile popup Modal -->
 
     <!-- Start of footer section -->
-    <footer></footer>
+    <!-- Start of Footer Section -->
+    <div class="footer orange-bg flex">
+      <div class="footerLogo flex column">
+        <img src="assets/logo_withname-no-margin.png" alt="Logo" />
+        <p class="antiquewhite-text">Choose to see the good stuff</p>
+      </div>
+    </div>
+    <div class="break grey-bg"></div>
+    <!-- End of Footer Section -->
     <!-- End of footer section -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./js/profile.js"></script>

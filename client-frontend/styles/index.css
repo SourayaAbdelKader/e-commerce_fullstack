@@ -1050,6 +1050,7 @@ p {
 .main-profile {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 2em;
 }
 .main-profile img {
