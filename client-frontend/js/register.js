@@ -31,10 +31,9 @@ const login_seller_password = document.getElementById("login-seller-password");
 // global base64String
 var base64string_profile;
 
-
 const checkUser = () => {
   const user = localStorage.getItem("user");
-  if (user) window.location.href = "./profile.html";
+  if (user) window.location.href = "./products.html";
 };
 // show image and save url (signup)
 function uploadImage() {
@@ -125,7 +124,6 @@ const sendNewPasswordByEmail = async () => {
 };
 // ---End of Show and hide modals Section---
 
-
 // create empty cart for new registered user so we can add to it directly:
 const createEmptyCart = async () => {
   const new_user = JSON.parse(localStorage.getItem("user"));
@@ -198,12 +196,12 @@ const loginUser = (e) => {
 // End of login submit(get exisiting user) //
 
 // validate Signup:
-const validateSignUp = (name, email, password, phone_nb) => {
+const validateSignUp = () => {
   // reset inputs first:
-  signup_name.classList.remove("danger");
-  signup_email.classList.remove("danger");
-  signup_password.classList.remove("danger");
-  signup_phone.classList.remove("danger");
+  const name = signup_name.value;
+  const email = signup_email.value;
+  const password = signup_password.value;
+  const phone_nb = signup_phone.value;
   let valid = true;
 
   const validEmail = () => {
@@ -228,7 +226,7 @@ const validateSignUp = (name, email, password, phone_nb) => {
   };
   const validName = () => {
     // names can only use letters. not less than 6 letters
-    const nameRegex = /[a-zA-z]{6,}/;
+    const nameRegex = /[a-zA-Z]{6,}/;
     return nameRegex.test(name);
   };
   const validPassword = () => {
@@ -263,9 +261,14 @@ const validateSignUp = (name, email, password, phone_nb) => {
 
 // Start of Signup submit to API (create new user) //
 const createNewUser = async (e) => {
-  signup_email.classList.remove("danger");
   e.stopImmediatePropagation();
   e.preventDefault();
+  signup_name.classList.remove("danger");
+  signup_email.classList.remove("danger");
+  signup_password.classList.remove("danger");
+  signup_phone.classList.remove("danger");
+
+  if (!validateSignUp()) return; //not valid signup
 
   // check if email is already found
   let repeated = false;
@@ -275,9 +278,9 @@ const createNewUser = async (e) => {
     await axios
       .get(`${url}?email=${signup_email.value}`)
       .then((data) => {
-        const found = JSON.stringify(data.data[0]);
-        if (found.length > 0) {
-          console.log('ehh');
+        const found = JSON.stringify(data.data[0].found);
+        console.log(found);
+        if (found > 0) {
           repeated = true;
         }
       })
@@ -287,20 +290,10 @@ const createNewUser = async (e) => {
   await check_email();
 
   // if email is repeated
-  if(repeated){
-  signup_email.classList.add("danger");
-  return;
-  }
-
-  // if signup info not valid return
-  if (
-    !validateSignUp(
-      signup_name.value,
-      signup_email.value,
-      signup_password.value,
-      signup_phone.value
-    )
-  ) {
+  if (repeated) {
+    signup_email.classList.add("danger");
+    //show message about repeated email
+    console.log('repeated');
     return;
   }
 
@@ -315,7 +308,7 @@ const createNewUser = async (e) => {
   params.append("shop_location", "");
   params.append("bio", "");
   params.append("profile", profile);
-  // validation before sending to API
+
   const add_user = async () => {
     const url =
       "http://localhost/e-commerce_fullstack/ecommerce-server/signup.php";
