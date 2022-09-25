@@ -90,6 +90,23 @@ const addToCart = () => {
   const client_id = user.id;
   const product_id = JSON.parse(localStorage.getItem("product_id"));
   const quantity = 1;
+
+  const update_cart = async () => {
+    let params = new URLSearchParams();
+    params.append("client_id", client_id);
+    params.append("product_id", product_id);
+    params.append("product_id", quantity);
+
+    const url =
+      "http://localhost/e-commerce_fullstack/ecommerce-server/add_to_cart.php";
+    await axios
+      .post(url, params)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  };
+  update_cart();
 };
 // END OF POST APIs
 
