@@ -66,7 +66,7 @@ const showProduct = (product) => {
 const load_related_product = (product) => {
   related_products_section.innerHTML += `<div class="productCard grey-bg" data-value=${product.id}>
                                     <div class="productMainImage">
-                                      <img src="../ecommerce-server/product_images/${product.main_image}" alt="">
+                                      <img src="../ecommerce-server/product_images/${product.image}" alt="">
                                     </div>
                                       <div class="productInfo">
                                           <p>${product.title}</p>
@@ -107,11 +107,9 @@ const getRelatedProducts = async () => {
     await axios
     .post(url, params)
     .then((data) => {
-      console.log(data.data);
-      const existingdata = [];
-      if(existingdata.length > 0){
-        for(let item of existingdata){
-          load_related_product(item);
+      if(data.data){
+        for(let item of data.data){
+          load_related_product(item);;
         }
       }else{
         related_products_section.innerHTML = ``;
