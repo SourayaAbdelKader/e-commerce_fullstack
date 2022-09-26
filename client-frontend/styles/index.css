@@ -208,7 +208,7 @@ button {
 /* Start of Hero Section */
 .heroSection {
   margin-top: 5vh;
-  width: 90vw;
+  width: 80vw;
   height: 70vh;
   background-image: url("/client-frontend/assets/Hero-image.png");
   background-repeat: no-repeat;
