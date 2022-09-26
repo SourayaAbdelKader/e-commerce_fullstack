@@ -3,7 +3,7 @@ const seller_info_button = document.getElementById("seller-info-button");
 const seller_info = document.getElementById("seller-info");
 const item_description_button = document.getElementById("description-button");
 const item_description = document.getElementById("item-description");
-item_description_button.style.backgroundColor = "#94a9b4"; //by default
+item_description_button.style.backgroundColor = "#F79106"; //by default
 // navlinks:
 const signout_button = document.getElementById("signout-button");
 const go_to_cart_button = document.getElementById("go-to-cart-button");
@@ -13,6 +13,7 @@ const add_to_cart_button = document.getElementById("cart-button");
 const add_to_favorite_button = document.getElementById("fav-button");
 const add_to_wishlist_button = document.getElementById("wish-button");
 // show item information tags:
+const product_show_info = document.getElementById("show-item");
 const product_price = document.getElementById("price");
 const product_condition = document.getElementById("item-condition");
 const product_name = document.getElementById("item-name");
@@ -25,11 +26,12 @@ const product_image3 = document.getElementById("item-img3");
 const seller_shop_name = document.getElementById("shop-name");
 const seller_shop_location = document.getElementById("shop-location");
 const seller_shop_info = document.getElementById("shop-info");
+//related products section:
+const related_products_section = document.getElementById("related-products");
 
 // START OF WINDOW LOAD
 //show current product and seller values:
 const showProduct = (product) => {
-  console.log(product);
   // always we should have images, but for testing and styling, we wanna keep html fixed image (we use same main image, for main image and the middle one)
   if (product.product_image) {
     product_main_image.src = `../ecommerce-server/product_images/${product.product_image}`;
@@ -38,8 +40,8 @@ const showProduct = (product) => {
   if (product.product_image1)
     product_image1.src = `../ecommerce-server/product_images/${product.product_image1}`;
   if (product.product_image2)
-    product_image2.src = `../ecommerce-server/product_images/${product.product_image2}`;
-
+    product_image3.src = `../ecommerce-server/product_images/${product.product_image2}`;
+  product_show_info.setAttribute("data-value", product.categorie_id);
   [
     product_price.textContent,
     product_condition.textContent,
@@ -60,7 +62,36 @@ const showProduct = (product) => {
     product.seller_description,
   ];
 };
-const getProductAndSeller = () => {
+4;
+//ad event to show specific related product"
+// showing item:
+const show_specific_product = () => {
+  const all_products_cards = document.querySelectorAll(".productCard");
+  all_products_cards.forEach((card) => {
+    const product_id = card.getAttribute("data-value");
+    card.addEventListener("click", () => {
+      localStorage.setItem("product_id", JSON.stringify(product_id));
+      window.location.href = "./show.html";
+    });
+  });
+};
+//load related products to html
+const load_related_product = (product) => {
+  related_products_section.innerHTML += `<div class="productCard grey-bg" data-value=${product.id}>
+                                    <div class="productMainImage">
+                                      <img src="../ecommerce-server/product_images/${product.image}" alt="">
+                                    </div>
+                                      <div class="productInfo">
+                                          <p>${product.title}</p>
+                                          <div class="bottom">
+                                              <p>${product.price}$</p>
+                                              <div class="like" data-value="${product.id}"><img src='./assets/heart-fav.png'></div>
+                                          </div>
+                                      </div>
+                                  </div>`;
+};
+//get product and seller info to show
+const getProductAndSeller = async () => {
   const product_id = JSON.parse(localStorage.getItem("product_id"));
 
   const get_data = async () => {
@@ -75,7 +106,33 @@ const getProductAndSeller = () => {
       })
       .catch((err) => console.log(err));
   };
-  get_data();
+  await get_data();
+  getRelatedProducts();
+};
+//get related products:
+const getRelatedProducts = async () => {
+  const catgid = product_show_info.getAttribute("data-value");
+  // function fetching all products from database
+  const get_related = async () => {
+    const url =
+      "http://localhost/e-commerce_fullstack/ecommerce-server/get_related_products.php";
+    let params = new URLSearchParams();
+    params.append("categorie_id", catgid);
+    await axios
+      .post(url, params)
+      .then((data) => {
+        if (data.data) {
+          for (let item of data.data) {
+            load_related_product(item);
+          }
+        } else {
+          related_products_section.innerHTML = ``;
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+  await get_related();
+  show_specific_product();
 };
 // END OF WINDOW LOAD
 
@@ -84,7 +141,7 @@ const getProductAndSeller = () => {
 const showItemDescription = () => {
   seller_info.classList.add("display-none");
   seller_info_button.style.backgroundColor = "transparent";
-  item_description_button.style.backgroundColor = "#94a9b4";
+  item_description_button.style.backgroundColor = "#F79106";
   item_description.classList.remove("display-none");
 };
 // on seller info button click:
@@ -92,7 +149,7 @@ const showSellerInfo = () => {
   item_description_button.style.backgroundColor = "transparent";
   item_description.classList.add("display-none");
   seller_info.classList.remove("display-none");
-  seller_info_button.style.backgroundColor = "#94a9b4";
+  seller_info_button.style.backgroundColor = "#F79106";
 };
 // END OF DESCRIPTION BUTTONS FUNCTIONS
 

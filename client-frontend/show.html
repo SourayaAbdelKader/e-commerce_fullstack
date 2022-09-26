@@ -54,13 +54,13 @@
       <!-- End of LEFT Images Section -->
 
       <!-- Start of RIGHT Product Info Section -->
-      <section class="show-item-info">
+      <section class="show-item-info" id="show-item">
         <p class="category">Category: <span id="item-category"></span></p>
         <h2 id="item-name" class="name upper"></h2>
         <p class="condition light-text">
           Condition: <span id="item-condition"></span>
+        <span class="price"><span id="price"></span>$</span>
         </p>
-        <h1 class="price"><span id="price"></span>$</h1>
         <div class="buttons">
           <button id="cart-button" class="cart-button orange-bg upper">
             <img class="cart-icon" src="./assets/icons8-addtocart-50.png" />Add
@@ -100,6 +100,13 @@
       </div>
     </section>
     <!-- END OF DESCRIPTION SECTION -->
+
+    <!-- Start of Related Products Section -->
+    <div class="productSection">
+          <p class="sectionTitle">Related Products</p>
+          <div id="related-products" class="wrapper"></div>
+        </div>
+    <!-- End Related Products Section -->
 
     <!-- Start of Footer Section -->
     <div class="footer orange-bg flex">

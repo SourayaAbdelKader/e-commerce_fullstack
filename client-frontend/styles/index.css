@@ -855,18 +855,23 @@ button {
 .main-show {
   background: #eaeada;
   display: flex;
+  align-items: center;
   justify-content: center;
   margin-top: 36px;
-  gap: 2em;
+  height: 90vh;
 }
 /* main-hero: Left-Images Section */
 .show-item-images {
   flex-direction: column;
-  width: 40%;
-  height: 600px;
-  display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  width: 40%;
+  height: 100%;
+  display: flex;
+}
+.show-item-images img {
+  border: 1px solid #355c7b;
+  background-color: white;
 }
 .show-item-images .main-img {
   width: 500px;
@@ -888,14 +893,15 @@ button {
 /* main-hero: Right-item-info Section */
 .show-item-info {
   width: 50%;
-  height: 50%;
+  height: 90%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  gap: 0.6em;
+  justify-content: flex-start;
+  gap: 2.2em;
 }
-.show-item-info .name {
-  font-size: 55px;
+.show-item-info .name,
+.show-item-info .price {
+  font-size: 40px;
 }
 .show-item-info .category {
   font-weight: 500;
@@ -910,11 +916,9 @@ button {
   font-size: 20px;
   font-weight: 100;
 }
-.show-item-info .buttons-first {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 70%;
+.show-item-info .condition .price {
+  margin-top: 10px;
+  display: block;
 }
 
 .cart-button {
@@ -930,12 +934,10 @@ button {
 .show-item-info .buttons {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   gap: 1em;
 }
 .show-item-info .buttons-second {
   display: flex;
-  justify-content: flex-end;
 }
 .show-item-info .buttons-second .fav-button {
   width: 120px;
@@ -986,7 +988,7 @@ button {
 }
 .description-section .description {
   padding: 20px 0;
-  width: 50%;
+  min-width: 50%;
   margin-left: 35px;
   font-size: 20px;
   line-height: 25px;
@@ -1002,10 +1004,25 @@ button {
 /* End Of Show Media queries */
 /* ------END OF 'SHOW.HTML' STYLING------ */
 @media only screen and (max-width: 900px) {
+  .main-show {
+    flex-direction: column;
+    align-items: center;
+  }
   .show-item-images {
     display: flex;
     flex-direction: row;
     width: 100%;
+    margin-top: 0;
+  }
+  .show-item-info {
+    width: 89%;
+    gap:0.8em;
+  }
+  .show-item-info .buttons {
+    align-items: flex-end;
+  }
+  .show-item-info .buttons-second .fav-button:first-child {
+    margin-left: 0;
   }
   .show-item-images .secondary-images {
     flex-direction: column;
@@ -1018,12 +1035,22 @@ button {
     width: 30%;
     height: 70px;
   }
-  .main-show {
-    flex-direction: column;
-    align-items: center;
-  }
+
   .description-section {
     margin-top: 20px;
+  }
+  .description-section .seller-info {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .description-section .seller-info h2 {
+    font-size: 25px;
+  }
+  .description-section .seller-info .shop-name {
+    font-size: 25px;
+    text-transform: uppercase;
   }
 }
 /* ------START OF PROFILE.HTML STYLING-------- */

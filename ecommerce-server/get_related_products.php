@@ -4,7 +4,7 @@ $data = [];
 if (isset($_POST["categorie_id"])) {
   $id = $_POST["categorie_id"];
   // get all products with same categories name or this name in title or description of a products
-  $sql = "select * from products p join categories c on  c.id=p.categorie_id
+  $sql = "select p.id id,p.title title, p.price price, p.main_image image from products p join categories c on  c.id=p.categorie_id
           where c.name =(select name from categories where id=?) or 
           p.title like  CONCAT('%',(select name from categories where id=?),'%') or
           p.description like  CONCAT('%',(select name from categories where id=?),'%')";
