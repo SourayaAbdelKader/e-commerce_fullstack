@@ -27,7 +27,7 @@ const seller_shop_name = document.getElementById("shop-name");
 const seller_shop_location = document.getElementById("shop-location");
 const seller_shop_info = document.getElementById("shop-info");
 //related products section:
-const related_products_section = document.getElementById("related-section");
+const related_products_section = document.getElementById("related-products");
 
 // START OF WINDOW LOAD
 //show current product and seller values:
@@ -63,7 +63,7 @@ const showProduct = (product) => {
   ];
 };
 //load related products to html
-const load_related_products = (product) => {
+const load_related_product = (product) => {
   related_products_section.innerHTML += `<div class="productCard grey-bg" data-value=${product.id}>
                                     <div class="productMainImage">
                                       <img src="../ecommerce-server/product_images/${product.main_image}" alt="">
@@ -78,7 +78,7 @@ const load_related_products = (product) => {
                                   </div>`;
 };
 //get product and seller info to show
-const getProductAndSeller = () => {
+const getProductAndSeller = async () => {
   const product_id = JSON.parse(localStorage.getItem("product_id"));
 
   const get_data = async () => {
@@ -93,25 +93,34 @@ const getProductAndSeller = () => {
       })
       .catch((err) => console.log(err));
   };
-  get_data();
+  await get_data();
+  getRelatedProducts();
 };
 //get related products:
 const getRelatedProducts = async () => {
+  const catgid = product_show_info.getAttribute("data-value");
   // function fetching all products from database
-  const url = await axios
-    .post(getProductApi)
+  const url =
+    "http://localhost/e-commerce_fullstack/ecommerce-server/get_related_products.php";
+   let params = new URLSearchParams();
+   params.append('categorie_id',catgid);
+    await axios
+    .post(url, params)
     .then((data) => {
-      allProducts = data.data;
-      // passing all products to load_product function as objects
-      load_products(allProducts, productsWrapper);
-
-      // adding event listeners to show specific product and favorite icons only after products are loaded
-      show_specific_product();
-      favorite_products();
+      console.log(data.data);
+      const existingdata = [];
+      if(existingdata.length > 0){
+        for(let item of existingdata){
+          load_related_product(item);
+        }
+      }else{
+        related_products_section.innerHTML = ``;
+      }
     })
     .catch((err) => console.log(err));
 };
 // END OF WINDOW LOAD
+
 
 // START OF DESCRIPTION BUTTONS FUNCTIONS
 // on item description button click:
@@ -203,7 +212,6 @@ add_to_wishlist_button.addEventListener("click", addToWishlist);
 add_to_cart_button.addEventListener("click", addToCart);
 // on page load - load the product and the seller from the database:
 window.addEventListener("load", getProductAndSeller);
-window.addEventListener("load", getRelatedProducts);
 // buttons toggle description section:
 seller_info_button.addEventListener("click", showSellerInfo);
 item_description_button.addEventListener("click", showItemDescription);
