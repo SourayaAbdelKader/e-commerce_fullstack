@@ -1,0 +1,441 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body {
+  background-color: #eaeada;
+  margin: 0%;
+  padding: 0%;
+  color: #355c7b;
+  overflow-x: hidden;
+}
+
+h2 {
+  color: #355c7b;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+h3 {
+  margin-bottom: 2vw;
+  color: #355c7b;
+  font-size: 15px;
+}
+
+.danger {
+  background-color: rgb(138, 138, 138);
+  border: 1px solid red;
+}
+
+/* Utilities*/
+
+.d-none {
+  display: none;
+}
+
+.overflow {
+  overflow: hidden;
+}
+
+.flex-baseline {
+  display: flex;
+  align-items: baseline;
+}
+
+.page-name {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.bold {
+  font-weight: 800;
+}
+
+.selected {
+  background-color: #355c7b;
+}
+
+.color-red {
+  color: #e81515;
+}
+
+.subtitle {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 1vw;
+  margin-top: 1vw;
+}
+
+.underline-text {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 1vw;
+  margin-right: 1vw;
+  text-decoration: underline;
+}
+
+.underline {
+  text-decoration: underline;
+  margin-right: 1vw;
+}
+
+.center-flex {
+  align-items: baseline;
+}
+
+button {
+  position: relative;
+  width: 9vw;
+  border: 0cm;
+  padding: 1vh 1vw;
+  border-radius: 40px;
+  font-weight: 500;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* Styling the header */
+.header {
+  background-color: #94a9b4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0vw 2vw;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  height: 80px;
+  border-bottom: 1px solid #355c7b;
+}
+
+.logo-image {
+  height: 100px;
+  width: auto;
+}
+
+/* Styling the pannel */
+.container {
+  align-items: flex-start;
+}
+
+.icon {
+  height: 30px;
+  width: auto;
+  margin-right: 1vw;
+}
+
+.panel {
+  margin-top: 80px;
+  padding: 10px 0 10px 0;
+  align-items: center;
+  position: fixed;
+  background-color: #94a9b4;
+  height: 100%;
+  color: white;
+  border-right: 1px solid #355c7b;
+}
+
+.panel > div {
+  padding: 1vw 2vw;
+  margin-bottom: 2vw;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  font-size: 13px;
+}
+
+/* Styling the body*/
+
+.pic {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 500px;
+  margin-right: 3vw;
+}
+
+.title {
+  position: relative;
+  align-content: center;
+}
+
+.screen {
+  position: relative;
+  width: 95%;
+  margin-top: 110px;
+  margin-right: 1vw;
+  margin-left: 15vw;
+  align-self: flex-start;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+.left-screen {
+  justify-content: space-between;
+  margin-right: 5rem;
+}
+
+/* admin */
+
+.registered_user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 1.5rem;
+}
+
+.user_card {
+  border: 1px solid #94a9b4;
+  border-radius: 10px;
+  padding: 0px;
+  text-align: center;
+  margin: 1rem;
+  width: auto;
+  height: auto;
+}
+
+.user_img > img {
+  height: 100%;
+  width: 100%;
+}
+
+.user_img {
+  width: 10vw;
+  height: 20vh;
+  padding: 0.8rem;
+  margin: auto;
+}
+
+.user_info {
+  text-align: left;
+  margin: 0.5rem;
+  width: 100%;
+  height: 30%;
+}
+
+.user_name {
+  font-weight: bolder;
+  font-size: 1rem;
+  border-top: 1px solid #94a9b4;
+}
+
+.user_card p {
+  padding: 0 0.8rem 0.5rem 0.8rem;
+  font-size: 0.8rem;
+}
+
+.ban_user {
+  color: #355c7b;
+  margin: 0.5rem;
+  background-color: transparent;
+  border: 1px solid #94a9b4;
+  font-size: 0.7rem;
+  padding: 2px;
+}
+
+/* seller */
+
+.seller_card {
+  background-color: #94a9b4;
+  border-radius: 10px;
+  padding: 5px;
+  text-align: center;
+  padding: 1rem;
+  margin: 1rem;
+  width: auto;
+  height: auto;
+}
+
+.seller_card .user_name {
+  border: none;
+}
+
+.seller_card p,
+.seller_card b,
+.seller_card h3 {
+  color: #355c7b;
+  font-size: 1.2rem;
+  padding: 0.2rem;
+}
+
+.edit_user,
+.seller_card .ban_user {
+  margin: 1rem;
+}
+
+.seller_card .user_info {
+  height: 40%;
+}
+
+.seller_card button {
+  margin: 0.5rem;
+}
+
+.popup_seller,
+.login {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.edit-popup {
+  background-color: #355c7b;
+  width: 500px;
+  height: 30rem;
+  border-radius: 15px;
+}
+
+.close-popup {
+  background-color: transparent;
+  color: white;
+  text-align: left;
+  padding: 1rem;
+}
+
+.edit-img {
+  width: 9rem;
+  height: 9rem;
+  transition: all 1s ease-in-out;
+  border-radius: 50%;
+}
+.edit-imgurl {
+  position: relative;
+}
+
+.click {
+  color: white;
+  position: absolute;
+  z-index: 1000;
+  color: #000000;
+  top: -4rem;
+  left: 3rem;
+  font-weight: bolder;
+  font-size: 1.4rem;
+  transition: all 1s ease-in-out;
+  display: none;
+}
+
+.error {
+  color: rgb(0, 0, 0);
+  font-weight: bolder;
+  letter-spacing: 2px;
+  font-size: 1rem;
+  margin: 0.5rem;
+}
+
+.container-edit button {
+  margin: 1rem;
+}
+.edit-imgurl:hover .edit-img {
+  opacity: 0.5;
+}
+.edit-imgurl:hover .click {
+  display: block;
+}
+
+.container-edit {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 50%;
+  align-items: center;
+}
+
+.edit-content {
+  display: flex;
+  align-items: center;
+}
+
+.img-section {
+  flex-basis: 25%;
+  margin: 1rem;
+}
+
+.container-edit input {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  outline: none;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.container-edit input:focus {
+  border: 3px solid #355c7b;
+}
+
+.add_seller {
+  position: fixed;
+  top: 8rem;
+  right: 5px;
+  background-color: transparent;
+  color: black;
+  border: 1px solid black;
+}
+
+/* chart stat */
+
+.stat-view {
+  width: 100%;
+  height: 70%;
+  text-align: center;
+}
+
+canvas {
+  margin: 0.8rem 2rem;
+  width: 10rem;
+  height: 20rem;
+  padding: 0.8rem 2rem;
+  text-align: center;
+}
+
+.double {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  width: 50%;
+}
+
+/* login pop */
+
+.login {
+  background-color: #355c7b;
+}
+
+.login .edit-popup {
+  display: flex;
+  background-color: #94a9b4;
+  align-items: center;
+  justify-content: center;
+}
+
+.registered_user img {
+  border-radius: 50%;
+}
+
+.login .img-section img {
+  border: 1px solid #355c7b;
+  padding: 1px;
+}
