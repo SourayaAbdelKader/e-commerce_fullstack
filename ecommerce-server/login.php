@@ -9,7 +9,7 @@ $user_type = $_GET['user_type'];
 $response = [];
 
 if ($user_type == 'client') {
-    $query = $mysqli->prepare("SELECT id, name,bio, email, phone_number, image_url, access FROM users WHERE email=? and password=? and user_type=?");
+    $query = $mysqli->prepare("SELECT id, name,bio, email, phone_number, image_url, access FROM users WHERE email=? and password=? and user_type=? and access=1");
     $query->bind_param('sss', $email, $password, $user_type);
     $query->execute();
     $array = $query->get_result();
