@@ -292,9 +292,10 @@ button {
   margin-top: 8vh;
 }
 .wrapper {
-  width: 90vw;
+  width: 80vw;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .productCard {
   width: 40vh;
