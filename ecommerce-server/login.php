@@ -4,12 +4,12 @@ include("connection.php");
 
 $email = $_GET['email'];
 $password = $_GET['password'];
-$password = hash('sha256', $password . 'sayhiecommerce');
+//$password = hash('sha256', $password . 'sayhiecommerce');
 $user_type = $_GET['user_type'];
 $response = [];
 
 if ($user_type == 'client') {
-    $query = $mysqli->prepare("SELECT id, name,bio, email, phone_number, image_url, access FROM users WHERE email=? and password=? and user_type=? and access=1");
+    $query = $mysqli->prepare("SELECT id, name,bio, email, phone_number, image_url, access FROM users WHERE email=? and password=?  ");
     $query->bind_param('sss', $email, $password, $user_type);
     $query->execute();
     $array = $query->get_result();
@@ -18,7 +18,7 @@ if ($user_type == 'client') {
 }
 // for seller login
 else {
-    $query = $mysqli->prepare("SELECT id,name, email, phone_number, image_url, access, shop_location, shop_description, user_type FROM users WHERE email=? and password=? and user_type=?");
+    $query = $mysqli->prepare("SELECT id,name, email, phone_number, image_url, access, shop_location, bio, user_type FROM users WHERE email=? and password=? and user_type=?");
     $query->bind_param('sss', $email, $password, $user_type);
     $query->execute();
     $array = $query->get_result();
