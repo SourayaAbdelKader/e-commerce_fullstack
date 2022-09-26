@@ -56,10 +56,10 @@ button {
   color: #94a9b4;
 }
 .btn {
-  height: 57px;
+  height: 40px;
   border-radius: 50px;
   text-transform: capitalize;
-  font-size: 25px;
+  font-size: 15px;
   border: none;
   cursor: pointer;
   margin-bottom: 10px;
@@ -142,9 +142,9 @@ button {
 }
 
 .header-top-right {
-  width: 30vw;
+  width: 20vw;
   align-items: center;
-  padding-right: 0 5%;
+  padding-right: 5%;
   justify-content: space-between;
 }
 
@@ -157,11 +157,12 @@ button {
 }
 
 .eclipse {
-  height: 50%;
-  width: 70%;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0);
+  width: fit-content;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0vh 3vh
+;
 }
 
 .eclipse > img {
@@ -207,7 +208,7 @@ button {
 /* Start of Hero Section */
 .heroSection {
   margin-top: 5vh;
-  width: 90vw;
+  width: 80vw;
   height: 70vh;
   background-image: url("/client-frontend/assets/Hero-image.png");
   background-repeat: no-repeat;
@@ -291,20 +292,21 @@ button {
   margin-top: 8vh;
 }
 .wrapper {
-  width: 90vw;
+  width: 80vw;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .productCard {
   width: 40vh;
-  min-height: 50vh;
+  min-height: 55vh;
   margin: 2vh;
   padding: 2vh 1.5vh;
+  flex-grow: 1;
   border-radius: 20px;
   display: grid;
   grid-template-rows: 70% 30%;
   transition: 0.3s ease-in-out;
-  align-self: center;
 }
 .productMainImage {
   height: 100%;
@@ -339,6 +341,7 @@ button {
   width: 6vh;
   border-radius: 3vh;
   background-color: rgb(182, 182, 182);
+  align-self: start;
 }
 .productCard:hover {
   cursor: pointer;
