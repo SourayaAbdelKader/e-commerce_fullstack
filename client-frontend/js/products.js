@@ -44,7 +44,7 @@ const load_products = (products, wrapper) => {
       // add seller name
       wrapper.innerHTML += `<div class="productCard grey-bg" data-value=${product.id}>
                                     <div class="productMainImage">
-                                      <img src="../../ecommerce-server/${product.main_image}" alt="">
+                                      <img src="../ecommerce-server/product_images/${product.main_image}" alt="">
                                     </div>
                                       <div class="productInfo">
                                           <p>${product.title}</p>
@@ -64,7 +64,7 @@ const load_products = (products, wrapper) => {
 const load_ad = (ad) => {
   adContainer.innerHTML = `<div class="productAdImage">
                             <div class="fade">
-                                <img src="../../ecommerce-server/${ad.main_image}" alt="Ad Image">
+                                <img src="../ecommerce-server/product_images/${ad.main_image}" alt="Ad Image">
                             </div>
                           </div>
                           <div class="adInfo flex column antiquewhite-text">
