@@ -1013,6 +1013,7 @@ button {
   }
   .show-item-info {
     width: 89%;
+    gap:0.8em;
   }
   .show-item-info .buttons {
     align-items: flex-end;

@@ -13,6 +13,7 @@ const add_to_cart_button = document.getElementById("cart-button");
 const add_to_favorite_button = document.getElementById("fav-button");
 const add_to_wishlist_button = document.getElementById("wish-button");
 // show item information tags:
+const product_show_info = document.getElementById("show-item");
 const product_price = document.getElementById("price");
 const product_condition = document.getElementById("item-condition");
 const product_name = document.getElementById("item-name");
@@ -25,11 +26,12 @@ const product_image3 = document.getElementById("item-img3");
 const seller_shop_name = document.getElementById("shop-name");
 const seller_shop_location = document.getElementById("shop-location");
 const seller_shop_info = document.getElementById("shop-info");
+//related products section:
+const related_products_section = document.getElementById("related-section");
 
 // START OF WINDOW LOAD
 //show current product and seller values:
 const showProduct = (product) => {
-  console.log(product);
   // always we should have images, but for testing and styling, we wanna keep html fixed image (we use same main image, for main image and the middle one)
   if (product.product_image) {
     product_main_image.src = `../ecommerce-server/product_images/${product.product_image}`;
@@ -39,7 +41,7 @@ const showProduct = (product) => {
     product_image1.src = `../ecommerce-server/product_images/${product.product_image1}`;
   if (product.product_image2)
     product_image3.src = `../ecommerce-server/product_images/${product.product_image2}`;
-
+  product_show_info.setAttribute("data-value", product.categorie_id);
   [
     product_price.textContent,
     product_condition.textContent,
@@ -60,6 +62,22 @@ const showProduct = (product) => {
     product.seller_description,
   ];
 };
+//load related products to html
+const load_related_products = (product) => {
+  related_products_section.innerHTML += `<div class="productCard grey-bg" data-value=${product.id}>
+                                    <div class="productMainImage">
+                                      <img src="../ecommerce-server/product_images/${product.main_image}" alt="">
+                                    </div>
+                                      <div class="productInfo">
+                                          <p>${product.title}</p>
+                                          <div class="bottom">
+                                              <p>${product.price}$</p>
+                                              <div class="like" data-value="${product.id}"><img src='./assets/heart-fav.png'></div>
+                                          </div>
+                                      </div>
+                                  </div>`;
+};
+//get product and seller info to show
 const getProductAndSeller = () => {
   const product_id = JSON.parse(localStorage.getItem("product_id"));
 
@@ -76,6 +94,22 @@ const getProductAndSeller = () => {
       .catch((err) => console.log(err));
   };
   get_data();
+};
+//get related products:
+const getRelatedProducts = async () => {
+  // function fetching all products from database
+  const url = await axios
+    .post(getProductApi)
+    .then((data) => {
+      allProducts = data.data;
+      // passing all products to load_product function as objects
+      load_products(allProducts, productsWrapper);
+
+      // adding event listeners to show specific product and favorite icons only after products are loaded
+      show_specific_product();
+      favorite_products();
+    })
+    .catch((err) => console.log(err));
 };
 // END OF WINDOW LOAD
 
@@ -169,6 +203,7 @@ add_to_wishlist_button.addEventListener("click", addToWishlist);
 add_to_cart_button.addEventListener("click", addToCart);
 // on page load - load the product and the seller from the database:
 window.addEventListener("load", getProductAndSeller);
+window.addEventListener("load", getRelatedProducts);
 // buttons toggle description section:
 seller_info_button.addEventListener("click", showSellerInfo);
 item_description_button.addEventListener("click", showItemDescription);
