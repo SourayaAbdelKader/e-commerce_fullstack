@@ -62,6 +62,19 @@ const showProduct = (product) => {
     product.seller_description,
   ];
 };
+4;
+//ad event to show specific related product"
+// showing item:
+const show_specific_product = () => {
+  const all_products_cards = document.querySelectorAll(".productCard");
+  all_products_cards.forEach((card) => {
+    const product_id = card.getAttribute("data-value");
+    card.addEventListener("click", () => {
+      localStorage.setItem("product_id", JSON.stringify(product_id));
+      window.location.href = "./show.html";
+    });
+  });
+};
 //load related products to html
 const load_related_product = (product) => {
   related_products_section.innerHTML += `<div class="productCard grey-bg" data-value=${product.id}>
@@ -100,25 +113,28 @@ const getProductAndSeller = async () => {
 const getRelatedProducts = async () => {
   const catgid = product_show_info.getAttribute("data-value");
   // function fetching all products from database
-  const url =
-    "http://localhost/e-commerce_fullstack/ecommerce-server/get_related_products.php";
-   let params = new URLSearchParams();
-   params.append('categorie_id',catgid);
+  const get_related = async () => {
+    const url =
+      "http://localhost/e-commerce_fullstack/ecommerce-server/get_related_products.php";
+    let params = new URLSearchParams();
+    params.append("categorie_id", catgid);
     await axios
-    .post(url, params)
-    .then((data) => {
-      if(data.data){
-        for(let item of data.data){
-          load_related_product(item);;
+      .post(url, params)
+      .then((data) => {
+        if (data.data) {
+          for (let item of data.data) {
+            load_related_product(item);
+          }
+        } else {
+          related_products_section.innerHTML = ``;
         }
-      }else{
-        related_products_section.innerHTML = ``;
-      }
-    })
-    .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
+  };
+  await get_related();
+  show_specific_product();
 };
 // END OF WINDOW LOAD
-
 
 // START OF DESCRIPTION BUTTONS FUNCTIONS
 // on item description button click:
