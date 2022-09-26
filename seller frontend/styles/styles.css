@@ -377,14 +377,24 @@ button {
 }
 
 .discount-popup, .ad-popup {
-    padding: 1vw;
+    padding: 3vw;
     position: fixed;
-    right: 2vw;
-    bottom: 2vw;
-    width: 35vw;
+    top: 50%;
+    left: 50%;
+    width: 30em;
+    height: 18em;
+    margin-top: -9em;
+    margin-left: -15em;
     border-radius: 25px;
-    margin-bottom: 1vw;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    border: 1px solid #94A9B4;
+}
 
+.product_img {
+    width: 30px;
+    height: 30px
 }
 
 .submit-edit-popup {
@@ -396,7 +406,7 @@ button {
 
 .product-pop-up {
     position: absolute;
-    right: 5vw;
+    right: 1vw;
     top: 12.5vw;
 }
 
@@ -446,6 +456,31 @@ tr {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+
+#add_sumbit {
+    width: 100px;
+    height: 25px;
+    padding: 0.1vw;
+}
+
+.no_messages {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2vw;
+    border-radius: 25px;
+    margin: 7vw 25vw;
+    width: 25vw;
+    height: 15vw;
+    font-size: 25px;
+}
+
+.no_messages > img {
+    width: 100px;
 }
 
 

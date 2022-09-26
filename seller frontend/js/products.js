@@ -85,9 +85,9 @@ const displayProducts = async () => {
                 </div>
                 <div class="image section-seperator"> 
                     <p class="product-subtitle"> Images </p>
-                    <div class="main_image"> <img id="product-main-image" src= ${element.main_image}> </div>
-                    <div class="image1"> <img id="product-image1" src=${element.image1}> </div>
-                    <div class="image2"> <img id="product-image2" src=${element.image2}> </div>
+                    <div class="main_image"> <img id="product-main-image" class="product_img" src= ${element.main_image}> </div>
+                    <div class="image1"> <img id="product-image1" class="product_img" src=${element.image1}> </div>
+                    <div class="image2"> <img id="product-image2" class="product_img" src=${element.image2}> </div>
                 </div>
                 <div class="discount section-seperator">
                     <p class="product-subtitle"> Discount </p>
@@ -174,9 +174,9 @@ add_button.addEventListener("click", function() {
             </div>
             <div class="image section-seperator"> 
                 <p class="product-subtitle"> Images </p>
-                <div class="main_image"> <img id="product-main-image" src= ${main_image}> </div>
-                <div class="image1"> <img id="product-image1" src=${image1}> </div>
-                <div class="image2"> <img id="product-image2" src=${image2}> </div>
+                <div class="main_image"> <img id="product-main-image" class="product_img" src= ${main_image}> </div>
+                <div class="image1"> <img id="product-image1" class="product_img" src=${image1}> </div>
+                <div class="image2"> <img id="product-image2" class="product_img" src=${image2}> </div>
             </div>
             <div class="discount section-seperator">
                 <p class="product-subtitle"> Discount </p>
