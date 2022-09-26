@@ -158,10 +158,11 @@ button {
 
 .eclipse {
   height: 50%;
-  width: 70%;
+  width: fit-content;
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0);
+  padding: 1vh 3vh;
 }
 
 .eclipse > img {
