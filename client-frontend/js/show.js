@@ -38,7 +38,7 @@ const showProduct = (product) => {
   if (product.product_image1)
     product_image1.src = `../ecommerce-server/product_images/${product.product_image1}`;
   if (product.product_image2)
-    product_image2.src = `../ecommerce-server/product_images/${product.product_image2}`;
+    product_image3.src = `../ecommerce-server/product_images/${product.product_image2}`;
 
   [
     product_price.textContent,
