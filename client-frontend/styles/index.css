@@ -302,11 +302,11 @@ button {
   min-height: 50vh;
   margin: 2vh;
   padding: 2vh 1.5vh;
+  flex-grow: 1;
   border-radius: 20px;
   display: grid;
   grid-template-rows: 70% 30%;
   transition: 0.3s ease-in-out;
-  align-self: center;
 }
 .productMainImage {
   height: 100%;
