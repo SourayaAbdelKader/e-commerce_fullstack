@@ -15,8 +15,8 @@ const phone = document.querySelector("#phone");
 const admin_name = document.querySelector("#name");
 
 // api
-const api_loign = "http://localhost:3000/ecommerce-server/login.php";
-const api_stat = "http://localhost:3000/ecommerce-server/stat.php";
+const api_loign = "http://localhost/ecommerce-server/login.php";
+const api_stat = "http://localhost/ecommerce-server/stat.php";
 
 let userInfo;
 
@@ -79,7 +79,7 @@ const getStat = async () => {
     .get(api_stat)
     .then((data) => {
       data = data.data;
-      if (data != null) { 
+      if (data != null) {
         fillChart(data);
       }
     })
@@ -91,7 +91,7 @@ const fillChart = (data) => {
   const getNames = (data) => data.map(({ name }) => name);
   const getTotal = (data) => data.map(({ total }) => total);
   const getColors = () => {
-    return ["#ff6384", "#36a2eb", "#cc65fe", "#ffce56"];
+    return ["#355c7b", "#36a2eb", "#096698"];
   };
 
   //nb of Seller Clients Products
@@ -107,7 +107,7 @@ const fillChart = (data) => {
           borderWidth: 1,
           boderColor: "#777",
           hoverBorderWidth: 3,
-          hoverBorderColor: "red",
+          hoverBorderColor: "#355c7b",
         },
       ],
     },
@@ -152,7 +152,7 @@ const fillChart = (data) => {
           borderWidth: 1,
           boderColor: "#777",
           hoverBorderWidth: 3,
-          hoverBorderColor: "red",
+          hoverBorderColor: "#355c7b",
         },
       ],
     },
@@ -197,7 +197,7 @@ const fillChart = (data) => {
           borderWidth: 1,
           boderColor: "#777",
           hoverBorderWidth: 3,
-          hoverBorderColor: "red",
+          hoverBorderColor: "#355c7b",
         },
       ],
     },
@@ -242,7 +242,7 @@ const fillChart = (data) => {
           borderWidth: 1,
           boderColor: "#777",
           hoverBorderWidth: 3,
-          hoverBorderColor: "red",
+          hoverBorderColor: "#355c7b",
         },
       ],
     },
@@ -273,135 +273,3 @@ const fillChart = (data) => {
     },
   });
 };
-
-// new Chart(chart3, {
-//   type: "bar", //bar ,horizentalBAr pie line doughnut radar polarArea
-//   data: {
-//     labels: ["A", "B ", "B", "C", "D", "E", "F"],
-//     datasets: [
-//       {
-//         label: "Population",
-//         data: [4561, 7827, 4517, 7782, 1254, 4537, 9754],
-//         backgroundColor: ["#ff6384", "#36a2eb", "#cc65fe", "#ffce56"],
-//         borderWidth: 1,
-//         boderColor: "#777",
-//         hoverBorderWidth: 3,
-//         hoverBorderColor: "red",
-//       },
-//     ],
-//   },
-//   options: {
-//     responsive: true,
-//     maintainAspectRatio: false,
-//     indexAxis: "y",
-//     plugins: {
-//       title: {
-//         display: false,
-//         text: "Top 5 Seller",
-//         font: {
-//           size: 20,
-//         },
-//       },
-//       legend: {
-//         display: true,
-//         position: "right",
-//         labels: {
-//           color: "rgb(15, 99, 132)",
-//         },
-//       },
-//     },
-
-//     layout: {
-//       padding: 0,
-//       margin: 0,
-//     },
-//   },
-// });
-
-// new Chart(chart4, {
-//   type: "radar", //bar ,horizentalBAr pie line doughnut radar polarArea
-//   data: {
-//     labels: ["A", "B ", "B", "C", "D", "E", "F"],
-//     datasets: [
-//       {
-//         label: "Population",
-//         data: [4561, 7827, 4517, 7782, 1254, 4537, 9754],
-//         backgroundColor: ["#ff6384", "#36a2eb", "#cc65fe", "#ffce56"],
-//         borderWidth: 1,
-//         boderColor: "#777",
-//         hoverBorderWidth: 3,
-//         hoverBorderColor: "red",
-//       },
-//     ],
-//   },
-//   options: {
-//     responsive: true,
-//     maintainAspectRatio: false,
-//     plugins: {
-//       title: {
-//         display: false,
-//         text: "Top 5 Seller",
-//         font: {
-//           size: 20,
-//         },
-//       },
-//       legend: {
-//         display: true,
-//         position: "right",
-//         labels: {
-//           color: "rgb(15, 99, 132)",
-//         },
-//       },
-//     },
-
-//     layout: {
-//       padding: 0,
-//       margin: 0,
-//     },
-//   },
-// });
-
-// new Chart(chart2, {
-//   responsive: true,
-//   maintainAspectRatio: false,
-//   type: "doughnut", //bar ,horizentalBAr pie line doughnut radar polarArea
-//   data: {
-//     labels: ["A", "B ", "B", "C", "D", "E", "F"],
-//     datasets: [
-//       {
-//         label: "Population",
-//         data: [4561, 7827, 4517, 7782, 1254, 4537, 9754],
-//         backgroundColor: ["#ff6384", "#36a2eb", "#cc65fe", "#ffce56"],
-//         borderWidth: 1,
-//         boderColor: "#777",
-//         hoverBorderWidth: 3,
-//         hoverBorderColor: "red",
-//       },
-//     ],
-//   },
-//   options: {
-//     responsive: true,
-//     maintainAspectRatio: false,
-//     plugins: {
-//       title: {
-//         display: false,
-//         text: "Top 5 Seller",
-//         font: {
-//           size: 10,
-//         },
-//       },
-//       legend: {
-//         display: true,
-//         position: "right",
-//         labels: {
-//           color: "rgb(15, 99, 132)",
-//         },
-//       },
-//     },
-
-//     layout: {
-//       padding: 0,
-//       margin: 0,
-//     },
-//   },
-// });

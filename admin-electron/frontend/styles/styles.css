@@ -2,7 +2,8 @@
   margin: 0%;
   padding: 0%;
   box-sizing: border-box;
-  font-family: "Metrisch";
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 a {
@@ -15,6 +16,7 @@ body {
   margin: 0%;
   padding: 0%;
   color: #355c7b;
+  overflow-x: hidden;
 }
 
 h2 {
@@ -63,7 +65,7 @@ h3 {
 }
 
 .selected {
-  background-color: #e81515;
+  background-color: #355c7b;
 }
 
 .color-red {
@@ -71,15 +73,15 @@ h3 {
 }
 
 .subtitle {
-  font-size: 25px;
+  font-size: 15px;
   font-weight: 600;
   margin-bottom: 1vw;
-  margin-top: 2vw;
+  margin-top: 1vw;
 }
 
 .underline-text {
   font-weight: 600;
-  font-size: 20px;
+  font-size: 15px;
   margin-bottom: 1vw;
   margin-right: 1vw;
   text-decoration: underline;
@@ -96,18 +98,18 @@ h3 {
 
 button {
   position: relative;
-  width: 10vw;
+  width: 9vw;
   border: 0cm;
   padding: 1vh 1vw;
   border-radius: 40px;
-  font-weight: 600;
-  font-size: 15px;
+  font-weight: 500;
+  font-size: 13px;
   cursor: pointer;
 }
 
 /* Styling the header */
 .header {
-  background-color: #e81515;
+  background-color: #94a9b4;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -115,7 +117,8 @@ button {
   position: fixed;
   width: 100%;
   z-index: 100;
-  height: 100px;
+  height: 80px;
+  border-bottom: 1px solid #355c7b;
 }
 
 .logo-image {
@@ -135,9 +138,14 @@ button {
 }
 
 .panel {
-  margin-top: 120px;
+  margin-top: 80px;
+  padding: 10px 0 10px 0;
   align-items: center;
   position: fixed;
+  background-color: #94a9b4;
+  height: 100%;
+  color: white;
+  border-right: 1px solid #355c7b;
 }
 
 .panel > div {
@@ -145,7 +153,7 @@ button {
   margin-bottom: 2vw;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
-  font-size: 20px;
+  font-size: 13px;
 }
 
 /* Styling the body*/
@@ -155,7 +163,7 @@ button {
   width: 100px;
   height: 100px;
   border-radius: 500px;
-  margin-right: 2vw;
+  margin-right: 3vw;
 }
 
 .title {
@@ -176,6 +184,7 @@ button {
 
 .left-screen {
   justify-content: space-between;
+  margin-right: 5rem;
 }
 
 /* admin */
@@ -189,11 +198,13 @@ button {
 }
 
 .user_card {
-  border: 1px solid #e81515;
+  border: 1px solid #94a9b4;
   border-radius: 10px;
-  padding: 5px;
+  padding: 0px;
   text-align: center;
   margin: 1rem;
+  width: auto;
+  height: auto;
 }
 
 .user_img > img {
@@ -211,37 +222,41 @@ button {
 .user_info {
   text-align: left;
   margin: 0.5rem;
+  width: 100%;
+  height: 30%;
 }
 
 .user_name {
   font-weight: bolder;
-  font-size: 1.5rem;
-  border-top: 1px solid #e81515;
+  font-size: 1rem;
+  border-top: 1px solid #94a9b4;
 }
 
 .user_card p {
   padding: 0 0.8rem 0.5rem 0.8rem;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
 }
 
 .ban_user {
   color: #355c7b;
   margin: 0.5rem;
   background-color: transparent;
-  border: 1px solid rgb(0, 0, 0);
+  border: 1px solid #94a9b4;
+  font-size: 0.7rem;
+  padding: 2px;
 }
 
 /* seller */
 
 .seller_card {
-  background-color: #355c7b;
+  background-color: #94a9b4;
   border-radius: 10px;
   padding: 5px;
   text-align: center;
-  margin: 1rem;
-  width: 30%;
   padding: 1rem;
-  height: 75vh;
+  margin: 1rem;
+  width: auto;
+  height: auto;
 }
 
 .seller_card .user_name {
@@ -251,7 +266,7 @@ button {
 .seller_card p,
 .seller_card b,
 .seller_card h3 {
-  color: white;
+  color: #355c7b;
   font-size: 1.2rem;
   padding: 0.2rem;
 }
@@ -259,6 +274,10 @@ button {
 .edit_user,
 .seller_card .ban_user {
   margin: 1rem;
+}
+
+.seller_card .user_info {
+  height: 40%;
 }
 
 .seller_card button {
@@ -284,7 +303,7 @@ button {
 .edit-popup {
   background-color: #355c7b;
   width: 500px;
-  height: 350px;
+  height: 30rem;
   border-radius: 15px;
 }
 
@@ -322,10 +341,13 @@ button {
   color: rgb(0, 0, 0);
   font-weight: bolder;
   letter-spacing: 2px;
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin: 0.5rem;
 }
 
+.container-edit button {
+  margin: 1rem;
+}
 .edit-imgurl:hover .edit-img {
   opacity: 0.5;
 }
@@ -361,7 +383,7 @@ button {
 }
 
 .container-edit input:focus {
-  border: 3px solid #b70909;
+  border: 3px solid #355c7b;
 }
 
 .add_seller {
@@ -375,6 +397,12 @@ button {
 
 /* chart stat */
 
+.stat-view {
+  width: 100%;
+  height: 70%;
+  text-align: center;
+}
+
 canvas {
   margin: 0.8rem 2rem;
   width: 10rem;
@@ -383,30 +411,31 @@ canvas {
   text-align: center;
 }
 
-.stat-view {
-  width: 50%;
-  height: 70%;
-  text-align: center;
-}
-
 .double {
   display: flex;
   text-align: center;
+  align-items: center;
+  width: 50%;
 }
 
 /* login pop */
 
 .login {
-  background-color: #eaeada;
+  background-color: #355c7b;
 }
 
 .login .edit-popup {
   display: flex;
-  background-color: #b70909;
+  background-color: #94a9b4;
   align-items: center;
   justify-content: center;
 }
 
 .registered_user img {
   border-radius: 50%;
+}
+
+.login .img-section img {
+  border: 1px solid #355c7b;
+  padding: 1px;
 }

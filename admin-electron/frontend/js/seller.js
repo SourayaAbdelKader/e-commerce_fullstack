@@ -18,12 +18,12 @@ const error = document.querySelector("#error");
 const error2 = document.querySelector("#error2");
 
 //api
-const api_getUser = "http://localhost:3000/ecommerce-server/get_users.php";
-const api_getUserById = "http://localhost:3000/ecommerce-server/get_userByid.php";
-const api_editSeller = " http://localhost:3000/ecommerce-server/edit_seller.php";
-const api_delete = "http://localhost:3000/ecommerce-server/delete_user.php";
-const api_checkEmail = "http://localhost:3000/ecommerce-server/check_email.php";
-const api_siginUp = "http://localhost:3000/ecommerce-server/sigup.php";
+const api_getUser = "http://localhost/ecommerce-server/get_users.php";
+const api_getUserById = "http://localhost/ecommerce-server/get_userByid.php";
+const api_editSeller = " http://localhost/ecommerce-server/edit_seller.php";
+const api_delete = "http://localhost/ecommerce-server/delete_user.php";
+const api_checkEmail = "http://localhost/ecommerce-server/check_email.php";
+const api_siginUp = "http://localhost/ecommerce-server/sigup.php";
 // global base64String
 var base64string_profile;
 
@@ -213,8 +213,7 @@ const fill_old_info = async (id) => {
         edit_bio.value = user.bio;
         edit_phone.value = user.phone_number;
         edit_name.value = user.name;
-         // the img will not work without the full path  of url local host just in electron !!!
-        edit_img.src = `http://localhost:3000/ecommerce-server/${
+        edit_img.src = `../../../ecommerce-server/${
           user.image_url == "" ? "user_images/client.png" : user.image_url
         }`;
         update.setAttribute("data-value", user.id);
@@ -249,7 +248,7 @@ const loadData = (data) => {
     registered_user.innerHTML += `
                 <div class="seller_card">
                   <div class="user_img">
-                      <img src="http://localhost:3000/ecommerce-server/${
+                      <img src="../../../ecommerce-server/${
                         element.image_url == ""
                           ? "user_images/client.png"
                           : element.image_url

@@ -1,9 +1,9 @@
 const logoutBtn = document.querySelector("#logoutBtn");
 const registered_user = document.querySelector("#registered_user");
 // api
-const api_getUser = "http://localhost:3000/ecommerce-server/get_users.php";
-const api_ban = "http://localhost:3000/ecommerce-server/ban_client.php";
-const api_unban = "http://localhost:3000/ecommerce-server/un_ban.php";
+const api_getUser = "http://localhost/ecommerce-server/get_users.php";
+const api_ban = "http://localhost/ecommerce-server/ban_client.php";
+const api_unban = "http://localhost/ecommerce-server/un_ban.php";
 
 let userInfo = localStorage.getItem("user");
 
@@ -70,8 +70,8 @@ const loadData = (data) => {
 
     registered_user.innerHTML += `
     <div class="user_card">
-    <div class="user_img">
-        <img src="http://localhost:3000/ecommerce-server/${
+    <div class="user_img"> 
+        <img src="../../../ecommerce-server/${
           element.image_url == "" ? "user_images/client.png" : element.image_url
         }" alt="user image">
     </div>
