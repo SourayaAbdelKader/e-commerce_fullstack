@@ -20,6 +20,8 @@ This project is a Full-Stack website made of 3 main user_types (admin, seller, u
 # Collaborators:
 mohammadammash31@gmail.com
 alishouman010@gmail.com
+SourayaAbdelKader
+TahaTaha
 
 # References and links
 -axios: "https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
